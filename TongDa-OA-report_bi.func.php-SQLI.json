@@ -1,0 +1,46 @@
+{
+  "Name": "TongDa OA report_bi.func.php SQLI",
+  "Description": "There is a SQL injection vulnerability in TongDa OA, which can be used by attackers to obtain sensitive database information.",
+  "Product": "TongDa OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2021-05-27",
+  "Author": "834714370@qq.com",
+  "GobyQuery": "app=\"TongDa-OA\"",
+  "Level": "2",
+  "Impact": "<p>There is a SQL injection vulnerability in TongDa OA, The user is the root user with the highest authority, which can be used by attackers to obtain sensitive database information.<br></p>",
+  "Recommendation": "",
+  "References": [
+    "https://cdndown.tongda2000.com/oa/2019/TDOA11.6.exe"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "column1",
+      "type": "input",
+      "value": "database()"
+    },
+    {
+      "name": "column3",
+      "type": "input",
+      "value": "user()"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "SQL Injection"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

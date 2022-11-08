@@ -1,0 +1,75 @@
+{
+  "Name": "Weaver EOffice UploadFile.php File Upload (CNVD-2021-49104)",
+  "Description": "<p>Weaver EOffice is a mobile, intelligent and electronic collaborative office platform.</p><p>There is an arbitrary file upload vulnerability in the UploadFile.php file of Weaver EOffice collaborative office system. Attackers can upload malicious Trojan horses to control server permissions.</p>",
+  "Product": "Weaver-EOffice",
+  "Homepage": "https://www.eofficeoa.com",
+  "DisclosureDate": "2021-11-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "app=\"泛微-EOffice\"",
+  "GobyQuery": "app=\"泛微-EOffice\"",
+  "Level": "2",
+  "Impact": "<p>There is an arbitrary file upload vulnerability in the UploadFile.php file of Weaver EOffice collaborative office system. Attackers can upload malicious Trojan horses to control server permissions.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.eofficeoa.com\">https://www.eofficeoa.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "泛微 EOffice 协同办公平台 UploadFile.php 任意文件上传漏洞（CNVD-2021-49104）",
+      "VulType": ["文件上传"],
+	  "Tags": ["文件上传"],
+      "Description": "<p>泛微-EOffice是一款移动化、智能化、电子化的协同办公平台。</p><p>泛微-EOffice协同办公平台 UploadFile.php 文件存在任意文件上传漏洞，攻击者可上传恶意木马控制服务器权限。</p>",
+      "Impact": "<p>泛微-EOffice协同办公平台 UploadFile.php 文件存在任意文件上传漏洞，攻击者可上传恶意木马控制服务器权限。</p>",
+      "Product": "泛微-EOffice",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.eofficeoa.com\">https://www.eofficeoa.com</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "Weaver EOffice UploadFile.php File Upload(CNVD-2021-49104)",
+      "VulType": ["file-upload"],
+	  "Tags": ["file-upload"],
+      "Description": "<p>Weaver EOffice is a mobile, intelligent and electronic collaborative office platform.</p><p>There is an arbitrary file upload vulnerability in the UploadFile.php file of Weaver EOffice collaborative office system. Attackers can upload malicious Trojan horses to control server permissions.</p>",
+      "Impact": "<p>There is an arbitrary file upload vulnerability in the UploadFile.php file of Weaver EOffice collaborative office system. Attackers can upload malicious Trojan horses to control server permissions.</p>",
+      "Product": "Weaver-EOffice",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.eofficeoa.com\">https://www.eofficeoa.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "simple webshell,Behinder3.0"
+    },
+	{
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+	  "show": "AttackType=simple webshell"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "file-upload"
+  ],
+  "VulType": [
+    "file-upload"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "9.0",
+  "AttackSurfaces": {
+    "Application": ["Weaver-EOffice"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

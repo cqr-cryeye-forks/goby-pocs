@@ -1,0 +1,63 @@
+{
+  "Name": "Weaver e-cology OA apps.ktree.servlet.KtreeUploadAction file upload",
+  "Description": "Weaver e-cology OA apps.ktree.servlet.KtreeUploadAction file upload.",
+  "Product": "Weaver-OA",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2021-04-09",
+  "Author": "go0p",
+  "FofaQuery": "app=\"Weaver-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

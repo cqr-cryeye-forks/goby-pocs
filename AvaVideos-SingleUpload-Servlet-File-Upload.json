@@ -1,0 +1,39 @@
+{
+  "Name": "AvaVideos SingleUpload Servlet File Upload",
+  "Description": "SingleUpload Servlet File upload,Attackers can upload malicious files without authentication.",
+  "Product": "AvaVideos",
+  "Homepage": "https://www.ava.com.cn/product_1.html",
+  "DisclosureDate": "2021-06-11",
+  "Author": "SNCKER",
+  "GobyQuery": "body=\"top.location = './ie.html'\" && body=\"app\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "Update product in time",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "RealReferences": null,
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "AvaVideos"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": ""
+}

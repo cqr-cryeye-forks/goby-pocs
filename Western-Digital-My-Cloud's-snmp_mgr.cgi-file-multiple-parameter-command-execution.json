@@ -1,0 +1,34 @@
+{
+  "Name": "Western Digital My Cloud's snmp_mgr.cgi file multiple parameter command execution",
+  "Description": "Western Digital MyCloud is a personal cloud storage device that connects the storage device to the existing network to provide data and file services. Several parameters of the snmp_mgr.cgi file of Western Digital My Cloud have command execution interruption, and the attacker can obtain the administrator rights of the device and compromise the device.",
+  "Product": "Western Digital MyCloud",
+  "Homepage": "http://support.wdc.com/product.aspx",
+  "DisclosureDate": "2020-12-01",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"WD-MyCloud\"",
+  "Level": "3",
+  "Impact": "<p>Western Digital MyCloud是个人云存储设备，将存储设备连接到现有的网络上来提供数据和文件服务。</p><p>Western Digital My Cloud的snmp_mgr.cgi文件多个参数存在命令执行漏洞，该漏洞源于设备的snmp_mgr.cgi文件没有对传输的值进行过滤检查，导致攻击者直接给参数传入攻击载荷即可获取设备的root shell，进而攻陷设备。<br></p>",
+  "Recommandation": "<p>1、官方已修复该漏洞，请用户进入web管理页面进行固件更新。（操作有风险，注意备份）</p><p>2、通过防火墙等安全设备设置访问策略，设置白名单访问。</p><p>3、如非必要，禁止公网访问该系统。</p>",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": false,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": [],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Western-Digital-NAS"]
+  },
+  "Disable": false
+}

@@ -1,0 +1,42 @@
+{
+  "Name": "ZhongYuan iAudit get_luser_by_sshport.php RCE",
+  "Description": "ZhongYuan iAudit get_luser_by_sshport.php ,The existence of command splicing leads to remote command execution vulnerability",
+  "Product": "ZhongYuan iAudit",
+  "Homepage": "https://www.tosec.com.cn/",
+  "DisclosureDate": "2021-06-01",
+  "Author": "PeiQi",
+  "GobyQuery": "body=\"admin.php?controller=admin_index&amp;action=chklogin&amp;ref\"",
+  "Level": "3",
+  "Impact": "<p>The existence of command splicing leads to remote command execution vulnerability<br></p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "WangKang Next generation firewall"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>Upgrade version<br></p>"
+}

@@ -1,0 +1,83 @@
+{
+  "Name": "Kingsoft V9 Terminal Security System Any File Upload",
+  "Description": "Kingsoft Terminal Security System V8/V9 has file upload vulnerabilities",
+  "Product": "Kingsoft Terminal Security System ",
+  "Homepage": "https://www.ejinshan.net/",
+  "DisclosureDate": "2021-04-10",
+  "Author": "SuperDolby",
+  "FofaQuery": "title=\"用户登录-金山终端安全系统V9.0Web控制台\"",
+  "Level": "3",
+  "Impact": "Any File Upload Get Shell",
+  "Recommendation": "",
+  "References": [
+    "https://forum.butian.net/share/76"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+        "AND",
+        {
+          "Request": {
+            "method": "POST",
+            "uri": "/tools/manage/upload.php",
+            "follow_redirect": true,
+            "header": {
+                  "Pragma": "no-cache",
+                  "Cache-Control": "no-cache",
+                  "Upgrade-Insecure-Requests": "1",
+                  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4251.0 Safari/537.36",
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                  "Accept-Encoding": "gzip, deflate",
+                  "Accept-Language": "zh-CN,zh;q=0.9",
+                  "Cookie": "SKYLARa0aede9e785feabae789c6e03d=es581dq8j5i74b4dj27kc87ar3",
+                  "Connection": "close",
+                  "Content-Type": "multipart/form-data;boundary=----WebKitFormBoundaryhQcaKJIKAnejKGru"
+            },
+            "data_type": "text",
+            "data": ""
+          },
+          "ResponseTest": {
+            "type": "group",
+            "operation": "AND",
+            "checks": [
+                  {
+                        "type": "item",
+                        "variable": "$code",
+                        "operation": "==",
+                        "value": "200",
+                        "bz": ""
+                  },
+                  {
+                        "type": "item",
+                        "variable": "$body",
+                        "operation": "contains",
+                        "value": "Possible file upload attack",
+                        "bz": ""
+                  }
+            ]
+          },
+          "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

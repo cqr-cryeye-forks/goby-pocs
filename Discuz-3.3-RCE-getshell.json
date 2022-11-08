@@ -1,0 +1,64 @@
+{
+  "Name": "Discuz 3.3 RCE getshell",
+  "Description": "An attacker can execute PHP code at will",
+  "Product": "discuz",
+  "Homepage": "https://www.discuz.net/",
+  "DisclosureDate": "2021-06-14",
+  "Author": "hututued",
+  "GobyQuery": "app=\"discuz\"",
+  "Level": "3",
+  "Impact": "<p>The attacker can execute PHP code at will and get the permission of the server</p>",
+  "Recommendation": "<p>Upgrade the official patch<br></p>",
+  "References": [
+    "https://blog.csdn.net/weixin_43221560/article/details/93094937"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

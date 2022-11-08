@@ -1,0 +1,69 @@
+{
+  "Name": "Sapido syscmd.htm RCE (CNVD-2021-32085)",
+  "Description": "<p>Sapido is a variety of wireless routers.</p><p>There is a command execution vulnerability in the syscmd.htm page of the Sapido wireless router. Attackers can execute arbitrary commands to obtain server permissions.</p>",
+  "Product": "Sapido",
+  "Homepage": "http://www.sapido.com.tw/",
+  "DisclosureDate": "2021-12-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"etop_home_menu_style.css\"",
+  "GobyQuery": "body=\"etop_home_menu_style.css\"",
+  "Level": "2",
+  "Impact": "<p>There is a command execution vulnerability in the syscmd.htm page of the Sapido wireless router. Attackers can execute arbitrary commands to obtain server permissions.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"http://www.sapido.com.tw\">http://www.sapido.com.tw/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Sapido syscmd.htm RCE (CNVD-2021-32085)",
+      "VulType": ["命令执行"],
+	  "Tags": ["命令执行"],
+      "Description": "<p>Sapido是多款无线路由器。</p><p>Sapido无线路由器syscmd.htm页面存在命令执行漏洞，攻击者可执行任意命令获取服务器权限。</p>",
+      "Impact": "<p>Sapido无线路由器syscmd.htm页面存在命令执行漏洞，攻击者可执行任意命令获取服务器权限。</p>",
+      "Product": "Sapido",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"http://www.sapido.com.tw\">http://www.sapido.com.tw</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "Sapido syscmd.htm RCE (CNVD-2021-32085)",
+      "VulType": ["rce"],
+	  "Tags": ["rce"],
+      "Description": "<p>Sapido is a variety of wireless routers.</p><p>There is a command execution vulnerability in the syscmd.htm page of the Sapido wireless router. Attackers can execute arbitrary commands to obtain server permissions.</p>",
+      "Impact": "<p>There is a command execution vulnerability in the syscmd.htm page of the Sapido wireless router. Attackers can execute arbitrary commands to obtain server permissions.</p>",
+      "Product": "Sapido",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"http://www.sapido.com.tw\">http://www.sapido.com.tw</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "cat /etc/passwd"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "9.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    "CNVD-2021-32085"
+  ]
+}

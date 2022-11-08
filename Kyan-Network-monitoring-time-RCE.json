@@ -1,0 +1,59 @@
+{
+  "Name": "Kyan Network monitoring time RCE",
+  "Description": "<p>Kyan Network Monitoring is a security monitoring and remote monitoring equipment</p><p>Kyan network monitoring equipment time.php can execute arbitrary commands after authentication, and can obtain server permissions with the account password leaked by the host.</p>",
+  "Product": "Kyan-Design",
+  "Homepage": "http://aiesec.cn/platform/",
+  "DisclosureDate": "2021-09-10",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"Login to Management Platform\"",
+  "GobyQuery": "body=\"Login to Management Platform\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use this vulnerability to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.</p>",
+  "Recommandation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: http://aiesec.cn/platform/</p>",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/Kyan/Kyan_time_RCE/Kyan_Network_monitoring_time_RCE.gif.",
+  "Translation": {
+    "CN": {
+      "Description": "<p>Kyan 网络监控是一款安全监视和远程监控设备。</p><p>time.php可在经过身份验证的情况下执行任意命令, 配合host泄露的账号密码，可以获取服务器权限。</p>",
+      "Impact": "<p>time.php可在经过身份验证的情况下执行任意命令, 配合host泄露的账号密码，可以获取服务器权限。</p>",
+      "Name": "Kyan 网络监控设备 time.php 代码执行漏洞",
+	  "VulType": ["代码执行"],
+      "Product": "Kyan-Design",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"http://aiesec.cn/platform\">http://aiesec.cn/platform</a></p>"
+    },
+	"EN": {
+      "Description": "<p>Kyan Network Monitoring is a security monitoring and remote monitoring equipment</p><p>Kyan network monitoring equipment time.php can execute arbitrary commands after authentication, and can obtain server permissions with the account password leaked by the host.</p>",
+      "Impact": "<p>time.php can execute any command after authentication. With the account and password leaked by the host, server permissions can be obtained.</p>",
+      "Name": "Kyan Network monitoring time RCE",
+	  "VulType": ["code-exec"],
+      "Product": "Kyan-Design",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"http://aiesec.cn/platform\">http://aiesec.cn/platform</a></p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Kyan-Design"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

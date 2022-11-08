@@ -1,0 +1,70 @@
+{
+  "Name": "Yonyou NC dcupdateService Deserialization RCE",
+  "Description": "Yonyou NC is an enterprise-level management software, widely used in large and medium-sized enterprises.Realize modeling, development, inheritance, operation, management integration of IT solution information platform.UFIDA NC for C/S architecture, the use of Java programming language development, the client can directly use UClient, the server interface for HTTP.A page of UFIDA NC6.5, there is arbitrary file upload vulnerability.The cause of vulnerability is that there is no type restriction at the uploading file, and an attacker without authentication can take advantage of this vulnerability by sending special data packets to the target system, and a remote attacker who successfully takes advantage of this vulnerability can upload any file to the target system to execute commands.",
+  "Product": "Yonyou-NC",
+  "Homepage": "https://www.yonyou.com/",
+  "DisclosureDate": "2020-12-07",
+  "Author": "go0p",
+  "FofaQuery": "app=\"Yonyou-UFIDA-NC\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "goby_shell_powershell"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/service/~baseapp/UploadServlet"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+		  {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "java.io",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-UFIDA-NC"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

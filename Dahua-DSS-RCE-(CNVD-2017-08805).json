@@ -1,0 +1,74 @@
+{
+  "Name": "Dahua DSS RCE (CNVD-2017-08805)",
+  "Description": "Dahua DSS-Safe City uses Apache Struts 2 as the website application framework. Because the application framework has a remote command execution vulnerability, an attacker can trigger the vulnerability by modifying the Content-Type value in the HTTP request header when uploading a file, and then execute it. System commands to obtain server permissions.",
+  "Product": "Dahua-DSS",
+  "Homepage": "http://www.dahuatech.com/product_detail-1471.html",
+  "DisclosureDate": "2021-06-08",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "app=\"Dahua-DSS\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use this vulnerability to execute arbitrary commands on the server and write into the backdoor, thereby invading the server and obtaining the server's administrator rights.<br></p>",
+  "Recommendation": "<p>1. Dahua officials have fixed the vulnerability. The system is a commercial product. Contact Dahua local technical support personnel or Dahua Security Emergency Response Center DHCC to obtain the patch: cybersecurity@dahuatech.com<br></p><p>2. If it is not necessary, prohibit the device from connecting to the Internet.<br></p><p>3. Strictly filter the data entered by the user and prohibit the execution of system commands.<br></p>",
+  "References": [
+    "http://www.cnvd.org.cn/flaw/show/CNVD-2017-08805"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "uname -a"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

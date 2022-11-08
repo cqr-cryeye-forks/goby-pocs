@@ -1,0 +1,36 @@
+{
+  "Name": "Multiple firewall devices information leakage vulnerabilities",
+  "Description": "Many security vendors' firewalls and online behavior management equipment have information leakage vulnerabilities. Attackers can obtain user accounts and passwords by reviewing the source code of web pages, which leads to the disclosure of administrator user authentication information. Through this vulnerability, a malicious attacker can obtain the administrator account password and log in to the device to control the firewall or Internet behavior management device",
+  "Product": "Multiple firewall",
+  "Homepage": "",
+  "DisclosureDate": "2021-07-06",
+  "Author": "go0p",
+  "FofaQuery": "body=\"Get_Verify_Info(hex_md5(user_string).\"",
+  "GobyQuery": "body=\"Get_Verify_Info(hex_md5(user_string).\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": null,
+  "RealReferences": [
+    "https://forum.butian.net/share/177"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["infoleak"],
+  "CVEIDs": null,
+  "CVSSScore": "N/A",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

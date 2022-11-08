@@ -1,0 +1,57 @@
+{
+  "Name": "tongda OA user session leakage",
+  "Description": "There is an interface in Tongda OA to query online users, and when the user is online, PHPSESSION will be returned so that they can log in to the background system.",
+  "Product": "tongda-OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2021-04-07",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"TongDa-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://mp.weixin.qq.com/s/llyGEBRo0t-C7xOLMDYfFQ"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infolead"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

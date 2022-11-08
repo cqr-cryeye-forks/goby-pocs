@@ -1,0 +1,71 @@
+{
+  "Name": "PbootCMS 3.0.4 RCE (CNVD-2021-32163)",
+  "Description": "<p>PbootCMS is an open source and free PHP enterprise website development and construction management system.</p><p>There is a command execution vulnerability in the ParserController.php file of the PbootCMS management system. Attackers can use this vulnerability to execute arbitrary PHP code and gain server permissions.</p>",
+  "Product": "PbootCMS",
+  "Homepage": "https://www.pbootcms.com/",
+  "DisclosureDate": "2021-09-25",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "app=\"PBOOTCMS\"",
+  "GobyQuery": "app=\"PBOOTCMS\"",
+  "Level": "2",
+  "Impact": "<p>There is a command execution vulnerability in the ParserController.php file of the PbootCMS management system. Attackers can use this vulnerability to execute arbitrary PHP code and gain server permissions.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.pbootcms.com/changelog\">https://www.pbootcms.com/changelog</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "PbootCMS管理系统 3.0.4 版本代码执行漏洞（CNVD-2021-32163）",
+      "VulType": [
+        "代码执行"
+      ],
+      "Description": "<p>PbootCMS是一款开源免费的PHP企业网站开发建设管理系统。</p><p>PbootCMS管理系统3.0.4版本 ParserController.php文件存在命令执行漏洞，攻击者可利用该漏洞执行任意PHP代码，获得服务器权限。</p>",
+      "Impact": "<p>PbootCMS管理系统ParserController.php文件存在命令执行漏洞，攻击者可利用该漏洞执行任意PHP代码，获得服务器权限。</p>",
+      "Product": "PbootCMS",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.pbootcms.com/changelog\">https://www.pbootcms.com/changelog</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "PbootCMS 3.0.4 RCE (CNVD-2021-32163)",
+      "VulType": [
+        "rce"
+      ],
+      "Description": "<p>PbootCMS is an open source and free PHP enterprise website development and construction management system.</p><p>There is a command execution vulnerability in the ParserController.php file of the PbootCMS management system. Attackers can use this vulnerability to execute arbitrary PHP code and gain server permissions.</p>",
+      "Impact": "<p>There is a command execution vulnerability in the ParserController.php file of the PbootCMS management system. Attackers can use this vulnerability to execute arbitrary PHP code and gain server permissions.</p>",
+      "Product": "PbootCMS",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.pbootcms.com/changelog\">https://www.pbootcms.com/changelog</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2021-32163"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "if(([php.info][0])([1][0]));//)"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["PbootCMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    "CNVD-2021-32163"
+  ]
+}

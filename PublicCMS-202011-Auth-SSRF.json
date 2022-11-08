@@ -1,0 +1,71 @@
+{
+  "Name": "PublicCMS 202011 Auth SSRF",
+  "Description": "<p>PublicCMS is an open source content management system (CMS) written in Java language.</p><p>An SSRF vulnerability was discovered in the version of PublicCMS-V4.0.202011.b. Attackers can use the vulnerability to scan the internal network open hosts and ports, use the internal network vulnerabilities to attack redis, struts2 and other applications, and further gain control of the server system.</p>",
+  "Product": "PublicCMS",
+  "Homepage": "https://github.com/sanluan/PublicCMS",
+  "DisclosureDate": "2021-05-23",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "app=\"PublicCMS\"||body=\"/webfile/\"",
+  "GobyQuery": "app=\"PublicCMS\"||body=\"/webfile/\"",
+  "Level": "2",
+  "Impact": "<p>An SSRF vulnerability was discovered in the version of PublicCMS-V4.0.202011.b. Attackers can use the vulnerability to scan the internal network open hosts and ports, use the internal network vulnerabilities to attack redis, struts2 and other applications, and further gain control of the server system.</p>",
+  "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://www.discuz.net/\">https://www.discuz.net/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "PublicCMS 4.0.202011.b 版本后台 SSRF 漏洞",
+      "VulType": [
+        "SSRF漏洞"
+      ],
+      "Description": "<p>PublicCMS是一套使用Java语言编写的开源内容管理系统（CMS）。</p><p>PublicCMS-V4.0.202011.b的版本中发现了一个SSRF漏洞，攻击者可以利用该漏洞扫描内网开放主机和端口，利用内网漏洞攻击redis、struts2等应用，进一步获取对服务器系统的控制权。</p>",
+      "Impact": "<p>PublicCMS-V4.0.202011.b的版本中发现了一个SSRF漏洞，攻击者可以利用该漏洞扫描内网开放主机和端口，利用内网漏洞攻击redis、struts2等应用，进一步获取对服务器系统的控制权。</p>",
+      "Product": "PublicCMS",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://github.com/sanluan/PublicCMS\">https://github.com/sanluan/PublicCMS</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "PublicCMS 202011 Auth SSRF",
+      "VulType": [
+        "ssrf"
+      ],
+      "Description": "<p>PublicCMS is an open source content management system (CMS) written in Java language.</p><p>An SSRF vulnerability was discovered in the version of PublicCMS-V4.0.202011.b. Attackers can use the vulnerability to scan the internal network open hosts and ports, use the internal network vulnerabilities to attack redis, struts2 and other applications, and further gain control of the server system.</p>",
+      "Impact": "<p>An SSRF vulnerability was discovered in the version of PublicCMS-V4.0.202011.b. Attackers can use the vulnerability to scan the internal network open hosts and ports, use the internal network vulnerabilities to attack redis, struts2 and other applications, and further gain control of the server system.</p>",
+      "Product": "PublicCMS",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://github.com/sanluan/PublicCMS\">https://github.com/sanluan/PublicCMS</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://github.com/sanluan/PublicCMS/issues/51"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "createSelect",
+      "value": "http://www.baidu.com"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "ssrf"
+  ],
+  "VulType": [
+    "ssrf"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["PublicCMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

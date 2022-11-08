@@ -1,0 +1,39 @@
+{
+  "Name": "Byzoro smart importhtml.php RCE (CNVD-2021-40201)",
+  "Description": "Byzoro Networks Smart multi-service security gateway intelligent management platform has a command execution vulnerability. Attackers can use this vulnerability to gain control of the server.",
+  "Product": "Byzoro-smart-Patflow",
+  "Homepage": "https://www.byzoro.com/",
+  "DisclosureDate": "2021-07-06",
+  "Author": "1291904552@qq.com",
+  "GobyQuery": "title=\"Patflow--管理平台\"||title=\"Smart管理平台\"",
+  "Level": "2",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2020-28786",
+	"https://www.cnvd.org.cn/flaw/show/CNVD-2021-40201"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Byzoro-smart-Patflow"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

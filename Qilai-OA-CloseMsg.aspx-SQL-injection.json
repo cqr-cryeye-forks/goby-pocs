@@ -1,0 +1,57 @@
+{
+  "Name": "Qilai OA CloseMsg.aspx SQL injection",
+  "Description": "Qilai OA CloseMsg.aspx SQL injection",
+  "Product": "Qilai OA",
+  "Homepage": "https://qioa.company.xuanruanjian.com/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"qiOA\"",
+  "Level": "2",
+  "Impact": "SQL injection",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["SQL injection"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["qiOA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

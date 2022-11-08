@@ -1,0 +1,46 @@
+{
+  "Name": "Kingdee EAS server_file Directory traversal",
+  "Description": "Kingdee EAS server file Directory traversal,The attacker can obtain the sensitive information of the server through directory traversal",
+  "Product": "Kingdee EAS",
+  "Homepage": "https://www.kingdee.com/",
+  "DisclosureDate": "2021-06-03",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"kingdee-EAS\"",
+  "Level": "1",
+  "Impact": "<p>Directory traversal</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Dir",
+      "type": "input",
+      "value": "C:/"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "Directory traversal"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Kingdee EAS"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

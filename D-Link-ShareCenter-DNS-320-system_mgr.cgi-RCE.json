@@ -1,0 +1,46 @@
+{
+  "Name": "D-Link ShareCenter DNS-320 system_mgr.cgi RCE",
+  "Description": "D-Link ShareCenter DNS-320 system_ There is remote command execution in mgr.cgi, and the attacker can control the server through the vulnerability",
+  "Product": "D-Link ShareCenter DNS-320",
+  "Homepage": "http://www.dlink.com.cn/",
+  "DisclosureDate": "2021-06-05",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"DLink-DNS-ShareCenter\"",
+  "Level": "3",
+  "Impact": "<p>the attacker can control the server through the vulnerability</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "DLink-DNS-ShareCenter"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>Update</p>"
+}

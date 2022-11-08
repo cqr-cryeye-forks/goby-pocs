@@ -1,0 +1,33 @@
+{
+  "Name": "NuCom 11N Wireless Router v5.07.90 Remote Privilege Escalation",
+  "Description": "The application suffers from a privilege escalation vulnerability. The non-privileged default user (user:user) can elevate his/her privileges by sending a HTTP GET request to the configuration backup endpoint and disclose the http super password (admin credentials) in Base64 encoded value. Once authenticated as admin, an attacker will be granted access to the additional and privileged pages.",
+  "Product": "NuCom-11N-Wireless-Router",
+  "Homepage": "https://www.nucom.es",
+  "DisclosureDate": "2021-03-01",
+  "Author": "1291904552@qq.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/NuCom/NuCom%2011N%20Wireless%20Router%20v5.07.90%20Remote%20Privilege%20Escalation/NuCom_11N_Wireless_Router_V5_07_Remote_Privilege_Escalation.gif",
+  "GobyQuery": "title=\"NuCom 11N Wireless Router\"||body=\"NuCom 11N Wireless Router\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [
+    "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2021-5629.php"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+  	"infoleak"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["NuCom-11N-Wireless-Router"]
+  }
+}

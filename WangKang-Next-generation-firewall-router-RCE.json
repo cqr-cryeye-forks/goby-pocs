@@ -1,0 +1,59 @@
+{
+  "Name": "WangKang Next generation firewall router RCE",
+  "Description": "WangKang Next generation firewall router RCE",
+  "Product": "WangKang Next generation firewall",
+  "Homepage": "https://www.netentsec.com/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "(app=\"NETENTSEC-NGFW\" || title=\"网康下一代防火墙\")",
+  "Level": "3",
+  "Impact": "RCE",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["RCE"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["WangKang Next generation firewall"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

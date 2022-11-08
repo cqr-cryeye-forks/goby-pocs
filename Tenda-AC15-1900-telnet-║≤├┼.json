@@ -1,0 +1,144 @@
+{
+  "Name": "Tenda AC15 1900 telnet 后门",
+  "Description": "<p>Tenda AC15 AC1900 是中国腾达（Tenda）公司的一款无线路由器。</p><p>Tenda AC15 1900 存在 telnet 后门漏洞，远程攻击者可借助该后门任意系统命令。</p>",
+  "Product": "Tenda AC15 1900",
+  "Homepage": "https://www.tenda.com.cn/default.html",
+  "DisclosureDate": "2022-04-11",
+  "Author": "992271865@qq.com",
+  "FofaQuery": "title=\"Tenda Web Master\"",
+  "GobyQuery": "title=\"Tenda Web Master\"",
+  "Level": "3",
+  "Impact": "<p>Tenda AC15 1900 存在 telnet 后门漏洞，远程攻击者可借助该后门任意系统命令。</p>",
+  "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://www.tenda.com.cn\">https://www.tenda.com.cn</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Tenda AC15 1900 telnet 后门",
+      "Product": "Tenda AC15 1900",
+      "Description": "<p>Tenda AC15 AC1900 是中国腾达（Tenda）公司的一款无线路由器。</p><p>Tenda AC15 1900 存在 telnet 后门漏洞，远程攻击者可借助该后门任意系统命令。</p>",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://www.tenda.com.cn\">https://www.tenda.com.cn</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>",
+      "Impact": "<p>Tenda AC15 1900 存在 telnet 后门漏洞，远程攻击者可借助该后门任意系统命令。</p>",
+      "VulType": [
+        "后门"
+      ],
+      "Tags": [
+        "后门"
+      ]
+    },
+    "EN": {
+      "Name": "Tenda AC15 1900 telnet backdoor",
+      "Product": "Tenda AC15 1900",
+      "Description": "<p>Tenda AC15 AC1900 is a wireless router from China Tenda Company.</p><p>Tenda AC15 1900 has a telnet backdoor vulnerability, which allows remote attackers to use the backdoor to execute arbitrary system commands.</p>",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update:  <a href=\"https://www.tenda.com.cn\">https://www.tenda.com.cn</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+      "Impact": "<p>Tenda AC15 1900 has a telnet backdoor vulnerability, which allows remote attackers to use the backdoor to execute arbitrary system commands.</p>",
+      "VulType": [
+        "backdoor"
+      ],
+      "Tags": [
+        "backdoor"
+      ]
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "ls"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "后门"
+  ],
+  "VulType": [
+    "后门"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "Name": "Huijietong cloud video list Information leakage",
+  "Description": "Huijietong cloud video list Information leakage",
+  "Product": "Huijietong cloud video",
+  "Homepage": "http://www.hjtcloud.com/",
+  "DisclosureDate": "2021-05-17",
+  "Author": "PeiQi",
+  "GobyQuery": "body=\"/him/api/rest/v1.0/node/role\"",
+  "Level": "1",
+  "Impact": "Server Information leakage",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": false,
+  "ExpParams": [
+    {
+      "name": "",
+      "type": "",
+      "value": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["Information leakage"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Huijietong cloud video"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

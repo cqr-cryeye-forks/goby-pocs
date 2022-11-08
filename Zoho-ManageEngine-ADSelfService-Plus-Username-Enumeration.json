@@ -1,0 +1,150 @@
+{
+  "Name": "Zoho ManageEngine ADSelfService Plus Username Enumeration",
+  "Description": "<p>Zoho ManageEngine ADSelfService Plus is an integrated self-service password management and single sign-on solution system for Active Directory and cloud applications.</p><p>There is a username enumeration vulnerability in Zoho ManageEngine ADSelfService Plus system/ServletAPI/accounts/login interface. Attackers can enumerate domain users registered to AdSelfService through brute force.</p>",
+  "Product": "Zoho ManageEngine ADSelfService Plus",
+  "Homepage": "https://www.manageengine.com/products/self-service-password/",
+  "DisclosureDate": "2022-04-21",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "banner=\"Set-Cookie: _zcsr_tmp=\" || header=\"Set-Cookie: _zcsr_tmp=\"",
+  "GobyQuery": "banner=\"Set-Cookie: _zcsr_tmp=\" || header=\"Set-Cookie: _zcsr_tmp=\"",
+  "Level": "0",
+  "Impact": "<p>There is a username enumeration vulnerability in Zoho ManageEngine ADSelfService Plus system/ServletAPI/accounts/login interface. Attackers can enumerate domain users registered to AdSelfService through brute force.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.manageengine.com/products/self-service-password/\">https://www.manageengine.com/products/self-service-password/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Zoho ManageEngine ADSelfService Plus 系统用户名枚举漏洞",
+      "Product": "Zoho ManageEngine ADSelfService Plus",
+      "Description": "<p>Zoho ManageEngine ADSelfService Plus 是针对 Active Directory 和云应用程序的集成式自助密码管理和单点登录解决方案系统。</p><p>Zoho ManageEngine ADSelfService Plus 系统/ServletAPI/accounts/login接口存在用户名枚举漏洞，攻击者可通过暴力破解的方式来枚举已注册到 AdSelfService 的域用户。</p>",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.manageengine.com/products/self-service-password/\">https://www.manageengine.com/products/self-service-password/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>",
+      "Impact": "<p>Zoho ManageEngine ADSelfService Plus 系统/ServletAPI/accounts/login接口存在用户名枚举漏洞，攻击者可通过暴力破解的方式来枚举已注册到 AdSelfService 的域用户。</p>",
+      "VulType": [
+        "其他"
+      ],
+      "Tags": [
+        "其他"
+      ]
+    },
+    "EN": {
+      "Name": "Zoho ManageEngine ADSelfService Plus Username Enumeration",
+      "Product": "Zoho ManageEngine ADSelfService Plus",
+      "Description": "<p>Zoho ManageEngine ADSelfService Plus is an integrated self-service password management and single sign-on solution system for Active Directory and cloud applications.</p><p>There is a username enumeration vulnerability in Zoho ManageEngine ADSelfService Plus system/ServletAPI/accounts/login interface. Attackers can enumerate domain users registered to AdSelfService through brute force.</p>",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.manageengine.com/products/self-service-password/\">https://www.manageengine.com/products/self-service-password/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+      "Impact": "<p>There is a username enumeration vulnerability in Zoho ManageEngine ADSelfService Plus system/ServletAPI/accounts/login interface. Attackers can enumerate domain users registered to AdSelfService through brute force.</p>",
+      "VulType": [
+        "Other"
+      ],
+      "Tags": [
+        "Other"
+      ]
+    }
+  },
+  "References": [
+    "https://github.com/passtheticket/vulnerability-research/blob/main/manage-engine-apps/adselfservice-userenum.md"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "Brute force,cmd"
+    },
+    {
+      "Name": "Username",
+      "Type": "input",
+      "show": "AttackType=cmd",
+      "Value": "Administrator"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "Other"
+  ],
+  "VulType": [
+    "Other"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "4.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ]
+}

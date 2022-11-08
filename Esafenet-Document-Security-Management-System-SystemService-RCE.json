@@ -1,0 +1,47 @@
+{
+  "Name": "Esafenet Document Security Management System SystemService RCE",
+  "Description": "Esafenet Document Security Management System Exist RCE",
+  "Product": "ESAFENET-DLP",
+  "Homepage": "http://www.esafenet.com/",
+  "DisclosureDate": "2021-06-15",
+  "Author": "go0p",
+  "GobyQuery": "app=\"ESAFENET-DLP\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "GetShell,Echo"
+    },
+	{
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami",
+	  "show": "AttackType=Echo"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["ESAFENET-DLP"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

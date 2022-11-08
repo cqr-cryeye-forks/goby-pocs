@@ -1,0 +1,33 @@
+{
+  "Name": "shterm fortress machine tui_download.php rce",
+  "Description": "shterm fortress machine tui_download.php file, permission check is not performed, resulting in no need to log in and you can access the page. Variable filtering is not strict, leading to remote command execution vulnerabilities.",
+  "Product": "shterm-Fortres-Machine",
+  "Homepage": "http://www.shterm.com/",
+  "DisclosureDate": "2019-11-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=shterm-Fortres-Machine || (title=\"shterm\")",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["shterm-Fortres-Machine"]
+  }
+}

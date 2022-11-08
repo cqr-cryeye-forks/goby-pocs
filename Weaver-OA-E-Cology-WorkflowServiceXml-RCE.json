@@ -1,0 +1,44 @@
+{
+  "Name": "Weaver-OA E-Cology WorkflowServiceXml RCE",
+  "Description": "Weaver-OA E-Cology WorkflowServiceXml RCE",
+  "Product": "Weaver-OA",
+  "Homepage": "https://www.weaver.com.cn/",
+  "DisclosureDate": "2021-05-06",
+  "Author": "gaopeng2@baimaohui.net",
+  "FofaQuery": "app=\"Weaver-OA\" || header=\"ecology_JSessionid\"",
+  "GobyQuery": "app=\"Weaver-OA\" || header=\"ecology_JSessionid\"",
+  "Level": "3",
+  "Impact": "Arbitrary code execution,getshell",
+  "Recommendation": "upgrade version - https://www.weaver.com.cn/cs/securityDownload.html?src=cn",
+  "References": null,
+  "RealReferences": [
+	"https://mp.weixin.qq.com/s/C4C7kCBVt5gUFKocMPqVbA",
+	"https://www.anquanke.com/post/id/239865",
+	"https://www.weaver.com.cn/cs/securityDownload.html?src=cn"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "N/A",
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

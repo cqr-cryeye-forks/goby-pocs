@@ -1,0 +1,41 @@
+{
+  "Name": "Tongda OA api.ali.php RCE",
+  "Description": "There is PHP command execution in Tongda OA api.ali.php file, which can be written to webshell file to control the server",
+  "Product": "Tongda OA",
+  "Homepage": "https://www.tongda2000.com",
+  "DisclosureDate": "2021-06-05",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"TongDa-OA\"",
+  "Level": "3",
+  "Impact": "<p>Tongda OA</p>",
+  "Recommendation": "Update patches in time",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Tongda OA"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false,
+  "Recommandation": "<p>Update</p>"
+}

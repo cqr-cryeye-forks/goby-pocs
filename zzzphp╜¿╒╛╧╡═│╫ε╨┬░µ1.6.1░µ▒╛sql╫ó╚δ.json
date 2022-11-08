@@ -1,0 +1,33 @@
+{
+  "Name": "zzzphp建站系统最新版1.6.1版本sql注入",
+  "Description": "zzzphp是采用PHP开发的免费建站整站系统。 其最新版1.6.1版本存在sql注入，可能造成数据泄漏，甚至服务器被入侵。",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "2",
+  "Impact": "<p>黑客可以直接执行SQL语句，从而控制整个服务器：获取数据、修改数据、删除数据等。</p>",
+  "Recommendation": "<p>1.在网页代码中需要对用户输入的数据进行严格过滤。</p><p>2.部署Web应用防火墙，对数据库操作进行监控。</p><p>3.关注官网更新，及时升级至最新版本：<a href=\"http://www.zzzcms.com\" target=\"_blank\">http://www.zzzcms.com</a></p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

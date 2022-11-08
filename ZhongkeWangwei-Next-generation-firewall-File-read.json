@@ -1,0 +1,42 @@
+{
+  "Name": "ZhongkeWangwei Next generation firewall File read",
+  "Description": "ZhongkeWangwei Next generation firewall File read, There is an arbitrary file reading vulnerability, which can be used by attackers to obtain sensitive information",
+  "Product": "ZhongkeWangwei Next generation firewall",
+  "Homepage": "http://www.netpower.com.cn/",
+  "DisclosureDate": "2021-06-02",
+  "Author": "PeiQi",
+  "GobyQuery": "body=\"Get_Verify_Info(hex_md5(user_string).\"",
+  "Level": "2",
+  "Impact": "<p>File read</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File Read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "ZhongkeWangwei Next generation firewall"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommandation": "<p>update</p>"
+}

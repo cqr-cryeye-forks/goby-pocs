@@ -1,0 +1,43 @@
+{
+  "Name": "Topsec Firewall telnet default account",
+  "Description": "天融信防火墙telnet默认口令，攻击者可利用默认口令登录telnet，并执行设备配置命令，甚至控制整个设备。",
+  "Product": "Topsec-Firewall",
+  "Homepage": "https://www.topsec.com.cn/",
+  "DisclosureDate": "2020-08-11",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"TOPSEC-Firewall\"",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "天融信防火墙telnet默认口令，攻击者可利用superman:talent口令登录telnet，并执行设备配置命令，甚至控制整个设备。",
+  "Recommendation": "修改默认口令，密码最好包含大小写字母、数字和特殊字符等且位数大于8位；如非必要，禁止公网访问该设备；白名单限制可访问IP。",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "show-running"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "defaultaccount"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["TOPSEC-Firewall"]
+  },
+  "Disable": false
+}

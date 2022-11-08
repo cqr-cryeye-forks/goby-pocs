@@ -1,0 +1,53 @@
+{
+  "Name": "Zhongxing F460 web_shell_cmd.gch RCE",
+  "Description": "Zhongxing F460 web_shell_cmd.gch RCE",
+  "Product": "Zhongxing F460",
+  "Homepage": "https://www.zte.com.cn/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"ZTE-ZXA10F460\"",
+  "Level": "3",
+  "Impact": "RCE",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["RCE"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["WangKang Next generation firewall"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

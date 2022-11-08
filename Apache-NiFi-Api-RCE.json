@@ -1,0 +1,41 @@
+{
+  "Name": "Apache NiFi Api RCE",
+  "Description": "This module uses the NiFi API to create an ExecuteProcess processor that will execute OS commands. The API must be unsecured (or credentials provided) and the ExecuteProcess processor must be available. An ExecuteProcessor processor is created then is configured with the payload and started. The processor is then stopped and deleted.",
+  "Product": "Apache-NiFi",
+  "Homepage": "https://nifi.apache.org/",
+  "DisclosureDate": "2020-11-30",
+  "Author": "itardc@163.com",
+  "FofaQuery": "title=\"NiFi\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/NiFi/Api_RCE/Apache_Nifi_Api_RCE.gif",
+  "References": [
+    "https://github.com/imjdl/Apache-NiFi-Api-RCE"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Apache-NiFi"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

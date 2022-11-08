@@ -1,0 +1,73 @@
+{
+  "Name": "Solar-Log incorrect access control infoleak",
+  "Description": " An issue was discovered in Solar-Log 500 prior to 2.8.2 Build 52 - 23.04.2013.For Example,In /export.html, email.html, sms.html, backup.html,the devices store plaintext passwords,which may allow sensitive information to be read by someone with access to the device.",
+  "Product": "Solar-Log",
+  "Homepage": "https://www.solar-log.com",
+  "DisclosureDate": "2021-06-15",
+  "Author": "i_am_ben@qq.com",
+  "FofaQuery": "server=\"IPC@CHIP\"",
+  "GobyQuery": "server=\"IPC@CHIP\"",
+  "Level": "2",
+  "Impact": "<p>Get the Solar-Log devices store plaintext passwords.</p>",
+  "Recommendation": "",
+  "References": [
+    "https://cxsecurity.com/issue/WLB-2021060060",
+    "https://cxsecurity.com/issue/WLB-2021060059"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "infoleak"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": [
+      "Solar-Log"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

@@ -1,0 +1,45 @@
+{
+  "Name": "FineCMS Remote Command Execution (CNVD-2019-36681)",
+  "Description": "FineCMS is a content management system developed based on PHP+MySql. There is a command execution vulnerability in FineCMS, which can be exploited by attackers to gain server permissions.",
+  "Product": "FineCMS",
+  "Homepage": "http://www.finecms.net/",
+  "DisclosureDate": "2021-04-19",
+  "Author": "458395534@qq.com",
+  "GobyQuery": "app=\"FineCMS\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2019-36681"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": [
+      "FineCMS"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

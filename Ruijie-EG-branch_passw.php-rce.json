@@ -1,0 +1,39 @@
+{
+  "Name": "Ruijie EG branch_passw.php rce",
+  "Description": "Attackers can use sandbox commands to obtain administrator account passwords, log in to the system, execute commands, and control the entire device.",
+  "Product": "Ruijie-EG",
+  "Homepage": "http://www.ruijie.com.cn/",
+  "DisclosureDate": "2021-04-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Ruijie-EG\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Ruijie-EG"]
+  }
+}

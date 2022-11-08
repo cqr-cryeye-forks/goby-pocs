@@ -1,0 +1,68 @@
+{
+  "Name": "DNNarticle file manage system GetCSS.ashxy Dbinfo leakage",
+  "Description": "Provide a total solution for content management. Such as articles, news, announcements, product catalogs, etc. can be organized into unlimited levels of categories. You can also send emails when adding new content",
+  "Product": "DotNetNuke DNNarticle Module 11",
+  "Homepage": "https://zldnn.com",
+  "DisclosureDate": "2021-06-07",
+  "Author": "gobysec@gmail.com",
+  "GobyQuery": "header=\"dnn_IsMobile\" || banner=\"dnn_IsMobile\"",
+  "Level": "3",
+  "Impact": "<p>The attacker can directly read the relevant system information of the file system, including user names, database passwords, etc. Attackers use the leaked sensitive information to provide help for further attacks.<br></p>",
+  "Recommendation": "<p>1. Enter the parameters for safety inspection.&nbsp;</p><p>2. Update to the latest version in time. URL:<a href=\"http://zldnn.com\">http://zldnn.com</a><br></p>",
+  "References": [
+    "https://www.exploit-db.com/exploits/444"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "Disclosure of Sensitive Information"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

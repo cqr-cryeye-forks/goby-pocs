@@ -1,0 +1,51 @@
+{
+  "Name": "YApi Unauthorized Creation User And Mock RCE",
+  "Description": "Yapi is not authorized to create an account and can create a task in the background. Any command can be specified by the command parameter",
+  "Product": "YAPI",
+  "Homepage": "https://github.com/YMFE/yapi",
+  "DisclosureDate": "2021-07-06",
+  "Author": "1291904552@qq.com",
+  "GobyQuery": "app=YAPI",
+  "Level": "3",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [
+    "https://github.com/YMFE/yapi/issues/2099"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+	  "name": "email",
+	  "type": "input",
+	  "value": "YApi@gmail.com"
+	},
+	{
+	  "name": "password",
+	  "type": "input",
+	  "value": "YApi"
+	},
+	{
+	  "name": "cmd",
+	  "type": "input",
+	  "value": "whoami"
+	}
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["YAPI"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

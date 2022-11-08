@@ -1,0 +1,67 @@
+{
+  "Name": "SVN repository found",
+  "Description": "Subversion metadata directory (.svn) was found in this folder. An attacker can extract sensitive information by requesting the hidden metadata directory that popular version control tool Subversion creates. The metadata directories are used for development purposes to keep track of development changes to a set of source code before it is committed back to a central repository (and vice-versa). When code is rolled to a live server from a repository, it is supposed to be done as an export rather than as a local working copy, and hence this problem.",
+  "Product": "Subversion",
+  "Homepage": "https://subversion.apache.org/",
+  "DisclosureDate": "2017-01-01",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "url_only_dir!=\"\"",
+  "GobyQuery": "url_only_dir!=\"\"",
+  "Level": "3",
+  "Impact": "It allows malicious hackers to gather relevant information which can be used later in the attack lifecycle, in order to achieve more than they could if they didn’t get access to such information.",
+  "Recommendation": "Remove these files from production systems or restrict access to the .idea directory. ",
+  "References": [
+    "https://www.acunetix.com/vulnerabilities/web/svn-repository-found/",
+	"https://github.com/anantshri/svn-extractor"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+		"AND",
+		{
+			  "Request": {
+					"method": "GET",
+					"uri": "/.svn/entries",
+					"follow_redirect": false,
+					"header": {},
+					"data_type": "text",
+					"data": ""
+			  },
+			  "ResponseTest": {
+					"type": "group",
+					"operation": "AND",
+					"checks": [
+						  {
+								"type": "item",
+								"variable": "$code",
+								"operation": "==",
+								"value": "200",
+								"bz": ""
+						  },
+						  {
+								"type": "item",
+								"variable": "$body",
+								"operation": "contains",
+								"value": "-props",
+								"bz": ""
+						  }
+					]
+			  },
+			  "SetVariable": []
+		}
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infoleak", "webvulscan"],
+  "CVEIDs": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

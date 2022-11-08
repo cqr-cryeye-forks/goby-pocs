@@ -1,0 +1,57 @@
+{
+  "Name": "Discuz 7.x/6.x global variable defense bypass rce",
+  "Description": "Since the default value of request_order in the php.ini setting in php5.3.x is GP, $_REQUEST no longer contains $_COOKIE. We pass in $GLOBALS in Cookie to overwrite global variables, causing code execution vulnerabilities.",
+  "Product": "Discuz",
+  "Homepage": "http://www.discuz.net/",
+  "DisclosureDate": "2010-03-07",
+  "Author": "guanshanqiu@zju.edu.cn",
+  "FofaQuery": "app=\"Discuz\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Discuz"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

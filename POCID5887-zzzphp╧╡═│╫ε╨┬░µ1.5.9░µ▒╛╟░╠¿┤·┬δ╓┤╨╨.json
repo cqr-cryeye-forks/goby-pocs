@@ -1,0 +1,40 @@
+{
+  "Name": "POCID5887 zzzphp系统最新版1.5.9版本前台代码执行",
+  "Description": "zzzphp系统最新版1.5.9版本前台代码执行，可能导致攻击者在服务器端任意执行代码，进而控制整个web服务器。",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "3",
+  "Impact": "<p>可能导致攻击者在服务器端任意执行代码，进而控制整个web服务器。</p>",
+  "Recommandation": "<p>1、始终对变量初始化。</p><p>2、使用此类函数时，严格检查输入的参数值，尽量避免使用此类函数。</p><p>3、升级至最新版本：<a href=\"http://www.zzzcms.com\" target=\"_blank\">http://www.zzzcms.com</a></p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": [
+		{
+			"name": "sqlParams",
+			"type": "input",
+			"value": "phpinfo();"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": true
+}

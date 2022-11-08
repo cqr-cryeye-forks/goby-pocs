@@ -1,0 +1,44 @@
+{
+  "Name": "Netsweeper Webadmin unixlogin.php RCE",
+  "Description": "The vulnerable endpoint is located at /webadmin/tools/unixlogin.php this script receives the three variables ‘login’, ‘password’, and ‘timeout’ from user then checks if referrer header contains a value that is in the array",
+  "Product": "netsweeper",
+  "Homepage": "https://www.netsweeper.com/",
+  "DisclosureDate": "2021-05-24",
+  "Author": "李大壮",
+  "GobyQuery": "title=\"netsweeper\" && body=\"webAdmin\"",
+  "FofaQuery": "title=\"netsweeper\" && body=\"webAdmin\"",
+  "Level": "3",
+  "Impact": "<p><span style=\"color: var(--primaryFont-color);\">Netsweeper through 6.4.3 allows unauthenticated remote code execution because webadmin/tools/unixlogin.php (with certain Referer headers) launches a command line with client-supplied parameters, and allows injection of shell metacharacters.</span><br></p>",
+  "Recommandation": "<p>1.&nbsp;Intercept access to the /webadmin/tools/unixlogin.php directory</p><p>2.&nbsp;Update Patches</p>",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": [
+    "CVE-2020-13167"
+  ],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": ["netsweeper"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

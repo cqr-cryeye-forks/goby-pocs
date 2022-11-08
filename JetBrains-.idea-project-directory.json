@@ -1,0 +1,67 @@
+{
+  "Name": "JetBrains .idea project directory",
+  "Description": "The .idea directory contains a set of configuration files (.xml) for your project. These configuration files contain information core to the project itself, such as names and locations of its component modules, compiler settings, etc. If you've defined a data source the file dataSources.ids contains information for connecting to the database and credentials. The workspace.xml file stores personal settings such as placement and positions of your windows, your VCS and History settings, and other data pertaining to the development environment. It also contains a list of changed files and other sensitive information. These files should not be present on a production system.",
+  "Product": "JetBrains",
+  "Homepage": "https://www.jetbrains.com/",
+  "DisclosureDate": "2017-01-01",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "protocol=web",
+  "GobyQuery": "protocol=web",
+  "Level": "2",
+  "Impact": "It allows malicious hackers to gather relevant information which can be used later in the attack lifecycle, in order to achieve more than they could if they didn’t get access to such information.",
+  "Recommendation": "Remove these files from production systems or restrict access to the .idea directory. ",
+  "References": [
+    "https://www.acunetix.com/vulnerabilities/web/jetbrains-idea-project-directory/",
+	"https://github.com/lijiejie/idea_exploit"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+		"AND",
+		{
+			  "Request": {
+					"method": "GET",
+					"uri": "/.idea/workspace.xml",
+					"follow_redirect": false,
+					"header": {},
+					"data_type": "text",
+					"data": ""
+			  },
+			  "ResponseTest": {
+					"type": "group",
+					"operation": "AND",
+					"checks": [
+						  {
+								"type": "item",
+								"variable": "$code",
+								"operation": "==",
+								"value": "200",
+								"bz": ""
+						  },
+						  {
+								"type": "item",
+								"variable": "$body",
+								"operation": "contains",
+								"value": "<project version",
+								"bz": ""
+						  }
+					]
+			  },
+			  "SetVariable": []
+		}
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infoleak", "webvulscan"],
+  "CVEIDs": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

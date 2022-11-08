@@ -1,0 +1,81 @@
+{
+  "Name": "Mailgard Firewall default account",
+  "Description": "Mailgard firewall default account, which may cause the server to be compromised.",
+  "Product": "Mailgard-Firewall",
+  "Homepage": "http://www.hechen.com/",
+  "DisclosureDate": "2020-01-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "body=\"防火墙网关管理系统\" && body=\"河辰技术版权所有\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "username=admin&password=hicomadmin&language=zh-cn",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "X-Requested-With": "XMLHttpRequest",
+          "Origin": "{{{fixedhostinfo}}}",
+          "Referer": "{{{fixedhostinfo}}}/index.php"
+        },
+        "method": "POST",
+        "uri": "/index.php?c=user&a=ajax_save"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Set-Cookie: PHPSESSID",
+            "variable": "$head"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "\"success\":true",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": [
+        "keymemo|lastbody|variable|admin:hicomadmin",
+        "vulurl|lastbody|variable|{{{scheme}}}://admin:hicomadmin@{{{hostinfo}}}/index.php?c=user&a=ajax_save"
+      ]
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Mailgard-Firewall"]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "Name": "Ruijie RG-UAC Information Disclosure CNVD-2021-14536",
+  "Description": "<p>Ruijie RG-UAC series application management gateways are application management products independently developed by Ruijie. They are deployed on key nodes of the network in routing, transparent, bypass or hybrid mode, and perform comprehensive inspection and analysis of data at layers 2-7. Statistical analysis is performed on the logs to form a variety of data reports, which clearly and detailedly present the application management situation.<p>Statistical analysis is performed on the logs to form a variety of data reports, which clearly and detailedly present the application management situation.</p></p>",
+  "Product": "Ruijie RG-UAC",
+  "Homepage": "https://www.ruijie.com.cn/",
+  "DisclosureDate": "2022-01-20",
+  "Author": "AnM1ng",
+  "FofaQuery": "body=\"RG-UAC登录页面\"",
+  "GobyQuery": "body=\"RG-UAC登录页面\"",
+  "Level": "1",
+  "Impact": "<p>Ruijie RG-UAC unified online behavior management and auditing system has an information leakage vulnerability. An attacker can construct a special URL address to read system sensitive information</p>",
+  "Recommendation": "The supplier has released a solution, please upgrade to the new version:http://www.ruijie.com.cn/gy/xw-aqtg-zw/86924/",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2021-14536",
+    "https://github.com/hhroot/2021_Hvv/commit/d83e05b433ff1545d7cbb21a9b4d9a7d9bfcdfc8",
+    "https://blog.csdn.net/weixin_45291045/article/details/114734172",
+    "https://blog.csdn.net/Adminxe/article/details/114584215"
+  ],
+  "Translation": {
+    "CN": {
+	  "Name": "锐捷 RG-UAC 信息泄露 CNVD-2021-14536",
+      "Product": "Ruijie RG-UAC",
+      "VulType": [
+        "信息泄漏"
+      ],
+      "Tags": [
+        "信息泄漏"
+      ],
+	  "Description": "<p>锐捷RG-UAC系列应用管理网关是锐捷自主研发的应用管理产品，以路由、透明、旁路或混合模式部署在网络的关键节点上，对数据进行2-7层的全面检查和分析，并对日志进行统计分析，形成多种多样的数据报表，清晰、详细的呈现应用管理情况。</p><p>锐捷RG-UAC统一上网行为管理审计系统存在信息泄露漏洞。攻击者可利用漏洞获取敏感信息。</p>",
+	  "Impact": "<p>锐捷RG-UAC统一上网行为管理审计系统存在信息泄露漏洞，攻击者可通过构造特殊URL地址，读取系统敏感信息。<br></p>",
+      "Recommendation": "<p>厂商已提供漏洞修补方案，请关注厂商主页及时更新：<span style=\"color: var(--primaryFont-color);\"><a href=\"http://www.ruijie.com.cn/gy/xw-aqtg-zw/86924/\">http://www.ruijie.com.cn/gy/xw-aqtg-zw/86924/</a></span></p>"
+      
+    }
+  },
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "username",
+      "type": "select",
+      "value": "admin",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "information-disclosure"
+  ],
+  "VulType": [
+    "information-disclosure"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    "CNVD-2021-14536"
+  ],
+  "CVSSScore": "7.5",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

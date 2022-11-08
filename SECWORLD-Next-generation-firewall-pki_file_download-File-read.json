@@ -1,0 +1,59 @@
+{
+  "Name": "SECWORLD Next generation firewall pki_file_download File read",
+  "Description": "SECWORLD Next generation firewall pki_file_download File read",
+  "Product": "SECWORLD Next generation firewall",
+  "Homepage": "https://www.netentsec.com/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "(app=\"Secworld-Firewall\" || title=\"网神下一代极速防火墙\")",
+  "Level": "1",
+  "Impact": "File read",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["File read"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["SECWORLD Next generation firewall"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

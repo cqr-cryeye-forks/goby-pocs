@@ -1,0 +1,69 @@
+{
+  "Name": "LotWan static_arp.php RCE",
+  "Description": "<p>LotWan is a WAN optimization management system that fully realizes unified application delivery, integrates high-performance link load balancing, precise flow control, WAN acceleration functions, and combines blocking and dredging.</p><p>LotWan WAN optimization system static_arp.php file has command execution loopholes, attackers can obtain system permissions.</p>",
+  "Product": "LotWan",
+  "Homepage": "https://www.appexnetworks.com.cn",
+  "DisclosureDate": "2021-11-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"北京华夏创新科技有限公司\"",
+  "GobyQuery": "body=\"北京华夏创新科技有限公司\"",
+  "Level": "2",
+  "Impact": "<p>LotWan WAN optimization system static_arp.php file has command execution loopholes, attackers can obtain system permissions.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.appexnetworks.com.cn\">https://www.appexnetworks.com.cn</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "LotWan 广域网优化管理系统 static_arp.php 文件远程命令执行漏洞",
+      "VulType": ["命令执行"],
+	  "Tags": ["命令执行"],
+      "Description": "<p>LotWan 是一款全面实现统一应用交付 集成高性能链路负载均衡、精确流量控制、广域网加速功能,寻堵疏结合的广域网优化管理系统。</p><p>LotWan 广域网优化系统 static_arp.php文件存在命令执行漏洞，攻击者可获取系统权限。</p>",
+      "Impact": "<p>LotWan 广域网优化系统 static_arp.php文件存在命令执行漏洞，攻击者可获取系统权限。</p>",
+      "Product": "LotWan",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.appexnetworks.com.cn\">https://www.appexnetworks.com.cn</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "LotWan static_arp.php RCE",
+      "VulType": ["rce"],
+	  "Tags": ["rce"],
+      "Description": "<p>LotWan is a WAN optimization management system that fully realizes unified application delivery, integrates high-performance link load balancing, precise flow control, WAN acceleration functions, and combines blocking and dredging.</p><p>LotWan WAN optimization system static_arp.php file has command execution loopholes, attackers can obtain system permissions.</p>",
+      "Impact": "<p>LotWan WAN optimization system static_arp.php file has command execution loopholes, attackers can obtain system permissions.</p>",
+      "Product": "LotWan",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.appexnetworks.com.cn\">https://www.appexnetworks.com.cn</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "8.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": ["LotWan"],
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

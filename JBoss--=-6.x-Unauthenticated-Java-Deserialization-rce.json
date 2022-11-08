@@ -1,0 +1,149 @@
+{
+  "Name": "JBoss <= 6.x Unauthenticated Java Deserialization rce",
+  "Description": "<p>Red Hat JBoss Enterprise Application Platform (EAP) is a set of open source, J2EE-based middleware platform of Red Hat (Red Hat). The platform is primarily used for building, deploying and hosting Java applications and services. Jboss Application Server is one of the open source application servers based on JavaEE.</p><p>A remote code execution vulnerability exists in the Jboss Application Server shipped with Red Hat Jboss versions &lt; 6.x. A remote attacker could exploit the vulnerability to execute arbitrary code in the context of an affected application with specially crafted serialized data.</p>",
+  "Product": "RedHat-JBoss-AS",
+  "Homepage": "https://www.redhat.com/",
+  "DisclosureDate": "2022-04-21",
+  "Author": "sharecast.net@gmail.com",
+  "FofaQuery": "banner==\"\\xac\\xed\\x00\\x05\"",
+  "GobyQuery": "banner==\"\\xac\\xed\\x00\\x05\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use this vulnerability to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.<br></p>",
+  "Recommendation": "<p>1. Update to jboss 7 or above<br>. Official link: https://www.redhat.com</p>",
+  "References": [
+    "https://jspin.re/jboss-eap-as-6-rce-a-little-bit-beyond-xac-xed/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "createSelect",
+      "value": "goby_shell_linux,goby_shell_win",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "Translation": {
+    "CN": {
+      "Name": "JBoss <= 6.x 未认证 Java 反序列化远程代码执行",
+      "Product": "RedHat-JBoss-AS",
+      "Description": "<p>Red Hat JBoss Enterprise Application Platform（EAP）是美国红帽（Red Hat）公司的一套开源、基于J2EE的中间件平台。该平台主要用于构建、部署和托管Java应用程序与服务。Jboss Application Server是其中的一款基于JavaEE的开源的应用服务器。</p><p>Red Hat Jboss 小于6.x版本中附带的Jboss Application Server存在远程代码执行漏洞。远程攻击者可借助特制的序列化数据利用该漏洞在受影响应用程序上下文中执行任意代码。</p>",
+      "Recommendation": "<p>1、更新至jboss 7或以上版本<br>。官方链接：https://www.redhat.com</p>",
+      "Impact": "<p>攻击者可通过该漏洞在服务器端任意执行代码，写入后门，获取服务器权限，进而控制整个web服务器。<br></p>",
+      "VulType": [
+        "代码执⾏"
+      ],
+      "Tags": [
+        "代码执⾏"
+      ]
+    },
+    "EN": {
+      "Name": "JBoss <= 6.x Unauthenticated Java Deserialization Remote Code Execution",
+      "Product": "RedHat-JBoss-AS",
+      "Description": "<p>Red Hat JBoss Enterprise Application Platform (EAP) is a set of open source, J2EE-based middleware platform of Red Hat (Red Hat). The platform is primarily used for building, deploying and hosting Java applications and services. Jboss Application Server is one of the open source application servers based on JavaEE.</p><p>A remote code execution vulnerability exists in the Jboss Application Server shipped with Red Hat Jboss versions &lt; 6.x. A remote attacker could exploit the vulnerability to execute arbitrary code in the context of an affected application with specially crafted serialized data.</p>",
+      "Recommendation": "<p>1. Update to jboss 7 or above<br>. Official link: https://www.redhat.com</p>",
+      "Impact": "<p>Attackers can use this vulnerability to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.<br></p>",
+      "VulType": [
+        "rce"
+      ],
+      "Tags": [
+        "rce"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

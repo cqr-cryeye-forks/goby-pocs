@@ -1,0 +1,63 @@
+{
+  "Name": "Apache SkyWalking RCE with SQLi",
+  "Description": "There are two SQL injection vulnerabilities in Apache SkyWalking history, CVE-2020-9483 and CVE-2020-13921. This vulnerability (Apache SkyWalking is less than v8.4.0) is due to the imperfect repair of the previous two SQL injection vulnerabilities, and there is still a SQL injection vulnerability. Combined with the h2 database (the default database), it can lead to RCE.",
+  "Product": "Apache SkyWalking",
+  "Homepage": "https://skywalking.apache.org/",
+  "DisclosureDate": "2021-02-08",
+  "Author": "kejaly",
+  "FofaQuery": "app=\"SkyWalking\"",
+  "Level": "3",
+  "Impact": "Apache SkyWalking < v8.4.0 has SQL injection vulnerability, attackers can use this vulnerability to inject data and read and write files.",
+  "Recommendation": "1. Upgrade Apache SkyWalking to the latest v8.4.0 version. 2. Replace the default H2 database with other supported databases.",
+  "References": [
+    "https://mp.weixin.qq.com/s/hB-r523_4cM0jZMBOt6Vhw"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["sqli", "rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["SkyWalking"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "Name": "Weaver e-cology OA Action.jsp MobileAppUploadAction file upload",
+  "Description": "Weaver ecology OA has an arbitrary file upload vulnerability.",
+  "Product": "Weaver-OA",
+  "Homepage": "https://www.weaver.com.cn/",
+  "DisclosureDate": "2021-05-20",
+  "Author": "henry123",
+  "GobyQuery": "product=\"Weaver-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

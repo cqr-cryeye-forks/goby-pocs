@@ -1,0 +1,42 @@
+{
+  "Name": "JingHe OA download.asp File read",
+  "Description": "There is an arbitrary file reading vulnerability in Jinhe OA C6 download.jsp file, through which an attacker can obtain sensitive information in the server",
+  "Product": "JingHe OA",
+  "Homepage": "http://www.jinher.com/",
+  "DisclosureDate": "2021-06-09",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"Jinher-OA\"",
+  "Level": "2",
+  "Impact": "<p>JingHe OA</p>",
+  "Recommendation": "Update",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/c6/web.config"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "JingHe OA"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommandation": "<p>undefined</p>"
+}

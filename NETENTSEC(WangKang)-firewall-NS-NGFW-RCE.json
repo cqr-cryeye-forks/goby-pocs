@@ -1,0 +1,63 @@
+{
+  "Name": "NETENTSEC(WangKang) firewall NS-NGFW RCE",
+  "Description": "WangKang File upload vulnerability exists in the NGFW foreground of the next generation firewall",
+  "Product": "NS-NGFW-firewall",
+  "Homepage": "https://www.netentsec.com/",
+  "DisclosureDate": "2021-04-08",
+  "Author": "go0p",
+  "FofaQuery": "app=\"网康科技-下一代防火墙\" || product=\"NETENTSEC-NGFW\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["NETENTSEC-NGFW"]
+  }
+}

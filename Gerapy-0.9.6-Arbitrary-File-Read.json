@@ -1,0 +1,151 @@
+{
+  "Name": "Gerapy 0.9.6 Arbitrary File Read",
+  "Description": "<p>Gerapy is a distributed crawler management framework based on Scrapy, Scrapyd, Django and Vue.js.</p><p>There is an arbitrary file reading vulnerability in the background of Gerapy 0.9.6 (default password admin:admin). An attacker can use this vulnerability to obtain sensitive information to further take over the system.</p>",
+  "Product": "Gerapy",
+  "Homepage": "https://github.com/Gerapy/Gerapy",
+  "DisclosureDate": "2021-11-28",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"Gerapy\"",
+  "GobyQuery": "body=\"Gerapy\"",
+  "Level": "2",
+  "Impact": "<p>There is an arbitrary file reading vulnerability in the background of Gerapy 0.9.6 (default password admin:admin). An attacker can use this vulnerability to obtain sensitive information to further take over the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Gerapy 管理框架 0.9.6版本 后台任意文件读取漏洞",
+      "VulType": [
+        "命令执行"
+      ],
+      "Tags": [
+        "命令执行"
+      ],
+      "Description": "<p>Gerapy是一款基于Scrapy、Scrapyd、Django和Vue.js的分布式爬虫管理框架。</p><p>Gerapy 0.9.6版本后台存在任意文件读取漏洞（默认密码admin:admin）。攻击者可利用该漏洞获取敏感信息进一步接管系统。</p>",
+      "Impact": "<p>Gerapy 0.9.6版本后台存在任意文件读取漏洞（默认密码admin:admin）。攻击者可利用该漏洞获取敏感信息进一步接管系统。</p>",
+      "Product": "Gerapy",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新： <a href=\"https://github.com/Gerapy/Gerapy/releases\">https://github.com/Gerapy/Gerapy/releases</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、升级Apache系统版本。</p>"
+    },
+    "EN": {
+      "Name": "Gerapy 0.9.6 Arbitrary File Read",
+      "VulType": [
+        "rce"
+      ],
+      "Tags": [
+        "rce"
+      ],
+      "Description": "<p>Gerapy is a distributed crawler management framework based on Scrapy, Scrapyd, Django and Vue.js.</p><p>There is an arbitrary file reading vulnerability in the background of Gerapy 0.9.6 (default password admin:admin). An attacker can use this vulnerability to obtain sensitive information to further take over the system.</p>",
+      "Impact": "<p>There is an arbitrary file reading vulnerability in the background of Gerapy 0.9.6 (default password admin:admin). An attacker can use this vulnerability to obtain sensitive information to further take over the system.</p>",
+      "Product": "Gerapy",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://github.com/Gerapy/Gerapy/releases\">https://github.com/Gerapy/Gerapy/releases</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.Upgrade the Apache system version.</p>"
+    }
+  },
+  "References": [
+    "https://github.com/Gerapy/Gerapy/issues/210"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "input",
+      "value": "/etc/"
+    },
+    {
+      "name": "filename",
+      "type": "input",
+      "value": "passwd"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "文件读取"
+  ],
+  "VulType": [
+    "文件读取"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "6.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Gerapy"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://github.com/Gerapy/Gerapy/releases\">https://github.com/Gerapy/Gerapy/releases</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. Upgrade the Apache system version.</p>",
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

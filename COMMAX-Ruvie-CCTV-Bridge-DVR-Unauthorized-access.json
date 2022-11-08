@@ -1,0 +1,33 @@
+{
+  "Name": "COMMAX Ruvie CCTV Bridge DVR Unauthorized access",
+  "Description": "COMMAX Smart Home Ruvie CCTV Bridge DVR Service unauthorized access and operation",
+  "Product": "COMMAX-CCTV-Bridge",
+  "Homepage": "https://www.commax.com",
+  "DisclosureDate": "2021-08-16",
+  "Author": "1291904552@qq.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/COMMAX/Ruvie%20CCTV%20Bridge%20DVR%20Unauthorized/COMMAX_Ruvie_CCTV_Bridge_DVR_Unauthorized_access.gif",
+  "GobyQuery": "body=\"COMMAX\" && title==\"commax CCTV Bridge\"",
+  "Level": "2",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://packetstormsecurity.com/files/163849/COMMAX-Smart-Home-Ruvie-CCTV-Bridge-DVR-Service-RTSP-Credential-Disclosure.html"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "unauthorized"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["COMMAX-CCTV-Bridge"]
+  }
+}

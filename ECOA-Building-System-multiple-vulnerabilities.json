@@ -1,0 +1,73 @@
+{
+  "Name": "ECOA Building System multiple vulnerabilities",
+  "Description": "<p>ECOA Technologies, the company formerly known as ECOA Technologies, was established in Taiwan in 1993. The company specializes in BMS control products.</p><p> There are multiple vulnerabilities in the ECOA automation system, including information leakage, directory traversal, file reading, etc.</p>",
+  "Product": "ECOA",
+  "Homepage": "http://www.ecoa.com.tw",
+  "DisclosureDate": "2021-09-12",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"ECOA\" && title=\"ECOA\"",
+  "GobyQuery": "body=\"ECOA\" && title=\"ECOA\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.</p>",
+  "Recommandation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"http://www.ecoa.com.tw\">http://www.ecoa.com.tw/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Description": "<p>ECOA 技术公司该公司原名为ECOA Technologies，于1993年在台湾成立。该公司专门从事 BMS 控制产品。</p><p>ECOA 自动化系统存在多个漏洞，包括信息泄露、目录遍历、文件读取等。</p>",
+      "Impact": "<p>ECOA 自动化系统存在多个漏洞，包括信息泄露、目录遍历、文件读取等。</p>",
+      "Name": "ECOA Building 系统多个漏洞",
+	  "VulType": ["文件读取"],
+      "Product": "ECOA",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"http://www.ecoa.com.tw\">http://www.ecoa.com.tw/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+      "Description": "<p>ECOA Technologies, the company formerly known as ECOA Technologies, was established in Taiwan in 1993. The company specializes in BMS control products.</p><p> There are multiple vulnerabilities in the ECOA automation system, including information leakage, directory traversal, file reading, etc.</p>",
+      "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.</p>",
+      "Name": "ECOA Building System multiple vulnerabilities",
+	  "VulType": ["file-read"],
+      "Product": "ECOA",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"http://www.ecoa.com.tw\">http://www.ecoa.com.tw/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://packetstormsecurity.com/files/164110/ECOA-Building-Automation-System-Configuration-Download-Information-Disclosure.html",
+	"https://packetstormsecurity.com/files/164118/ECOA-Building-Automation-System-Local-File-Disclosure.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "name": "AttackType",
+      "type": "select",
+      "value": "webuser,directory,fileread"
+    },
+	{
+      "name": "directory",
+      "type": "createSelect",
+      "value": "../../../../../../../etc",
+	  "show": "AttackType=directory"
+    },
+    {
+      "name": "fileread",
+      "type": "createSelect",
+      "value": "../../../../../../../../etc/passwd",
+	  "show": "AttackType=fileread"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "fileread"
+  ],
+  "VulType": ["fileread"],
+  "CVE": "",
+  "CNNVD": "",
+  "CNVD": "",
+  "CVSSScore": "",
+  "AttackSurfaces": {
+    "Application": ["ECOA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

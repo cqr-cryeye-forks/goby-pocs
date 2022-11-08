@@ -1,0 +1,60 @@
+{
+  "Name": "LanhaiZuoyue system debug.php RCE",
+  "Description": "LanhaiZuoyue system debug.php RCE",
+  "Product": "LanhaiZuoyue system",
+  "Homepage": "https://www.cuoshui.com",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "title=\"蓝海卓越计费管理系统\"",
+  "Level": "1",
+  "Impact": "RCE",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["RCE"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["LanhaiZuoyue system"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

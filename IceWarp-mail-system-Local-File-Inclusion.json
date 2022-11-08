@@ -1,0 +1,41 @@
+{
+  "Name": "IceWarp mail system Local File Inclusion",
+  "Description": "Local files contain vulnerabilities, which can be used to read arbitrary files, such as sensitive files such as system configuration, with the help of directory traversal vulnerabilities, and may even cause system collapse.",
+  "Product": "IceWarp-Product",
+  "Homepage": "https://www.icewarp.com/",
+  "DisclosureDate": "2021-06-01",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "app=\"IceWarp-Product\" || app=\"IceWarp-Server\"",
+  "Level": "3",
+  "Impact": "<p>1. Include locally sensitive files, such as Web applications, database configuration files and CONFIG files.</p><p>2. Cooperating with upload vulnerability and directory traversal vulnerability can lead to system collapse.</p>",
+  "Recommendation": "<p>1. Check whether the contained content is controlled by the user, if so, then strictly filter it.</p><p>2. Upgrade to the latest version.</p>",
+  "References": [
+    "https://www.exploit-db.com/exploits/46959"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filePath",
+      "type": "input",
+      "value": "WINDOWS\\system32\\drivers\\etc\\hosts"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "File Inclusion"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

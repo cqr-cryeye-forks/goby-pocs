@@ -1,0 +1,79 @@
+{
+  "Name": "Netentsec NGFW FireWall Anyterm-module RCE",
+  "Description": "NETENTSEC-NGFW firewall remote command execution, on the premise of being familiar with the router system commands, you can directly configure the router system, and may even obtain background permissions.",
+  "Product": "NETENTSEC-NGFW-FIREWAL",
+  "Homepage": "https://gobies.org/",
+  "DisclosureDate": "2021-04-14",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "app=\"NETENTSEC-NGFW\"",
+  "Level": "3",
+  "Impact": "<p>The attacker can ignore the authentication set by the user, add arbitrary router commands to the k parameter, directly configure the router, or even obtain background permissions.<br></p>",
+  "Recommandation": "<p>1. Strictly filter the data entered by the user and prohibit the execution of system commands;</p><p>2. If it is not necessary, prohibit public network access to the device;</p><p>3. the whitelist restricts the accessible IP.</p>",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "show arp"
+    },
+    {
+      "name": "Help",
+      "type": "input",
+      "value": "? or show arp or other command"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

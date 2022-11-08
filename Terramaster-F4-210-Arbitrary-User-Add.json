@@ -1,0 +1,74 @@
+{
+  "Name": "Terramaster F4-210 Arbitrary User Add",
+  "Description": "<p>TerraMaster F2-210 and F4-210 are NAS (Network Attached Storage) devices of Terramaster, Shenzhen, China.</p><p>TerraMaster F2-210 and F4-210 have arbitrary user addition vulnerabilities. Attackers can add an administrator account and obtain server permissions by leaking sensitive information and forging sessions.</p>",
+  "Product": "TerraMaster F4-210",
+  "Homepage": "https://www.terra-master.com/cn/",
+  "DisclosureDate": "2022-01-04",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "title=\"TOS Loading\"",
+  "GobyQuery": "title=\"TOS Loading\"",
+  "Level": "2",
+  "Impact": "<p>TerraMaster F2-210 and F4-210 have arbitrary user addition vulnerabilities. Attackers can add an administrator account and obtain server permissions by leaking sensitive information and forging sessions.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.terra-master.com/cn/\">https://www.terra-master.com/cn/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Terramaster 存储设备 F4-210 任意用户添加漏洞",
+      "VulType": ["其他"],
+	  "Tags": ["其他"],
+      "Description": "<p>TerraMaster F2-210和F4-210是中国深圳市图美电子技术（Terramaster）公司的NAS（网络附属存储）设备。</p><p>TerraMaster F2-210和F4-210存在任意用户添加漏洞，攻击者可通过敏感信息泄露伪造session来添加管理员账号，获取服务器权限。</p>",
+      "Impact": "<p>TerraMaster F2-210和F4-210存在任意用户添加漏洞，攻击者可通过敏感信息泄露伪造session来添加管理员账号，获取服务器权限。</p>",
+      "Product": "TerraMaster F4-210",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.terra-master.com/cn/\">https://www.terra-master.com/cn/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "Terramaster F4-210 Arbitrary User Add",
+      "VulType": ["other"],
+	  "Tags": ["other"],
+      "Description": "<p>TerraMaster F2-210 and F4-210 are NAS (Network Attached Storage) devices of Terramaster, Shenzhen, China.</p><p>TerraMaster F2-210 and F4-210 have arbitrary user addition vulnerabilities. Attackers can add an administrator account and obtain server permissions by leaking sensitive information and forging sessions.</p>",
+      "Impact": "<p>TerraMaster F2-210 and F4-210 have arbitrary user addition vulnerabilities. Attackers can add an administrator account and obtain server permissions by leaking sensitive information and forging sessions.</p>",
+      "Product": "TerraMaster F4-210",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.terra-master.com/cn/\">https://www.terra-master.com/cn/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://packetstormsecurity.com/files/165399/terramaster-exec.py.txt"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "username",
+      "type": "input",
+      "value": "test01"
+    },
+	{
+      "name": "password",
+      "type": "input",
+      "value": "test01"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "other"
+  ],
+  "VulType": [
+    "other"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "6.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

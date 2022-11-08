@@ -1,0 +1,67 @@
+{
+  "Name": "EyouCMS less than 1.4.2 SSTI",
+  "Description": "The execution of eyoucms arbitrary command can cause the attacker to obtain the server permission and control the server",
+  "Product": "EyouCMS < 1.4.2",
+  "Homepage": "https://www.eyoucms.com/",
+  "DisclosureDate": "2021-06-06",
+  "Author": "hututued",
+  "GobyQuery": "app=\"eyoucms\"",
+  "Level": "3",
+  "Impact": "<p>Arbitrary command execution can cause the attacker to obtain the server permission and control the whole server<br></p>",
+  "Recommendation": "<p>Upgrade to the latest official version<br></p>",
+  "References": [
+    "http://www.lovei.org/archives/EyouCMS-SSTI.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "phpCode",
+      "type": "input",
+      "value": "echo md5(123);"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

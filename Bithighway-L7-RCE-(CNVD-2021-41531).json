@@ -1,0 +1,38 @@
+{
+  "Name": "Bithighway L7 RCE (CNVD-2021-41531)",
+  "Description": "Bihaiwei L7 cloud router wireless operation version has command execution vulnerabilities. An attacker can use this vulnerability to gain control of the server.",
+  "Product": "L7Engine",
+  "Homepage": "http://www.bithighway.com/",
+  "DisclosureDate": "2021-08-25",
+  "Author": "1291904552@qq.com",
+  "GobyQuery": "banner=\"L7Engine\"",
+  "Level": "3",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2021-37007"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["L7Engine"]
+  }
+}

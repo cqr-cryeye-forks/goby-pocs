@@ -1,0 +1,74 @@
+{
+  "Name": "Topsec TopAppLB enable tool debug.php RCE",
+  "Description": "Topsec_TopAppLB application delivery system /acc/tools/enable_tool_debug.php file diskname parameter remote command execution vulnerability, executable system commands, resulting in the system being hacked.",
+  "Product": "topsec-TopAppLB",
+  "Homepage": "http://www.topsec.com.cn/",
+  "DisclosureDate": "2021-05-27",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "app=\"topsec-TopAppLB\"",
+  "Level": "3",
+  "Impact": "<p>Hackers can execute arbitrary commands on the server and write into the backdoor, thereby invading the server and obtaining the administrator's authority of the server, which is very harmful.<br></p>",
+  "Recommandation": "<p>1. Strictly filter the data entered by the user and prohibit the execution of system commands.</p><p>2. Internet access is prohibited</p><p>3. Upgrade the system</p>",
+  "References": [
+    "http://www.loner.fm/bugs/bug_detail.php?wybug_id=wooyun-2015-0117621"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "pwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

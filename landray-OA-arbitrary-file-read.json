@@ -1,0 +1,63 @@
+{
+  "Name": "Landray OA arbitrary file read",
+  "Description": "Landray OA is the first domestic enterprise to research knowledge management and promote the construction of knowledge platform, providing solutions for customers. Lanling Smart Collaboration Platform has an arbitrary file reading vulnerability. Attackers can use vulnerabilities to obtain sensitive information.",
+  "Product": "landray-OA",
+  "Homepage": "http://landrayln.com/",
+  "DisclosureDate": "2021-04-20",
+  "Author": "henry123",
+  "GobyQuery": "app=\"landray-OA\"",
+  "Level": "3",
+  "Impact": "<p>The attacker can read arbitrary files.<br></p>",
+  "Recommendation": "<p>None</p>",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["landray-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

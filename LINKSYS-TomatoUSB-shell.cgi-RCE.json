@@ -1,0 +1,149 @@
+{
+  "Name": "LINKSYS TomatoUSB shell.cgi RCE",
+  "Description": "<p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Tomato USB is an alternative Linux-based firmware for powering Broadcom-based ethernet routers. It is a modification of the famous Tomato firmware, with additional built-in support for USB port, wireless-N mode support, support for several newer router models, and various enhancements.<br></span></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Login the LINKSYS TomatoUSB router</span></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">by defacult username and password（admin:admin）</span></p><p><span style=\"color: rgb(64, 80, 128); font-size: 18px;\">Execute System Commands</span><br></p>",
+  "Product": "LINKSYS TomatoUSB",
+  "Homepage": "http://tomatousb.org/",
+  "DisclosureDate": "2022-03-25",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "FofaQuery": "banner=\"TomatoUSB\" || header=\"TomatoUSB\"",
+  "GobyQuery": "banner=\"TomatoUSB\" || header=\"TomatoUSB\"",
+  "Level": "2",
+  "Impact": "<p>Login the LINKSYS TomatoUSB router</p><p>by defacult username and password（admin:admin）</p><p><span style=\"color: rgb(64, 80, 128); font-size: 18px;\">Execute System Commands</span></p>",
+  "Recommendation": "<p>1. Change the administrator password in a timely manner</p><p>2. Prohibit the public network from accessing the device</p><p>3. Update the latest system in time</p>",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "cat /etc/passwd",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "Translation": {
+    "CN": {
+      "Name": "LINKSYS TomatoUSB 路由器后台命令执行",
+      "Product": "LINKSYS TomatoUSB",
+      "Description": "<p>Tomato USB是一种基于linux的替代固件，用于为基于broadcom的以太网路由器供电。它是著名的Tomato固件的一个修改，具有额外的内置支持USB端口，无线n模式支持，支持几种较新的路由器型号，以及各种增强功能。<br></p><p>LINKSYS TomatoUSB路由器登陆后，默认账号（admin:admin），执行命令<br></p>",
+      "Recommendation": "<p>1、及时修改管理员密码</p><p>2、禁止公网访问设备</p><p>3、及时升级最新系统</p>",
+      "Impact": "<p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\"><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">可以通过默认口令登录设备</span></span></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\"><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">执行命令，反弹shell等危险操作</span><br></span></p>",
+      "VulType": [
+        "命令执⾏"
+      ],
+      "Tags": [
+        "命令执⾏"
+      ]
+    },
+    "EN": {
+      "Name": "LINKSYS TomatoUSB shell.cgi RCE",
+      "Product": "LINKSYS TomatoUSB",
+      "Description": "<p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Tomato USB is an alternative Linux-based firmware for powering Broadcom-based ethernet routers. It is a modification of the famous Tomato firmware, with additional built-in support for USB port, wireless-N mode support, support for several newer router models, and various enhancements.<br></span></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Login the LINKSYS TomatoUSB router</span></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">by defacult username and password（admin:admin）</span></p><p><span style=\"color: rgb(64, 80, 128); font-size: 18px;\">Execute System Commands</span><br></p>",
+      "Recommendation": "<p>1. Change the administrator password in a timely manner</p><p>2. Prohibit the public network from accessing the device</p><p>3. Update the latest system in time</p>",
+      "Impact": "<p>Login the LINKSYS TomatoUSB router</p><p>by defacult username and password（admin:admin）</p><p><span style=\"color: rgb(64, 80, 128); font-size: 18px;\">Execute System Commands</span></p>",
+      "VulType": [
+        "rce"
+      ],
+      "Tags": [
+        "rce"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

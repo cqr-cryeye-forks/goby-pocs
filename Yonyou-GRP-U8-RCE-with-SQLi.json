@@ -1,0 +1,39 @@
+{
+  "Name": "Yonyou GRP-U8 RCE with SQLi",
+  "Description": "用友GRP-U8行政事业财务管理软件是用友公司专注于国家电子政务事业，基于云计算技术所推出的新一代产品。当用户可以控制命令执行函数中的参数时，将可注入恶意系统命令到正常命令中，造成命令执行攻击。",
+  "Product": "Yonyou-GRP-U8",
+  "Homepage": "https://www.yonyou.com/",
+  "DisclosureDate": "2020-09-11",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Yonyou-GRP-U8\"",
+  "Level": "3",
+  "Impact": "当用户可以控制命令执行函数中的参数时，将可注入恶意系统命令到正常命令中，造成命令执行攻击",
+  "Recommendation": "官方已发布针对此漏洞的修复补丁。",
+  "References": [
+    "https://nosec.org/home/detail/4561.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce", "sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-GRP-U8"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

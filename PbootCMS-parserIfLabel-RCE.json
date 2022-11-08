@@ -1,0 +1,44 @@
+{
+  "Name": "PbootCMS parserIfLabel RCE",
+  "Description": "A Remote Code Execution vulnerability exists in parserIfLabel function. Exploit demand: PbootCMS 3.0.1-3.0.4, PHP >= 7.0, system() function is not forbidden",
+  "Product": "PbootCMS",
+  "Homepage": "https://www.pbootcms.com/",
+  "DisclosureDate": "2020-12-14",
+  "Author": "ovi3",
+  "GobyQuery": "app=\"PBOOTCMS\"",
+  "Level": "3",
+  "Impact": "Attackers can use vulnerabilities to execute arbitrary Command.",
+  "Recommendation": "update to latest version",
+  "References": [
+	"https://xz.aliyun.com/t/8663",
+	"https://www.anquanke.com/post/id/244821"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+	  "name": "attackType",
+	  "type": "select",
+	  "value": "phpinfo,cmd"
+    },
+	{
+	  "name": "cmd",
+	  "type": "input",
+	  "value": "whoami",
+	  "show": "attackType=cmd"
+    }
+  ],
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["PbootCMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

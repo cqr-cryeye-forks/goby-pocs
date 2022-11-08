@@ -1,0 +1,149 @@
+{
+  "Name": "Adobe ColdFusion 11 LDAP Java Object Deserialization",
+  "Description": "<p>Adobe ColdFusion is a set of rapid application development platform of Adobe (Adobe) in the United States.</p><p>ColdFusion allows unauthenticated users to connect to any LDAP server, which can be exploited by attackers to achieve remote code execution, JNDI attacks via the verifyldapserver parameter on utils.cfc.</p>",
+  "Product": "Adobe ColdFusion",
+  "Homepage": "https://www.adobe.com/sea/products/coldfusion-family.html",
+  "DisclosureDate": "2022-02-22",
+  "Author": "sharecast.net@gmail.com",
+  "FofaQuery": "header=\"CFID=\" || banner=\"CFID=\"",
+  "GobyQuery": "header=\"CFID=\" || banner=\"CFID=\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can use this vulnerability to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.<br></p>",
+  "Recommendation": "<p>1、Use WAF protection.</p><p>2、Pay attention to the timely update of official patches:&nbsp;<span style=\"color: rgb(22, 51, 102); font-size: 16px;\"><a href=\"https://www.adobe.com/support/coldfusion/downloads_updates.html\">https://www.adobe.com/support/coldfusion/downloads_updates.html</a></span></p>",
+  "References": [
+    "https://www.exploit-db.com/exploits/50781"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "createSelect",
+      "value": "goby_shell_linux,goby_shell_win",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "LDAP Injection"
+  ],
+  "VulType": [
+    "LDAP Injection"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "Translation": {
+    "CN": {
+      "Name": "Adobe ColdFusion 11 LDAP Java 反序列化漏洞",
+      "Product": "Adobe ColdFusion",
+      "Description": "<p>Adobe ColdFusion是美国奥多比（Adobe）公司的一套快速应用程序开发平台。</p><p>ColdFusion 允许未经身份验证的用户连接到任何 LDAP 服务器，攻击者可以利用它来实现远程代码执行，通过 utils.cfc 上的verifyldapserver参数进行 JNDI 攻击。<br></p>",
+      "Recommendation": "<p>1、使用WAF进行防护</p><p>2、关注官方补丁及时更新：<a href=\"https://www.adobe.com/support/coldfusion/downloads_updates.html\">https://www.adobe.com/support/coldfusion/downloads_updates.html</a></p>",
+      "Impact": "<p>攻击者可通过该漏洞在服务器端任意执行代码，写入后门，获取服务器权限，进而控制整个web服务器。\t<br></p>",
+      "VulType": [
+        "LDAP 注⼊"
+      ],
+      "Tags": [
+        "LDAP 注⼊"
+      ]
+    },
+    "EN": {
+      "Name": "Adobe ColdFusion 11 LDAP Java Object Deserialization",
+      "Product": "Adobe ColdFusion",
+      "Description": "<p>Adobe ColdFusion is a set of rapid application development platform of Adobe (Adobe) in the United States.</p><p>ColdFusion allows unauthenticated users to connect to any LDAP server, which can be exploited by attackers to achieve remote code execution, JNDI attacks via the verifyldapserver parameter on utils.cfc.</p>",
+      "Recommendation": "<p>1、Use WAF protection.</p><p>2、Pay attention to the timely update of official patches:&nbsp;<span style=\"color: rgb(22, 51, 102); font-size: 16px;\"><a href=\"https://www.adobe.com/support/coldfusion/downloads_updates.html\">https://www.adobe.com/support/coldfusion/downloads_updates.html</a></span></p>",
+      "Impact": "<p>Attackers can use this vulnerability to arbitrarily execute code on the server side, write backdoors, obtain server permissions, and then control the entire web server.<br></p>",
+      "VulType": [
+        "LDAP Injection"
+      ],
+      "Tags": [
+        "LDAP Injection"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

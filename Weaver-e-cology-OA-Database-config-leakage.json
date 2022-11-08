@@ -1,0 +1,34 @@
+{
+  "Name": "Weaver e-cology OA Database config leakage",
+  "Description": "Weaver e-cology OA system was exposed to database information leakage vulnerabilities. If an attacker can directly access the database, he can directly obtain user data and even directly control the database server.",
+  "Product": "Weaver-OA",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2019-10-24",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Weaver-OA\"",
+  "Level": "2",
+  "Impact": "If an attacker can directly access the database, he can directly obtain user data and even directly control the database server.",
+  "Recommendation": "Officials have released a patch for this vulnerability, and affected users can also take the following protective measures to temporarily protect this vulnerability.",
+  "References": [
+    "https://github.com/jas502n/DBconfigReader",
+    "https://github.com/taomujian/linbing/blob/master/flask/app/plugins/Weaver%20Ecology%20OA/Weaver_Ecology_Oa_Config.py"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["infoleak"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

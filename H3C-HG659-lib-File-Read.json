@@ -1,0 +1,42 @@
+{
+  "Name": "H3C HG659 lib File Read",
+  "Description": "H3C HG659 is any file read, can read any file server",
+  "Product": "H3C HG659",
+  "Homepage": "https://www.huawei.com/",
+  "DisclosureDate": "2021-06-15",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"HuaWei-Home-Gateway\"",
+  "Level": "2",
+  "Impact": "<p>File read</p>",
+  "Recommendation": "Update",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "H3C HG659"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommandation": "<p>undefined</p>"
+}

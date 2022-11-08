@@ -1,0 +1,39 @@
+{
+  "Name": "XXL-JOB API Unauthenticated RCE",
+  "Description": "XXL-JOB is a distributed task scheduling platform. Its core design goal is rapid development, simple learning, lightweight, and easy to expand. It is now open source code and connected to the online product lines of many companies, such as e-commerce business. O2O business and big data operations, etc. XXL-JOB By default, the API interface of XXL-JOB has no authentication measures. Unauthorized attackers can construct malicious requests, causing remote execution of commands and direct control of the server. Vulnerability exploitation does not require login, and the actual risk is extremely high.",
+  "Product": "XXL-JOB",
+  "Homepage": "http://www.xuxueli.com/",
+  "DisclosureDate": "2020-10-28",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "body=\"invalid request, HttpMethod not support\" || body=\"invalid request, uri-mapping(/) not found.\"",
+  "Level": "3",
+  "Impact": "<p>XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展，现已开放源代码并接入多家公司线上产品线，接入场景如电商业务，O2O业务和大数据作业等。</p><p>XXL-JOB默认情况下XXL-JOB的API接口没有配置认证措施，未授权的攻击者可构造恶意请求，造成远程执行命令，直接控制服务器。漏洞利用无需登录，实际风险极高。</p>",
+  "Recommendation": "<p>1、开启 XXL-JOB 自带的鉴权组件：官方文档中搜索 “xxl.job.accessToken” ，按照文档说明启用即可。</p><p>配置 xxl.job.accessToken，可参考相关链接：<a href=\"https://www.xuxueli.com/xxl-job/?spm=a2c4g.11174386.n2.3.ea1f1051B1UUc1#5.10%20%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C%EF%BC%88AccessToken%EF%BC%89\" target=\"_blank\">https://www.xuxueli.com/xxl-job/?spm=a2c4g.11174386.n2.3.ea1f1051B1UUc1#5.10%20%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C%EF%BC%88AccessToken%EF%BC%89</a><br></p><p>2、端口防护：及时更换默认的执行器端口，不建议直接将默认的 9999 端口开放到公网。</p><p>3、端口访问限制：通过配置安全组限制只允许指定 IP 才能访问执行器 9999 端口。</p>",
+  "References": [],
+  "HasExp": true,
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/XXL-JOB/XXL-JOB_API_Unauthenticated_glueSource_RCE/XXL-JOB_API_Unauthenticated_glueSource_RCE.gif",
+  "ExpParams": [
+	{
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["XXL-JOB"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

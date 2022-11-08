@@ -1,0 +1,59 @@
+{
+  "Name": "WangKang NS-ASG cert_download.php File read",
+  "Description": "WangKang NS-ASG cert_download.php File read",
+  "Product": "WangKang NS-ASG",
+  "Homepage": "https://www.netentsec.com/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "(app=\"Netentsec-NS-ASG-Security-gateway\" || title=\"网康 NS-ASG 应用安全网关\")",
+  "Level": "1",
+  "Impact": "File read",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["File read"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["WangKang NS-ASG"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

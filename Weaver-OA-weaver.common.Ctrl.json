@@ -1,0 +1,49 @@
+{
+  "Name": "Weaver OA weaver.common.Ctrl",
+  "Description": "Weaver OA is a platform which t by Shanghai Weaver Network Co., LTD.Users can read and deal with workflow、news、contacts and other kinds of information of OA.   Upload vulnerability exists of  '/weaver/weaver.common.Ctrl/.css'",
+  "Product": "Weaver",
+  "Homepage": "https://www.weaver.com.cn/",
+  "DisclosureDate": "2021-05-24",
+  "Author": "李大壮",
+  "FofaQuery": "product=\"Weaver-OA\"",
+  "Level": "3",
+  "Impact": "<p><span style=\"color: var(--primaryFont-color);\">An attacker can exploit this vulnerability to cause remote code execution</span><br></p>",
+  "Recommendation": "",
+  "References": [
+    "https://ailiqun.xyz/2021/05/02/%E6%B3%9B%E5%BE%AEOA-%E5%89%8D%E5%8F%B0GetShell%E5%A4%8D%E7%8E%B0/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "9.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Weaver-OA"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": [
+      "Resin"
+    ],
+    "Hardware": null
+  },
+  "Recommandation": "<p>An official patch has been released to fix this vulnerability. Affected users can also take the following protective measures for temporary protection against this vulnerability.<br></p>",
+  "GobyQuery": "product=\"Weaver-OA\""
+}

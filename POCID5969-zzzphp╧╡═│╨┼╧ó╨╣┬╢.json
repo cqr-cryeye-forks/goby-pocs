@@ -1,0 +1,58 @@
+{
+  "Name": "POCID5969 zzzphp系统信息泄露",
+  "Description": "zzzphp是采用PHP开发的免费建站整站系统。该系统存在信息泄露漏洞，某页面泄露了用户名，密保问题与答案等敏感信息，攻击者可利用泄露的信息直接登陆系统后台，为攻击者进一步攻击提供了巨大的帮助，甚至控制整个服务器。",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "1",
+  "Impact": "<p>攻击者可利用泄露的信息直接登陆系统后台，为攻击者进一步攻击提供了巨大的帮助，甚至控制整个服务器。<br></p>",
+  "Recommendation": "<p>对网站错误信息进行统一返回，模糊化处理。</p><p>对存放敏感信息的文件进行加密并妥善储存，避免泄漏敏感信息。</p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infoleak"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": true
+}

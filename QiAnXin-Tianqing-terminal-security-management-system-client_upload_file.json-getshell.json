@@ -1,0 +1,64 @@
+{
+  "Name": "QiAnXin Tianqing terminal security management system client_upload_file.json getshell",
+  "Description": "There is an arbitrary file upload vulnerability in QiAnXin Tianqing terminal security management system, and the attacker can upload his own webshell to control the server.",
+  "Product": "360-TianQing",
+  "Homepage": "https://www.qianxin.com/product/detail/pid/49",
+  "DisclosureDate": "2021-04-09",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"360-TianQing\"",
+  "GobyQuery": "app=\"360-TianQing\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["360-TianQing"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "Name": "NatShell Billing System Debug RCE",
+  "Description": "NatShell Billing System has a debug.php script, that allow to execute command.",
+  "Product": "NatShell Billing System",
+  "Homepage": "https://www.natshell.com/",
+  "DisclosureDate": "2021-05-19",
+  "Author": "ovi3",
+  "FofaQuery": "(product=\"PHP\" && body=\"login\") || title=\"蓝海卓越计费管理系统\"",
+  "Level": "3",
+  "Impact": "Allow attacker to execute arbitrary command.",
+  "Recommendation": "delete debug.php file",
+  "References": [
+    "https://mp.weixin.qq.com/s/CVe7GSRzCKcYXj5Pj8W5SA"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "Name": "WordPress Plugin Mailpress 4.5.2 RCE",
+  "Description": "In the WordPress Mailpress Plugin, the subject parameter in the iview function in the mailpress/mp-includes/class/MP_Actions.class.php file is not filtered, and pass to do_eval function, leading to remote code execution.\n",
+  "Product": "WordPress Plugin Mailpress <= 4.5.2",
+  "Homepage": "https://wordpress.org/plugins/mailpress/",
+  "DisclosureDate": "2016-12-13",
+  "Author": "ovi3",
+  "GobyQuery": "app=\"WordPress\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+	"https://github.com/Medicean/VulApps/tree/master/w/wordpress/2"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "attackType",
+      "type": "select",
+      "value": "getshell"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "WordPress"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false,
+  "Recommendation": "<p>undefined</p>"
+}

@@ -1,0 +1,54 @@
+{
+  "Name": "Chemex Auth File Upload CNVD-2021-15573",
+  "Description": "<p>Coffee pot Chemex is a free, open source, efficient and beautiful IT operation and maintenance management platform.</p><p>Chemex has a background file upload vulnerability(default login admin:admin), which can be exploited by attackers to gain control of the server.</p>",
+  "Product": "Chemex",
+  "Homepage": "https://gitee.com/dcat-phper/chemex",
+  "DisclosureDate": "2021-02-02",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "(title=\"咖啡壶\" || body=\"让IT资产管理更加简单\") && body=\"CreateDcat\"",
+  "GobyQuery": "(title=\"咖啡壶\" || body=\"让IT资产管理更加简单\") && body=\"CreateDcat\"",
+  "Level": "3",
+  "Impact": "<p>Chemex has a background file upload vulnerability, which can be exploited by attackers to gain control of the server.</p>",
+  "Recommandation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://gitee.com/dcat-phper/chemex\">https://gitee.com/dcat-phper/chemex/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+	  "Name": "Chemex 文件上传漏洞 CNVD-2021-15573",
+	  "VulType": ["文件上传"],
+      "Description": "<p>咖啡壶Chemex是一个免费、开源、高效且漂亮的IT运维管理平台。</p><p>Chemex存在后台文件上传漏洞，默认密码（admin:admin）攻击者可利用该漏洞获取服务器控制权。</p>",
+      "Impact": "<p>Chemex存在后台文件上传漏洞，攻击者可利用该漏洞获取服务器控制权。</p>",
+      "Product": "咖啡壶",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://gitee.com/dcat-phper/chemex\">https://gitee.com/dcat-phper/chemex</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+	  "Name": "Chemex Auth File Upload CNVD-2021-15573",
+	  "VulType": ["fileupload"],
+      "Description": "<p>Coffee pot Chemex is a free, open source, efficient and beautiful IT operation and maintenance management platform.</p><p>Chemex has a background file upload vulnerability(default login admin:admin), which can be exploited by attackers to gain control of the server.</p>",
+      "Impact": "<p>Chemex has a background file upload vulnerability, which can be exploited by attackers to gain control of the server.</p>",
+      "Product": "Chemex",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://gitee.com/dcat-phper/chemex\">https://gitee.com/dcat-phper/chemex/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2021-15573"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "fileupload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Chemex"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

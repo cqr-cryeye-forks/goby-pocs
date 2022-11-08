@@ -1,0 +1,38 @@
+{
+  "Name": "WeiPHP Arbitrary File Read (CNVD-2020-68596)",
+  "Description": "WeiPHP <= 5.0 has a Arbitrary File Read vulnerability, allow attacker to read sensitive information.",
+  "Product": "WeiPHP <= 5.0",
+  "Homepage": "https://www.weiphp.cn/",
+  "DisclosureDate": "2021-01-03",
+  "Author": "Ovi3",
+  "FofaQuery": "app=\"WeiPHP\"",
+  "Level": "2",
+  "Impact": "A remote attacker who successfully exploited this vulnerability can read arbitrary files on the target system.",
+  "Recommendation": "",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2020-68596"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "input",
+      "value": "./../config/database.php",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

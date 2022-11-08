@@ -1,0 +1,69 @@
+{
+  "Name": "VMware vCenter provider-logo Arbitrary File Read",
+  "Description": "<p>Vmware VMware vCenter Server is a set of server and virtualization management software from Vmware. The software provides a centralized platform for managing the VMware vSphere environment, which can automatically implement and deliver virtual infrastructure.</p><p>VMware vCenter 7.0.2.00100 and earlier versions have unauthorized arbitrary file reading and SSRF vulnerabilities, and attackers can obtain sensitive information to launch attacks on the intranet.</p>",
+  "Product": "VMware vCenter",
+  "Homepage": "https://www.vmware.com/products/vcenter-server.html",
+  "DisclosureDate": "2021-12-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "app=\"vmware-VirtualCenter\"",
+  "GobyQuery": "app=\"vmware-VirtualCenter\"",
+  "Level": "2",
+  "Impact": "<p>VMware vCenter 7.0.2.00100 and earlier versions have unauthorized arbitrary file reading and SSRF vulnerabilities, and attackers can obtain sensitive information to launch attacks on the intranet.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.vmware.com/security.html\">https://www.vmware.com/security.html</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "VMware vCenter 管理软件 provider-logo 任意文件读取漏洞",
+      "VulType": ["文件读取"],
+	  "Tags": ["文件读取"],
+      "Description": "<p>Vmware VMware vCenter Server是美国威睿（Vmware）公司的一套服务器和虚拟化管理软件。该软件提供了一个用于管理VMware vSphere环境的集中式平台，可自动实施和交付虚拟基础架构。</p><p>VMware vCenter 7.0.2.00100及之前版本存在未授权的任意文件读取和SSRF漏洞，攻击者可获取敏感信息对内网发起攻击等。</p>",
+      "Impact": "<p>VMware vCenter 7.0.2.00100及之前版本存在未授权的任意文件读取和SSRF漏洞，攻击者可获取敏感信息对内网发起攻击等。</p>",
+      "Product": "VMware vCenter",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：厂 <a href=\"https://www.vmware.com/security.html\">https://www.vmware.com/security.html</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "VMware vCenter provider-logo Arbitrary File Read",
+      "VulType": ["fileread"],
+	  "Tags": ["fileread"],
+      "Description": "<p>Vmware VMware vCenter Server is a set of server and virtualization management software from Vmware. The software provides a centralized platform for managing the VMware vSphere environment, which can automatically implement and deliver virtual infrastructure.</p><p>VMware vCenter 7.0.2.00100 and earlier versions have unauthorized arbitrary file reading and SSRF vulnerabilities, and attackers can obtain sensitive information to launch attacks on the intranet.</p>",
+      "Impact": "<p>VMware vCenter 7.0.2.00100 and earlier versions have unauthorized arbitrary file reading and SSRF vulnerabilities, and attackers can obtain sensitive information to launch attacks on the intranet.</p>",
+      "Product": "VMware vCenter",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.vmware.com/security.html\">https://www.vmware.com/security.html</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "input",
+      "value": "file:///etc/passwd"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "fileread"
+  ],
+  "VulType": [
+    "fileread"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "8.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

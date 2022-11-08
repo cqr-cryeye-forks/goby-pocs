@@ -1,0 +1,58 @@
+{
+  "Name": "CRMEB DaTong sid sqli",
+  "Description": "CRMEB open version v4 is a free and open source mall system, UINAPP+thinkphp6 framework mall. </p><p>The sid parameter under the path of CRMEB open version /api/products has unfiltered SQL statement splicing, resulting in SQL injection.",
+  "Product": "CRMEB",
+  "Homepage": "https://gitee.com/ZhongBangKeJi/CRMEB",
+  "DisclosureDate": "2021-09-11",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"CRMEB\" && body=\"/h5/js/app\"",
+  "GobyQuery": "body=\"CRMEB\" && body=\"/h5/js/app\"",
+  "Level": "2",
+  "Impact": "In addition to using SQL injection vulnerabilities to obtain information in the database (for example, the administrator's back-end password, the user's personal information of the site), an attacker can write a Trojan horse to the server even in a high-privileged situation to further obtain server system permissions.",
+  "Recommandation": "<p>The vendor has released a bug fix, please pay attention to the update in time:<a href=\"https://www.crmeb.com\">https://www.crmeb.com</a></p><p>1.Deploy a web application firewall to monitor database operations.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Description": "<p>CRMEB打通版v4是免费开源商城系统，UINAPP+thinkphp6框架商城.</p><p>CRMEB打通版/api/products路径下的sid参数存在未经过滤的SQL语句拼接 导致SQL注入。</p>",
+      "Impact": "<p>攻击者除了可以利⽤ SQL 注⼊漏洞获取数据库中的信息（例如，管理员后台密码、站点的⽤户个⼈信息）之外，甚⾄在⾼权限的情况可向服务器中写⼊⽊⻢，进⼀步获取服务器系统权限。</p>",
+      "Name": "CRMEB 打通版 sid 参数 SQL 注入漏洞",
+	  "VulType": ["SQL注入"],
+      "Product": "CRMEB",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.crmeb.com\">https://www.crmeb.com</a></p><p>1、使用预编译，部署Web应⽤防⽕墙，对数据库操作进⾏监控。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+      "Description": "<p>CRMEB open version v4 is a free and open source mall system, UINAPP+thinkphp6 framework mall.</p><p> The sid parameter under the path of CRMEB open version /api/products has unfiltered SQL statement splicing, resulting in SQL injection.<p>",
+      "Impact": "<p>In addition to using SQL injection vulnerabilities to obtain information in the database (for example, the administrator's back-end password, the user's personal information of the site), an attacker can write a Trojan horse to the server even in a high-privileged situation to further obtain server system permissions.</p>",
+      "Name": "CRMEB DaTong sid sqli",
+	  "VulType": ["sqli"],
+      "Product": "CRMEB",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time:<a href=\"https://www.crmeb.com\">https://www.crmeb.com</a></p><p>1.Deploy a web application firewall to monitor database operations.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://www.crmeb.com"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "sqlQuery",
+      "type": "createSelect",
+      "value": "select user()"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "sqli"
+  ],
+  "VulType": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["CRMEB"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

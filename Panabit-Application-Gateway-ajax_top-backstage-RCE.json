@@ -1,0 +1,59 @@
+{
+  "Name": "Panabit Application Gateway ajax_top backstage RCE",
+  "Description": "Panabit Application Gateway ajax_top backstage RCE",
+  "Product": "Panabit Application Gateway",
+  "Homepage": "https://www.panabit.com/",
+  "DisclosureDate": "2021-05-18",
+  "Author": "PeiQi",
+  "GobyQuery": "(app=\"Apache-Web-Server\" && body=\"pa_row pa_recheck\")",
+  "Level": "3",
+  "Impact": "RCE",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "cat /etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["RCE"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["Panabit Application Gateway"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

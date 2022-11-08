@@ -1,0 +1,69 @@
+{
+  "Name": "Websphere Portal SSRF",
+  "Description": "<p>IBM WebSphere Portal consists of middleware, applications (called portlets), and development tools used to build and manage secure business-to-business (B2B), business-to-customer (B2C), and business-to-employee (B2E) portals.</p><p>IBM WebSphere Portal has server-side request forgery vulnerabilities, and attackers can use vulnerabilities to detect intranet to obtain sensitive information.</p>",
+  "Product": "Websphere Portal",
+  "Homepage": "https://www.ibm.com/",
+  "DisclosureDate": "2021-12-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"/wps/contenthandler\" || body=\"Websphere Portal\" || body=\"/wps/portal/calligaris\"",
+  "GobyQuery": "body=\"/wps/contenthandler\" || body=\"Websphere Portal\" || body=\"/wps/portal/calligaris\"",
+  "Level": "1",
+  "Impact": "<p>IBM WebSphere Portal has server-side request forgery vulnerabilities, and attackers can use vulnerabilities to detect intranet to obtain sensitive information.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.ibm.com/\">https://www.ibm.com/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Websphere Portal SSRF",
+      "VulType": ["SSRF漏洞"],
+	  "Tags": ["SSRF漏洞"],
+      "Description": "<p>IBM WebSphere Portal 由用于构建和管理安全的企业对企业（B2B）、企业对客户（B2C）和企业对雇员（B2E）门户网站的中间件、应用程序（称为 portlet）和开发工具组成。</p><p>IBM WebSphere Portal 存在服务端请求伪造漏洞，攻击者可利用漏洞探测内网获取敏感信息。</p>",
+      "Impact": "<p>IBM WebSphere Portal 存在服务端请求伪造漏洞，攻击者可利用漏洞探测内网获取敏感信息。</p>",
+      "Product": "Websphere Portal",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.ibm.com/\">https://www.ibm.com/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "Websphere Portal SSRF",
+      "VulType": ["ssrf"],
+	  "Tags": ["ssrf"],
+      "Description": "<p>IBM WebSphere Portal consists of middleware, applications (called portlets), and development tools used to build and manage secure business-to-business (B2B), business-to-customer (B2C), and business-to-employee (B2E) portals.</p><p>IBM WebSphere Portal has server-side request forgery vulnerabilities, and attackers can use vulnerabilities to detect intranet to obtain sensitive information.</p>",
+      "Impact": "<p>IBM WebSphere Portal has server-side request forgery vulnerabilities, and attackers can use vulnerabilities to detect intranet to obtain sensitive information.</p>",
+      "Product": "Websphere Portal",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.ibm.com/\">https://www.ibm.com/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://blog.assetnote.io/2021/12/25/advisory-websphere-portal/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "dnslog",
+      "type": "input",
+      "value": "xxx.dnslog.cn"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "ssrf"
+  ],
+  "VulType": [
+    "ssrf"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "6.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

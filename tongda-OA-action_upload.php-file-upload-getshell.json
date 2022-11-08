@@ -1,0 +1,57 @@
+{
+  "Name": "tongda OA action_upload.php file upload getshell",
+  "Description": "The Tongda OA action_upload.php file has a file upload vulnerability. Attackers can use this vulnerability to gain server permissions.",
+  "Product": "TongDa-OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2021-03-17",
+  "Author": "go0p",
+  "FofaQuery": "app=\"TongDa-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

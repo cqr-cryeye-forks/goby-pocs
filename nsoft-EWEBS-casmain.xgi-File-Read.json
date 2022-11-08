@@ -1,0 +1,42 @@
+{
+  "Name": "nsoft EWEBS casmain.xgi File Read",
+  "Description": "nsoft EWEBS casmain.xgi File read, can read any file server",
+  "Product": "JiTong EWEBS",
+  "Homepage": "http://www.n-soft.com.cn/",
+  "DisclosureDate": "2021-06-17",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"nsoft-EWEBS\"",
+  "Level": "2",
+  "Impact": "<p>File read</p>",
+  "Recommendation": "Update",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "../../../../../../../windows/win.ini"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "nsoft EWEBS"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

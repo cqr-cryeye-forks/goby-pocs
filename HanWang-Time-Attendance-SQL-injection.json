@@ -1,0 +1,57 @@
+{
+  "Name": "HanWang Time Attendance SQL injection",
+  "Description": "HanWang Time Attendance SQL injection",
+  "Product": "HanWang Time Attendance",
+  "Homepage": "https://www.hw99.com/",
+  "DisclosureDate": "2021-05-19",
+  "Author": "PeiQi",
+  "GobyQuery": "title=\"汉王人脸考勤管理系统\"",
+  "Level": "2",
+  "Impact": "SQL injection",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["SQL injection"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["HanWang Time Attendance"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

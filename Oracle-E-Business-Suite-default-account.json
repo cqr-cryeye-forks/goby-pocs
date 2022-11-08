@@ -1,0 +1,72 @@
+{
+  "Name": "Oracle E-Business Suite default account",
+  "Description": "Oracle E-Business Suite has a default credentials vulnerability that allows you to login as system administration and a possibility to access sensitive data.When using specific management functions, you need to install the corresponding Java JNLP script. Therefore, we recommend that you use IE browser to access the target system.Both the account and password are 'op_sysadmin'",
+  "Product": "Oracle E-Business Suite",
+  "Homepage": "https://www.oracle.com/applications/ebusiness/",
+  "DisclosureDate": "2021-06-17",
+  "Author": "i_am_ben@qq.com",
+  "FofaQuery": "title=\"E-Business Suite\"",
+  "GobyQuery": "title=\"E-Business Suite\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://cxsecurity.com/issue/WLB-2020030106"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "defaultaccount"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": [
+      "Oracle E-Business Suite"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

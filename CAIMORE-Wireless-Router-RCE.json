@@ -1,0 +1,63 @@
+{
+  "Name": "CAIMORE Wireless Router RCE",
+  "Description": "Xiamen Talent Industrial Grade 4G / 3G Wireless Router Back Table Remote Command Performs a Vulnerability, can remotely execute system commands by command injection, get system privileges, resulting in system control, serious threats using corporate internal network and business safety.",
+  "Product": "CaiMore-Gateway",
+  "Homepage": "http://www.caimore.com/content/index/33",
+  "DisclosureDate": "2019-01-23",
+  "Author": "guanshanqiu@zju.edu.cn",
+  "FofaQuery": "app=\"CaiMore-Gateway\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["CaiMore-Gateway"]
+  }
+}

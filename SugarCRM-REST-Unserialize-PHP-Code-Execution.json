@@ -1,0 +1,74 @@
+{
+  "Name": "SugarCRM REST Unserialize PHP Code Execution",
+  "Description": "This module exploits a PHP Object Injection vulnerability in SugarCRM CE <= 6.5.23 which could be abused to allow unauthenticated users to execute arbitrary PHP code with the permissions of the webserver. The dangerous unserialize() call exists in the '/service/core/REST/SugarRestSerialize.php' script. The exploit abuses the __destruct() method from the SugarCacheFile class to write arbitrary PHP code into the /custom directory.",
+  "Product": "SugarCRM",
+  "Homepage": "http://www.sugarcrm.com/crm/",
+  "DisclosureDate": "2016-06-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"SugarCRM\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/unix/webapp/sugarcrm_rest_unserialize_exec.rb",
+    "http://karmainsecurity.com/KIS-2016-07",
+    "http://www.sugarcrm.com/security/sugarcrm-sa-2016-001",
+    "http://www.sugarcrm.com/security/sugarcrm-sa-2016-008",
+    "https://bugs.php.net/bug.php?id=72663"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "method=login&input_type=Serialize&rest_data=",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "POST",
+        "uri": "/service/v4/rest.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "test",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["SugarCRM"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

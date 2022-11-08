@@ -1,0 +1,35 @@
+{
+  "Name": "AMTT eFlow HiBOS server Ping Command Injection",
+  "Description": "安美数字酒店宽带运营系统命令执行，/manager/radius/server_ping.php文件中ip参数未进行过滤，导致命令执行。",
+  "Product": "安美数字-酒店宽带运营系统",
+  "Homepage": "http://www.amttgroup.com/",
+  "DisclosureDate": "2016-03-11",
+  "Author": "itardc@163.com",
+  "FofaQuery": "title=\"酒店宽带运营系统\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://www.secevery.com:4321/bugs/wooyun-2016-0181444",
+    "https://wooyun.laolisafe.com/bug_detail.php?wybug_id=wooyun-2016-0181444"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["安美数字-酒店宽带运营系统"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

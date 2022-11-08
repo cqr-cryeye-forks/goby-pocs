@@ -1,0 +1,33 @@
+{
+  "Name": "宝塔面板数据库未授权访问",
+  "Description": "宝塔面板是提升运维效率的服务器管理软件，支持一键 LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA 等100多项服务器管理功能，攻击者可利用此漏洞越权访问数据库，甚至获取服务器权限。",
+  "Product": "BT-Control-Pane",
+  "Homepage": "https://bt.cn/",
+  "DisclosureDate": "2020-08-24",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "((body=\"Windows面板\" && body=\"href=\\\"http://www.bt.cn/bbs\\\"\" && body=\"请求帮助\") || (title=\"Linux面板\" && body=\"宝塔小程序\")) ||  (body=\"<img src=\\\"https://app.bt.cn/static/app.png\\\">\" || body=\"href=\\\"http://www.bt.cn/bbs/thread-1172-1-1.html\\\"\" || body=\"宝塔Linux面板\" || body=\"src=\\\"/static/js/Validform_v5.3.2_min.js\\\"\" || header=\"Set-Cookie: bt_panel=\")",
+  "Level": "3",
+  "Impact": "安装 phpmyadmin的宝塔 linux 面板 7.4.2和宝塔 windows 面板 6.8版本的宝塔面板，攻击者可利用此漏洞越权访问数据库，甚至获取服务器权限。",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["unauthorized"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["BT-Control-Pane"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

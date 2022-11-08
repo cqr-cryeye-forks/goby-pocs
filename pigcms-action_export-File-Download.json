@@ -1,0 +1,63 @@
+{
+  "Name": "pigcms action_export File Download",
+  "Description": "<p>pigcms is a management system designed to provide customers with WeChat marketing.</p><p>The action_export function of pigcms system has a backup file download vulnerability. Attackers can download the backup file and obtain the administrator password to take over the system further.</p>",
+  "Product": "pigcms",
+  "Homepage": "https://www.pigcms.com/",
+  "DisclosureDate": "2021-11-15",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "header=\"PigCms.com\" || banner=\"PigCms.com\"",
+  "GobyQuery": "header=\"PigCms.com\" || banner=\"PigCms.com\"",
+  "Level": "2",
+  "Impact": "<p>The action_export function of pigcms system has a backup file download vulnerability. Attackers can download the backup file and obtain the administrator password to take over the system further.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.pigcms.com\">https://www.pigcms.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "小猪 cms 系统 action_export 存在文件下载漏洞",
+      "VulType": ["文件下载"],
+	  "Tags": ["文件下载"],
+      "Description": "<p>小猪cms是一款专为客户提供微信营销的管理系统。</p><p>小猪cms系统action_export函数存在备份文件下载漏洞，攻击者可下载备份文件获取管理员密码进一步接管系统。</p>",
+      "Impact": "<p>小猪cms系统action_export函数存在备份文件下载漏洞，攻击者可下载备份文件获取管理员密码进一步接管系统。</p>",
+      "Product": "小猪cms",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.pigcms.com\">https://www.pigcms.com</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "pigcms action_export File Download",
+      "VulType": ["file-download"],
+	  "Tags": ["file-download"],
+      "Description": "<p>pigcms is a management system designed to provide customers with WeChat marketing.</p><p>The action_export function of pigcms system has a backup file download vulnerability. Attackers can download the backup file and obtain the administrator password to take over the system further.</p>",
+      "Impact": "<p>The action_export function of pigcms system has a backup file download vulnerability. Attackers can download the backup file and obtain the administrator password to take over the system further.</p>",
+      "Product": "pigcms",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.pigcms.com\">https://www.pigcms.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://xz.aliyun.com/t/10470"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "file-download"
+  ],
+  "VulType": [
+    "file-download"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "8.0",
+  "AttackSurfaces": {
+    "Application": ["pigcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

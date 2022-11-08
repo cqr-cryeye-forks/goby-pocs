@@ -1,0 +1,44 @@
+{
+  "Name": "Huijietong cloud video fileDownload File read",
+  "Description": "Huijietong cloud video fileDownload File read",
+  "Product": "Huijietong cloud video",
+  "Homepage": "http://www.hjtcloud.com/",
+  "DisclosureDate": "2021-05-21",
+  "Author": "B1anda0",
+  "GobyQuery": "body=\"/him/api/rest/v1.0/node/role\"",
+  "Level": "1",
+  "Impact": "<p>file read</p>",
+  "Recommendation": "",
+  "References": [],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Huijietong cloud video"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "update"
+}

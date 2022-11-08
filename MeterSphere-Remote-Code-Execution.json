@@ -1,0 +1,70 @@
+{
+  "Name": "MeterSphere Remote Code Execution",
+  "Description": "<p>Metersphere is a one-stop open-source continuous testing platform, covering functions such as test tracking, interface testing, performance testing and teamwork. It is compatible with JMeter and other open-source standards, effectively helps development and testing teams make full use of cloud elasticity to carry out highly scalable automated testing, accelerate high-quality software delivery, and promote the overall efficiency of China's testing industry</ p> < p > metersphere has a remote code execution vulnerability, which allows attackers to execute arbitrary code remotely without logging in. This vulnerability is caused by the lack of authentication of the plugin interface. Remote unauthorized attackers will cause remote code execution vulnerabilities by constructing specific requests< br></p>",
+  "Product": "MeterSphere",
+  "Homepage": "https://metersphere.io/",
+  "DisclosureDate": "2022-01-07",
+  "Author": "su18@javaweb.org",
+  "FofaQuery": "app=\"MeterSphere\" || app=\"FIT2CLOUD-MeterSphere\"",
+  "GobyQuery": "app=\"MeterSphere\" || app=\"FIT2CLOUD-MeterSphere\"",
+  "Level": "3",
+  "Impact": "<p>Metersphere has a remote code execution vulnerability, which allows attackers to execute arbitrary code remotely without logging in. This vulnerability is caused by the lack of authentication of the plugin interface. Remote unauthorized attackers will cause remote code execution vulnerabilities by constructing specific requests< br></p>",
+  "Recommendation": "<p>Users are advised to update metersphere version 1.16.4 and above in time: < a href=\"https://metersphere.io/ \" rel=\"nofollow\"> https://metersphere.io/ </a><br></p>",
+  "References": [
+    "https://mp.weixin.qq.com/s?__biz=MzI1NTMxMDU1MA==&mid=2247484978&idx=1&sn=b6ff573b89173a31c2f3ff89d7e678b5&chksm=ea36a98bdd41209d50d741d87d8f8eede8afdc70bbecb7876e7117b39fadf20bbb31b9d7e737#rd"
+  ],
+  "Translation": {
+    "CN": {
+	  "Name": "MeterSphere 远程代码执行漏洞（CNVD-2022-01152）",
+      "VulType": [
+        "代码执行"
+      ],
+      "Tags": [
+        "代码执行"
+      ],
+	  "Description": "<p>MeterSphere是一站式开源持续测试平台, 涵盖测试跟踪、接口测试、性能测试、 团队协作等功能，兼容JMeter等开源标准，有效助力开发和测试团队充分利用云弹性进行高度可扩展的自动化测试，加速高质量的软件交付，推动中国测试行业整体效率的提升。</p><p>MeterSphere 存在远程代码执行漏洞，攻击者无需登录，可直接远程执行任意代码。该漏洞由于plugin接口未做鉴权导致，远程未授权的攻击者通过构造特定的请求将导致远程代码执行漏洞危害。<br></p>",
+      "Impact": "<p>MeterSphere 存在远程代码执行漏洞，攻击者无需登录，可直接远程执行任意代码。该漏洞由于plugin接口未做鉴权导致，远程未授权的攻击者通过构造特定的请求将导致远程代码执行漏洞危害。<br></p>",
+      "Product": "MeterSphere",
+	  "Recommendation": "<p>建议用户及时更新至 MeterSphere 1.16.4 及以上版本：<a href=\"https://metersphere.io/\" rel=\"nofollow\">https://metersphere.io/</a><br></p>"
+      
+    }
+  },
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "your command here"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "VulType": [
+    "rce"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    "CNVD-2022-01152"
+  ],
+  "CVSSScore": "7.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

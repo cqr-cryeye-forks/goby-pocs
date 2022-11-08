@@ -1,0 +1,41 @@
+{
+  "Name": "Weaver e-Bridge Arbitrary File Download",
+  "Description": "泛微云桥（e-Bridge）是上海泛微公司在”互联网+”的背景下研发的一款用于桥接互联网开放资源与企业信息化系统的系统集成中间件。泛微云桥存在任意文件读取漏洞，攻击者成功利用该漏洞，可实现任意文件读取，获取敏感信息。",
+  "Product": "上海泛微网络科技股份有限公司 e-Bridge",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2020-09-16",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Weaver-e-Bridge\"",
+  "Level": "2",
+  "Impact": "攻击者成功利用该漏洞，可实现任意文件读取，获取敏感信息。",
+  "Recommendation": "官方已发布针对此漏洞的修复补丁，受影响用户也可采取下列防护措施对此漏洞进行临时防护。",
+  "References": [
+    "https://www.cnblogs.com/yuzly/p/13677238.html"
+  ],
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/Weaver/Weaver_e-Bridge_File_Read/Weaver_e-Bridge_File_Read.gif",
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "/etc/passwd,/etc/,/C:/Windows/win.ini,/C:/",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["filedownload"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-e-Bridge"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "Name": "Softneta MedDream 6.7.11 Directory Traversal",
+  "Description": "<p>Softneta specializes in medical imaging and communication solutions to improve the quality of healthcare. The company was founded in 2007 and possesses 14+ years of experience in the development of medical devices for processing, visualization and transmission of diagnostic medical data.</p><p>Softneta MedDream PACS Server Premium 6.7.1.1 nocache.php has Directory Traversal</p>",
+  "Product": "MedDream",
+  "Homepage": "https://www.softneta.com/products/meddream-pacs-server/downloads.html",
+  "DisclosureDate": "2018-05-23",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"MedDream\"",
+  "GobyQuery": "body=\"MedDream\"",
+  "Level": "2",
+  "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.</p>",
+  "Recommandation": "<p>The vendor has released a bug fix, please pay attention to the update in time: https://www.softneta.com</p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+	  "Name": "Softneta MedDream 6.7.11 版本文件读取漏洞",
+	  "VulType": ["文件读取"],
+      "Description": "<p>Softneta 专注于医学成像和通信解决方案，以提高医疗保健质量。该公司成立于 2007 年，在用于处理、可视化和传输诊断医疗数据的医疗设备开发方面拥有 14 年以上的经验。</p><p>Softneta MedDream PACS Server Premium 6.7.1.1版本 nocache.php文件存在 文件读取漏洞</p>",
+      "Impact": "<p>攻击者可通过该漏洞读取泄露源码、数据库配置⽂件等等，导致⽹站处于极度不安全状态。</p>",
+      "Product": "MedDream",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.softneta.com/\">https://www.softneta.com/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+	  "Name": "Softneta MedDream 6.7.11 Directory Traversal",
+	  "VulType": ["file-read"],
+      "Description": "<p>Softneta specializes in medical imaging and communication solutions to improve the quality of healthcare. The company was founded in 2007 and possesses 14+ years of experience in the development of medical devices for processing, visualization and transmission of diagnostic medical data.</p><p>Softneta MedDream PACS Server Premium 6.7.1.1 nocache.php has Directory Traversal</p>",
+      "Impact": "<p>Attackers can use this vulnerability to read the leaked source code, database configuration files, etc., resulting in an extremely insecure website.</p>",
+      "Product": "MedDream",
+      "Recommendation":"<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.softneta.com/\">https://www.softneta.com//</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2. If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://www.exploit-db.com/exploits/45347"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "createSelect",
+      "value": "../../../../../../../../../../../../../../../../MedDreamPACS-Premium/passwords.txt,/../../../../../../Windows/win.ini"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "file-read"
+  ],
+  "VulType": ["fileread"],
+  "CVE": "",
+  "CNNVD": "",
+  "CNVD": "",
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["MedDream"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

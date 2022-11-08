@@ -1,0 +1,42 @@
+{
+  "Name": "NatShell Billing System download.php File read",
+  "Description": "NatShell Billing System download.php File read",
+  "Product": "NatShell Billing System",
+  "Homepage": "https://www.natshell.com/",
+  "DisclosureDate": "2021-05-21",
+  "Author": "PeiQi",
+  "GobyQuery": "title=\"蓝海卓越计费管理系统\"",
+  "Level": "1",
+  "Impact": "<p>File read</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "NatShell Billing System"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

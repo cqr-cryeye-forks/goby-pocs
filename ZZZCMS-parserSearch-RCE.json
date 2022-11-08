@@ -1,0 +1,63 @@
+{
+  "Name": "ZZZCMS parserSearch RCE",
+  "Description": "ZZZCMS parserSearch RCE",
+  "Product": "ZZZCMS",
+  "Homepage": "http://www.3zcms.com/",
+  "DisclosureDate": "2021-05-19",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"ZZZCMS\"",
+  "Level": "3",
+  "Impact": "RCE",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "PHPINFO()"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["RCE"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["ZZZCMS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

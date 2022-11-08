@@ -1,0 +1,40 @@
+{
+  "Name": "Yonyou TurboCRM strresview sqli",
+  "Description": "Blind sql injection exists in the strresview.php file of Yony​​ou TurboCRM",
+  "Product": "用友TurboCRM",
+  "Homepage": "http://www.ntfa.cn/product-70-cn.html",
+  "DisclosureDate": "2020-09-03",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "body=\"turboui.js\"",
+  "Level": "2",
+  "Impact": "<p>黑客可以直接执行SQL语句，从而控制整个服务器：获取数据、修改数据、删除数据等。</p>",
+  "Recommandation": "<p>1.在网页代码中需要对用户输入的数据进行严格过滤。</p><p>2.部署Web应用防火墙，对数据库操作进行监控。>",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "runSql",
+			"type": "select",
+			"value": "USER_NAME()"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["turbocrm"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": false
+}

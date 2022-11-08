@@ -1,0 +1,69 @@
+{
+  "Name": "Zimbra Collaboration Suite sfdc_preauth.jsp SSRF",
+  "Description": "<p>Zimbra Collaboration Suite (ZCS) is an open source collaborative office suite from Synacor, USA. This product includes WebMail, calendar, address book and so on.</p><p>Zimbra collaborative office system sfdc_preauth.jsp file has SSRF vulnerability, attackers can use the vulnerability to perform port detection and other attacks on the intranet.</p>",
+  "Product": "Zimbra-Collaboration-Suite",
+  "Homepage": "https://www.zimbra.com",
+  "DisclosureDate": "2020-11-01",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "banner=\"ZM_TEST=true\"",
+  "GobyQuery": "banner=\"ZM_TEST=true\"",
+  "Level": "2",
+  "Impact": "<p>Zimbra collaborative office system sfdc_preauth.jsp file has SSRF vulnerability, attackers can use the vulnerability to perform port detection and other attacks on the intranet.</p>",
+  "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.zimbra.com\">https://www.zimbra.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+      "Name": "Zimbra Collaboration Suite 协同办公系统 sfdc_preauth.jsp 文件 SSRF 漏洞",
+      "VulType": ["SSRF漏洞"],
+	  "Tags": ["SSRF漏洞"],
+      "Description": "<p>Zimbra Collaboration Suite（ZCS）是美国Synacor公司的一款开源协同办公套件。该产品包括WebMail、日历、通信录等。</p><p>Zimbra协同办公系统sfdc_preauth.jsp文件存在SSRF漏洞，攻击者可利用漏洞对内网进行端口探测等攻击。</p>",
+      "Impact": "<p>Zimbra协同办公系统sfdc_preauth.jsp文件存在SSRF漏洞，攻击者可利用漏洞对内网进行端口探测等攻击。</p>",
+      "Product": "Zimbra-Collaboration-Suite",
+      "Recommendation": "<p>⼚商已发布了漏洞修复程序，请及时关注更新：<a href=\"https://www.zimbra.com\">https://www.zimbra.com</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+    "EN": {
+      "Name": "Zimbra Collaboration Suite sfdc_preauth.jsp SSRF",
+      "VulType": ["ssrf"],
+	  "Tags": ["ssrf"],
+      "Description": "<p>Zimbra Collaboration Suite (ZCS) is an open source collaborative office suite from Synacor, USA. This product includes WebMail, calendar, address book and so on.</p><p>Zimbra collaborative office system sfdc_preauth.jsp file has SSRF vulnerability, attackers can use the vulnerability to perform port detection and other attacks on the intranet.</p>",
+      "Impact": "<p>Zimbra collaborative office system sfdc_preauth.jsp file has SSRF vulnerability, attackers can use the vulnerability to perform port detection and other attacks on the intranet.</p>",
+      "Product": "Zimbra-Collaboration-Suite",
+      "Recommendation": "<p>The vendor has released a bug fix, please pay attention to the update in time: <a href=\"https://www.zimbra.com\">https://www.zimbra.com</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "ssrf",
+      "type": "input",
+      "value": "https://xxx.dnslog.cn"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "Tags": [
+    "ssrf"
+  ],
+  "VulType": [
+    "ssrf"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CVSSScore": "7.0",
+  "AttackSurfaces": {
+    "Application": ["Zimbra-Collaboration-Suite"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ]
+}

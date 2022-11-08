@@ -1,0 +1,69 @@
+{
+  "Name": "DS_Store found",
+  "Description": "A .DS_Store, short for Desktop Services Store, is an invisible file on the macOS operating system that gets automatically created anytime you look into a folder with ‘Finder.’ This file will then follow the folder everywhere it goes, including when archived, like in ‘ZIP.’",
+  "Product": "DS_Store",
+  "Homepage": "https://www.apple.com/",
+  "DisclosureDate": "2017-01-01",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "url_only_dir!=\"\"",
+  "GobyQuery": "url_only_dir!=\"\"",
+  "Level": "3",
+  "Impact": "This file stores custom attributes/metadata of its containing folder and the names of other files around it. Exposing this information could potentially allow hackers to act maliciously and let them see private files.",
+  "Recommendation": "The easiest way to prevent this problem from happening is to completely turn off the automatic creation of these files. For developers, you can use Git to solve this problem by .gitignore file. ",
+  "References": [
+    "https://buildthis.com/ds_store-files-and-why-you-should-know-about-them/",
+	"https://github.com/lijiejie/ds_store_exp"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+		"AND",
+		{
+			  "Request": {
+					"method": "GET",
+					"uri": "/.DS_Store",
+					"follow_redirect": false,
+					"header": {},
+					"data_type": "text",
+					"data": ""
+			  },
+			  "ResponseTest": {
+					"type": "group",
+					"operation": "AND",
+					"checks": [
+						  {
+								"type": "item",
+								"variable": "$code",
+								"operation": "==",
+								"value": "200",
+								"bz": ""
+						  },
+						  {
+								"type": "item",
+								"variable": "$body",
+								"operation": "start_with",
+								"value": "0000000142756431", 
+								"value_type": "hexstring",
+								"bz": ""
+						  }
+					]
+			  },
+			  "SetVariable": []
+		}
+  ],
+  "ExploitSteps": null,
+  "Tags": ["infoleak", "webvulscan"],
+  "CVEIDs": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

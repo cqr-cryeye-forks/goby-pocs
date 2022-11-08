@@ -1,0 +1,73 @@
+{
+  "Name": "Ruijie NBR Router RCE",
+  "Description": "Ruijie Ruiyi smart series routers are suitable for export of small and micro enterprises. Equipped with high-performance hardware architecture, the device has many functions such as accurate flow control, online behavior management, VPN, multi Wan access, user authentication, etc. With its rich functions, Ruijie Ruiyi smart series routers can effectively optimize the user network, regulate the Internet behavior, help enterprises to carry out business in an all-round way, and improve the use experience of business system.",
+  "Product": "Ruijie-NBR-Router",
+  "Homepage": "http://www.ruijiery.com/cp/wg/",
+  "DisclosureDate": "2021-03-23",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "FofaQuery": "app=\"Ruijie-NBR-Router\" || app=\"Ruijie-EG\" || app=\"Ruijie--EWEB\" || icon_hash=\"-692947551\"",
+  "GobyQuery": "app=\"Ruijie-NBR-Router\" || app=\"Ruijie-EG\" || app=\"Ruijie--EWEB\" || icon_hash=\"-692947551\"",
+  "Level": "3",
+  "Impact": "This issue affects devices exposed Internet",
+  "Recommendation": "Disallow allowing Internet access to the device",
+  "References": null,
+  "RealReferences": null,
+  "HasExp": true,
+  "ExpParams": [{
+    "name": "cmd",
+    "type": "input",
+    "value": "show webmaster users"
+  }],
+  "ExpTips": null,
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "WORD",
+            "bz": ""
+            },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "show",
+            "bz": ""
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Ruijie-NBR-Router"]
+  },
+  "Disable": false
+}

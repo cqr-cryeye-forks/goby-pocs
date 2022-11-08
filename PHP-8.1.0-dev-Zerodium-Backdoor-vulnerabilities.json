@@ -1,0 +1,39 @@
+{
+  "Name": "PHP 8.1.0-dev Zerodium Backdoor vulnerabilities",
+  "Description": "PHP 8.1.0-dev is a development version of PHP. The PHP 8.1.0-dev version was implanted with a backdoor on March 28, 2021, but the backdoor was quickly discovered and removed. When the backdoor exists on the server, the attacker can execute arbitrary code by sending the User-Agentt header.",
+  "Product": "PHP 8.1.0-dev",
+  "Homepage": "https://www.php.net",
+  "DisclosureDate": "2021-3-28",
+  "Author": "go0p",
+  "FofaQuery": "header=\"PHP/8.1.0\"",
+  "Level": "3",
+  "Impact": "PHP 8.1.0-dev is a development version of PHP. The PHP 8.1.0-dev version was implanted in the backdoor on March 28, 2021, which may cause attackers to execute arbitrary code on the server side and control the entire web server.",
+  "Recommendation": "",
+  "References": [
+    "https://www.bleepingcomputer.com/news/security/phps-git-server-hacked-to-add-backdoors-to-php-source-code/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "system('whoami');"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["PHP"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

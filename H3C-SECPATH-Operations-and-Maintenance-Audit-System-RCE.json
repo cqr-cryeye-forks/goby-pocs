@@ -1,0 +1,39 @@
+{
+  "Name": "H3C SECPATH Operations and Maintenance Audit System RCE",
+  "Description": "H3C-SECPATH Operations and Maintenance Audit System Has an Arbitrary user login vulnerability and Post-Auth RCE, combine these vulnerability to achieve RCE",
+  "Product": "H3C-SECPATH",
+  "Homepage": "https://www.h3c.com/cn/",
+  "DisclosureDate": "2021-04-18",
+  "Author": "Ovi3",
+  "GobyQuery": "app=\"H3C-SecPath-Operation-and-maintenance-audit-system\"",
+  "Level": "3",
+  "Impact": "Attacker can execute arbitrary command",
+  "Recommendation": "",
+  "References": [
+    "https://mp.weixin.qq.com/s/rt8lJaLUTVuZd187zrruMw"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "ls ../ -l"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["unauthorized", "rce"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["H3C-SecPath-Operation-and-maintenance-audit-system"]
+  }
+}

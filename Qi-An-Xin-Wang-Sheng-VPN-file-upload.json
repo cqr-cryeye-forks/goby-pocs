@@ -1,0 +1,39 @@
+{
+  "Name": "Qi An Xin Wang Sheng VPN file upload",
+  "Description": "Qi An Xin Wang Sheng VPN file upload",
+  "Product": "Wang Sheng VPN",
+  "Homepage": "https://www.qianxin.com/",
+  "DisclosureDate": "2021-04-10",
+  "Author": "go0p",
+  "FofaQuery": "app=\"Secworld-VPN\"",
+  "Level": "3",
+  "Impact": "Any File Upload Get Shell",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Secworld-VPN"]
+  }
+}

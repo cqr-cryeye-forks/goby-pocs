@@ -1,0 +1,38 @@
+{
+  "Name": "Consul Service API RCE",
+  "Description": "Under a specific configuration, a malicious attacker can remotely execute commands on the Consul server without authorization by sending a carefully constructed HTTP request.",
+  "Product": "Consul",
+  "Homepage": "https://github.com/hashicorp/consul",
+  "DisclosureDate": "2019-07-04",
+  "Author": "ovi3",
+  "GobyQuery": "title=\"Consul by HashiCorp\" || protocol=\"consul(http)\"",
+  "Level": "3",
+  "Impact": "Attackers can use vulnerabilities to execute arbitrary command.",
+  "Recommendation": "1. Disable script checking on Consul server.\n2. Ensure that the Consul HTTP API service cannot be accessed or invoked through the external network.\n3. Disable the PUT method for /v1/agent/service/register",
+  "References": [
+	"https://www.imzzj.com/2019/07/04/hashicorp-consul-service-api-yuan-cheng-ming-ling-zhi-xing-lou-dong.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+	  "name": "attackType",
+	  "type": "select",
+	  "value": "goby_shell_linux,goby_powershell_win",
+	  "show": ""
+    }
+  ],
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": ["Consul"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

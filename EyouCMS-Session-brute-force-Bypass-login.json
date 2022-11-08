@@ -1,0 +1,36 @@
+{
+  "Name": "EyouCMS Session brute force Bypass login",
+  "Description": "Eyoucms session is defective_ login_ Set expire to negative, admin_ info.role_ ID < = 0, you can fake login",
+  "Product": "eyoucms",
+  "Homepage": "https://www.eyoucms.com/",
+  "DisclosureDate": "2021-4-20",
+  "Author": "1291904552@qq.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/Eyoucms/EyouCMS_Session_brute_force_Bypass_login.gif",
+  "GobyQuery": "app=\"eyoucms\"",
+  "Level": "3",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://forum.butian.net/share/104"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "login-bypass"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["eyoucms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

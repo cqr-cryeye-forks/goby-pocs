@@ -1,0 +1,46 @@
+{
+  "Name": "ACTI Camera images File read",
+  "Description": "Arbitrary file reading vulnerability in acti video surveillance",
+  "Product": "ACTI Camera",
+  "Homepage": "http://www.acti.com",
+  "DisclosureDate": "2021-05-25",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"ACTi-Cameras-and-Surveillance\"",
+  "Level": "1",
+  "Impact": "<p>Server arbitrary file read</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "ACTI Camera"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommandation": "<p>undefined</p>"
+}

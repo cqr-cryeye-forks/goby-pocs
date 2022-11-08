@@ -1,0 +1,40 @@
+{
+  "Name": "Ruijie EG RCE",
+  "Description": "EasyGate is a multi-service integrated gateway product launched by Ruijie Networks to solve the current network export problems. Attackers can use this vulnerability to send maliciously constructed HTTP requests to the target server without authorization, thereby gaining the permission of the target server and realizing remote command execution.",
+  "Product": "Ruijie EG",
+  "Homepage": "http://www.ruijie.com.cn/",
+  "DisclosureDate": "2020-8-26",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Ruijie-EG\" || title=\"锐捷网络-EWEB网管系统\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "goby_shell_linux"
+    }
+  ],
+  "is0day": true,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce", "unauthorized"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Ruijie--EWEB"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Ruijie-EG"]
+  }
+}

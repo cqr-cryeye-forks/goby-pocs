@@ -1,0 +1,42 @@
+{
+  "Name": "ESAFENET DLP dataimport RCE",
+  "Description": "ESAFENET DLP dataimport RCE,There is remote command execution, and the attacker can obtain the server permission through the vulnerability",
+  "Product": "ESAFENET-DLP document management system",
+  "Homepage": "http://www.esafenet.com/",
+  "DisclosureDate": "2021-06-01",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"ESAFENET-DLP\"",
+  "Level": "3",
+  "Impact": "<p>RCE</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "ESAFENET DLP"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

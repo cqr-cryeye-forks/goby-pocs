@@ -1,0 +1,63 @@
+{
+  "Name": "ShowDoc uploadImg Arbitrary file upload",
+  "Description": "Showdoc is a great online document sharing tool for IT teams that can speed up communication between teams. With SHOWDOC, you can easily write beautiful API documentation, data dictionary documentation, technical documentation, online excel documentation, and more using Markdown syntax.",
+  "Product": "ShowDoc",
+  "Homepage": "https://www.showdoc.com.cn/",
+  "DisclosureDate": "2021-04-19",
+  "Author": "go0p",
+  "FofaQuery": "app=\"ShowDoc\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+   {
+     "name": "cmd",
+     "type": "input",
+     "value": "echo+md5(1);"
+   }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": ["ShowDoc"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

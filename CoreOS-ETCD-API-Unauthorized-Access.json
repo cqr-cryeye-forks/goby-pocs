@@ -1,0 +1,35 @@
+{
+  "Name": "CoreOS ETCD API Unauthorized Access",
+  "Description": "ETCD is an open source project initiated by CoreOS. ETCD is a distributed and consistent KV storage system for shared configuration and service discovery. CoreOS ETCD cluster API has an unauthorized access vulnerability. ETCD is used as a Kubernetes backup storage area for all cluster data. This vulnerability may reveal a large amount of sensitive information.",
+  "Product": "CoreOS etcd ",
+  "Homepage": "https://coreos.com/etcd/",
+  "DisclosureDate": "2021-06-09",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "protocol=\"etcd\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can obtain AWS keys, API keys, and sensitive information about a series of services, and use the obtained keys to control the cluster for further attacks, seriously threatening the user's data security.<br></p>",
+  "Recommendation": "<p>1. Please refer to the official authentication document to add authentication: <a href=\"https://github.com/etcd-io/etcd/blob/master/Documentation/v2/authentication.md,\">https://github.com/etcd-io/etcd/blob/master/Documentation/v2/authentication.md,</a> the password should preferably contain uppercase and lowercase letters, numbers and special Characters, etc., and the number of digits is greater than 8 digits.</p><p>2. If it is not necessary, the public network is prohibited from accessing the service.</p><p>3. Set access policies and whitelist access through security devices such as firewalls.</p>",
+  "References": [
+    "https://elweb.co/the-security-footgun-in-etcd/"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "Disclosure of Sensitive Information"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

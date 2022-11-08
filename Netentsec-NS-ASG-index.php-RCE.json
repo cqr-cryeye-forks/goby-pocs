@@ -1,0 +1,41 @@
+{
+  "Name": "Netentsec NS ASG index.php RCE",
+  "Description": "NetentSec NS-ASG command injection can be GETSHELL",
+  "Product": "NetentSec",
+  "Homepage": "http://www.netentsec.com/",
+  "DisclosureDate": "2021-06-04",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "cert=\"NetentSec\" || body=\"NS-ASG\" || app=\"Netentsec-NS-ASG-Security-gateway\" || app=\"NETENTSEC-NGFW\"",
+  "Level": "3",
+  "Impact": "<p><span style=\"font-size: 16px;\">Hackers can directly execute SQL statements to control the entire server: get data, modify data, delete data, etc.</span><br></p>",
+  "Recommendation": "<p>1. The data entered by the user needs to be strictly filtered in the webpage code.</p><p>2. Deploy a web application firewall to monitor database operations</p><p>3. Upgrade to the latest version</p>",
+  "References": [
+    "http://wooyun.bystudent.com/static/bugs/wooyun-2014-058946.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "cat /etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

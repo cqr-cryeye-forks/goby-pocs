@@ -1,0 +1,35 @@
+{
+  "Name": "China Mobile IPTV getshell",
+  "Description": "This is the server used to manage third-party IPTV on demand. It has an arbitrary file upload vulnerability.",
+  "Product": "China Mobile IPTV",
+  "Homepage": "http://www.10086.cn/",
+  "DisclosureDate": "2021-06-04",
+  "Author": "internet",
+  "GobyQuery": "title=\"中国移动第三方IPTV管理系统\"",
+  "Level": "2",
+  "Impact": "<p>webshell</p>",
+  "Recommendation": "",
+  "References": [
+    "internet"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "China Mobile IPTV"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

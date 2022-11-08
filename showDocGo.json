@@ -1,0 +1,47 @@
+{
+  "Name": "showDocGo",
+  "Description": "",
+  "Product": "",
+  "Homepage": "https://gobies.org/",
+  "DisclosureDate": "2021-06-21",
+  "Author": "gobysec@gmail.com",
+  "GobyQuery": "app=\"ShowDoc\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommandation": "",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "AttackType",
+      "type": "select",
+      "value": "goby_shell,cmd,冰蝎"
+    },
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": "AttackType=cmd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

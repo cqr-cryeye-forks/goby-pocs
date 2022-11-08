@@ -1,0 +1,45 @@
+{
+  "Name": "Scrapyd Unauthorized Access RCE",
+  "Description": "Scrapyd is a cloud service provided by the crawler framework scrapy. Users can deploy their own scrapy package to the cloud service, which is listening on port 6800 by default. If an attacker can access this port, he will be able to deploy malicious code to the server and gain server permissions.",
+  "Product": "Scrapyd",
+  "Homepage": "https://github.com/scrapy/scrapyd",
+  "DisclosureDate": "2019-09-18",
+  "Author": "ovi3",
+  "GobyQuery": "title=\"Scrapyd\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+	"https://github.com/vulhub/vulhub/blob/master/scrapy/scrapyd-unacc/README.zh-cn.md",
+    "https://www.leavesongs.com/PENETRATION/attack-scrapy.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "attackType",
+      "type": "select",
+      "value": "goby_shell"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "unauthorized", "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "Scrapyd"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

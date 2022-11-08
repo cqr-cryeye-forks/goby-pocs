@@ -1,0 +1,74 @@
+{
+  "Name": "Uniview Cameras main cgi RCE",
+  "Description": "There is a remote command execution vulnerability in many Uniview-Cameras-and-Surveillance, which leads to the attacker can forge specific messages for use and execute system commands.",
+  "Product": "Uniview-Cameras-and-Surveillance",
+  "Homepage": "http://cn.uniview.com/",
+  "DisclosureDate": "2021-06-04",
+  "Author": "gobysec@gmail.com",
+  "GobyQuery": "app=\"Uniview-Cameras-and-Surveillance\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can execute any command on the server, write the back door, so as to invade the server, access to the administrator authority of the server, great harm.<br></p>",
+  "Recommandation": "<p>1. The vulnerability has been fixed by the official, please visit the following link, select the correct product model, and download the upgrade package to upgrade:</p><p><a href=\"https://cn.uniview.com/Service/Service_Training/Download/Tools/\">https://cn.uniview.com/Service/Service_Training/Download/Tools/</a></p><p>2. If not necessary, prohibit public network access to the system.</p><p>3. Set access policies and whitelist access through security devices such as firewalls.</p>",
+  "References": [
+    "https://gobies.org/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "ip addr"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

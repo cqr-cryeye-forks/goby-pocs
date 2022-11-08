@@ -1,0 +1,142 @@
+{
+  "Name": "Dahua Wisdom park System user_getUserInfoByUserName.action Information Disclosure",
+  "Description": "<p>Dahua wisdom park series integrated management platform is for the general public buildings to provide safe and efficient management and build the wisdom of the zone comprehensive management platform, through the fusion of dahua professional experience in the field of security and intelligent and cutting-edge technology, integrated video, access control, alarm, parking lot, attendance, visitors, visible interphone, information release, and other business subsystems, There is an unauthorized excuse for users to obtain the administrator account and password to log in to the background<br></p>",
+  "Product": "Dahua Wisdom park System",
+  "Homepage": "http://dahuatech.corp.dav01.com/product/250196/list.html",
+  "DisclosureDate": "2022-03-23",
+  "Author": "1171373465@qq.com",
+  "FofaQuery": "body=\"/WPMS/asset/lib/json2.js\"",
+  "GobyQuery": "body=\"/WPMS/asset/lib/json2.js\"",
+  "Level": "2",
+  "Impact": "<p><span style=\"font-size: 16px;\">The attacker reads the sensitive information of the system by constructing a special URL address.</span><br></p>",
+  "Recommendation": "<p>1. There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update:<a href=\"http://dahuatech.corp.dav01.com\">http://dahuatech.corp.dav01.com</a></p><p></p><p>2. Set access policies and whitelist access through security devices such as firewalls.</p><p>3. If not necessary, prohibit public network access to the system.</p>",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "Tags": [
+    "信息泄漏"
+  ],
+  "VulType": [
+    "信息泄漏"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "7.0",
+  "Translation": {
+    "CN": {
+      "Name": "大华 智慧园区综合管理平台 user_getUserInfoByUserName.action 账号密码泄漏漏洞",
+      "Product": "大华 智慧园区综合管理平台",
+      "Description": "<p><span style=\"font-size: 13px;\"></span><span style=\"color: rgb(0, 0, 0); font-size: 13px;\"></span>大华智慧园区系列综合管理平台是为一般公共建筑提供安全高效的管理，打造智慧园区综合管理平台，通过融合大华在安防领域的专业经验和智能化前沿技术，集成视频、门禁、报警、停车场、考勤、访客、可视对讲机、信息发布等业务子系统。<span style=\"font-size: 16px;\">攻击者通过构造特殊URL地址，读取系统敏感信息</span><br></p>",
+      "Recommendation": "<p>1、官方暂未修复该漏洞，请用户联系厂商修复漏洞：<a href=\"http://dahuatech.corp.dav01.com\">http://dahuatech.corp.dav01.com</a></p><p>2、通过防火墙等安全设备设置访问策略，设置白名单访问。</p><p>3、如非必要，禁止公网访问该系统。</p>",
+      "Impact": "<p><span style=\"font-size: 16px;\">攻击者通过构造特殊URL地址，读取系统敏感信息。</span><br></p>",
+      "VulType": [
+        "信息泄漏"
+      ],
+      "Tags": [
+        "信息泄漏"
+      ]
+    },
+    "EN": {
+      "Name": "Dahua Wisdom park System user_getUserInfoByUserName.action Information Disclosure",
+      "Product": "Dahua Wisdom park System",
+      "Description": "<p>Dahua wisdom park series integrated management platform is for the general public buildings to provide safe and efficient management and build the wisdom of the zone comprehensive management platform, through the fusion of dahua professional experience in the field of security and intelligent and cutting-edge technology, integrated video, access control, alarm, parking lot, attendance, visitors, visible interphone, information release, and other business subsystems, There is an unauthorized excuse for users to obtain the administrator account and password to log in to the background<br></p>",
+      "Recommendation": "<p>1. There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update:<a href=\"http://dahuatech.corp.dav01.com\">http://dahuatech.corp.dav01.com</a></p><p></p><p>2. Set access policies and whitelist access through security devices such as firewalls.</p><p>3. If not necessary, prohibit public network access to the system.</p>",
+      "Impact": "<p><span style=\"font-size: 16px;\">The attacker reads the sensitive information of the system by constructing a special URL address.</span><br></p>",
+      "VulType": [
+        "Information Disclosure"
+      ],
+      "Tags": [
+        "Information Disclosure"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

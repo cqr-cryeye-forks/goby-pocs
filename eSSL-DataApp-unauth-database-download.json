@@ -1,0 +1,35 @@
+{
+  "Name": "eSSL DataApp unauth database download",
+  "Description": "The ESSL attendance machine is not authorized to download backup files, which can be used by attackers to further attack the system, such as telnet password",
+  "Product": "eSSL-attendance",
+  "Homepage": "http://esslsecurity.com/",
+  "DisclosureDate": "2021-06-02",
+  "Author": "sharecast.net@gmail.com",
+  "GobyQuery": "header=\"ZK Web Server\"",
+  "Level": "2",
+  "Impact": "<p>The code implements the file download to the client, but if the incoming parameters are not filtered, it can download any file of the service, resulting in any file download vulnerability. For example, downloading database configuration files can lead hackers to successfully enter the database or sensitive information of the system. Cause the website or server to fall.<br></p>",
+  "Recommendation": "<p>1. Before downloading, you can filter the incoming parameters and directly replace... With null, which can simply achieve the purpose of prevention.</p><p>2. Check the download file type to determine whether the download type is allowed.</p><p>3. Upgrade to the latest version</p>",
+  "References": [
+    "https://nosec.org/home/detail/3032.html"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "download"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

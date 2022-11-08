@@ -1,0 +1,33 @@
+{
+  "Name": "JingHang online marking Arbitrary File Upload",
+  "Description": "Hengshui Jinhang Computer Technology Co., Ltd. Jinhang Online Marking System fileUpload has an arbitrary file upload vulnerability. Attackers can use this vulnerability to upload malicious Trojan horses to obtain sensitive system information, control server permissions, etc.",
+  "Product": "JingHang",
+  "Homepage": "http://www.hsjinhang.com/",
+  "DisclosureDate": "2021-07-28",
+  "Author": "1291904552@qq.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/JingHang/JingHang%20online%20marking%20Arbitrary%20File%20Upload/JingHang_online_marking_Arbitrary_File_Upload.gif",
+  "GobyQuery": "title=\"金航网上阅卷系统\"||body=\"金航网上阅卷系统\"",
+  "Level": "3",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://poc.shuziguanxing.com/#/publicIssueInfo#issueId=4376"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "file-upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["JingHang"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

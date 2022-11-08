@@ -1,0 +1,40 @@
+{
+  "Name": "YUNUCMS API list interface SQLi",
+  "Description": "云优cms开源城市分站管理系统1.1.5版本list接口orderby参数前台sql注入，可造成数据泄露，甚至服务器被入侵。",
+  "Product": "yunucms",
+  "Homepage": "http://www.yunucms.com/",
+  "DisclosureDate": "2018-11-22",
+  "Author": "itardc@163.com",
+  "FofaQuery": "body=\"/index.php/index/category/index?id=\" || body=\"css/yunu.css\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "function",
+      "type": "createSelect",
+      "value": "user(),database(),version()",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["yunucms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

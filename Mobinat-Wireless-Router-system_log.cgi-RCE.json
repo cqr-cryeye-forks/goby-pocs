@@ -1,0 +1,39 @@
+{
+  "Name": "Mobinat Wireless Router system_log.cgi RCE",
+  "Description": "Mobinat Wireless Router system_log.cgi has a remote command execution vulnerability, requiring at least one user is online. This PoC will try to log in using admin/admin.",
+  "Product": "Mobinat-Wireless-Router",
+  "Homepage": "https://my.mobinnet.ir/",
+  "DisclosureDate": "2021-08-10",
+  "Author": "1291904552@qq.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/Mobinat%20Wireless%20Router/Mobinat_Wireless_Router_system_log_cgi_RCE.gif",
+  "GobyQuery": "app=\"Mobinat-Wireless-Router\"",
+  "Level": "3",
+  "Impact": "<p></p>",
+  "Recommandation": "",
+  "References": [
+    "https://packetstormsecurity.com/files/160210/Seowon-130-SLC-1.0.11-Remote-Code-Execution.html"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "rce"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Mobinat-Wireless-Router"]
+  }
+}

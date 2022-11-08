@@ -1,0 +1,66 @@
+{
+  "Name": "tongda OA any file delete getshell",
+  "Description": "",
+  "Product": "通达OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2020-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"通达OA\" || app=\"TongDa-OA\" || app=\"TongTa-OA\" || app=\"TDXK-通达OA\"",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://www.tongda2000.com/"
+  ],
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/TongdaOA/TongdaOA_anyfile_delete_getshell/tongdaOA_getshell.gif",
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/module/appbuilder/assets/print.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "/general/appbuilder/web/download.php",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["getshell", "rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "Name": "Dwsurvey 3.2 Arbitrary File Read",
+  "Description": "<p>DWSurvey is a convenient, efficient and stable survey questionnaire system, an open source questionnaire form system based on JAVA WEB.</p><p>The filePath parameter of the ToHtmlServlet.java file in the dwsurvey-oss-v3.2.0 version has an arbitrary file reading vulnerability.</p>",
+  "Product": "DWSurvey",
+  "Homepage": "https://www.surveyform.cn",
+  "DisclosureDate": "2021-09-22",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"DIAOWEN\" && (title=\"表单\" || body=\"DWSurvey\")",
+  "GobyQuery": "body=\"DIAOWEN\" && (title=\"表单\" || body=\"DWSurvey\")",
+  "Level": "2",
+  "Impact": "<p>The filePath parameter of the ToHtmlServlet.java file in the dwsurvey-oss-v3.2.0 version has an arbitrary file reading vulnerability.</p>",
+  "Recommandation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://www.surveyform.cn\">https://www.surveyform.cn/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+	  "Name": "Dwsurvey 3.2 版本任意文件读取漏洞",
+	  "VulType": ["文件读取"],
+      "Description": "<p>DWSurvey是一款方便、高效、稳定的调研问卷系统，一款基于 JAVA WEB 的开源问卷表单系统。</p><p>dwsurvey-oss-v3.2.0 版本中 ToHtmlServlet.java 文件的 filePath 参数存在任意文件读取漏洞。</p>",
+      "Impact": "<p>dwsurvey-oss-v3.2.0 版本中 ToHtmlServlet.java 文件的 filePath 参数存在任意文件读取漏洞。</p>",
+      "Product": "DWSurvey",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"https://www.surveyform.cn\">https://www.surveyform.cn</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+	  "Name": "Dwsurvey 3.2 Arbitrary File Read",
+	  "VulType": ["fileread"],
+      "Description": "<p>DWSurvey is a convenient, efficient and stable survey questionnaire system, an open source questionnaire form system based on JAVA WEB.</p><p>The filePath parameter of the ToHtmlServlet.java file in the dwsurvey-oss-v3.2.0 version has an arbitrary file reading vulnerability.</p>",
+      "Impact": "<p>The filePath parameter of the ToHtmlServlet.java file in the dwsurvey-oss-v3.2.0 version has an arbitrary file reading vulnerability.</p>",
+      "Product": "DWSurvey",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://www.surveyform.cn\">https://www.surveyform.cn/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://github.com/wkeyuan/DWSurvey"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "createSelect",
+      "value": "/WEB-INF/classes/conf/application.properties"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "fileread"
+  ],
+  "VulType": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": ["DWSurvey"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

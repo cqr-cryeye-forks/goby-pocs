@@ -1,0 +1,45 @@
+{
+  "Name": "DLink DNS ShareCenter RCE (CNVD-2020-53563)",
+  "Description": "D-Link ShareCenter DNS-320 and DNS-325 allow remote command execute via shell metacharacters into the total field to the system_mgr.cgi. Unauthenticated attackers can contral the device throung remote command execute.",
+  "Product": "DLink DNS ShareCenter",
+  "Homepage": "http://sharecenter.dlink.com/",
+  "DisclosureDate": "2021-06-17",
+  "Author": "Bygosec",
+  "GobyQuery": "product=\"DLink-DNS-ShareCenter\"",
+  "Level": "3",
+  "Impact": "<p>D-Link ShareCenter DNS-320 and DNS-325 allow remote command execute via shell metacharacters into the total field to the system_mgr.cgi. Unauthenticated attackers can contral the device throung remote command execute.<br></p>",
+  "Recommendation": "<p>Update device firmware, and operate the devices behind a firewall.<br></p>",
+  "References": [
+    "https://www.cnvd.org.cn/flaw/show/CNVD-2020-53563"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": [
+    "CNVD-2020-53563"
+  ],
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "Name": "TOPSEC Firewall maincgi cgi RCE",
+  "Description": "Hackers can directly command execution to obtain system permissions and take over the equipment, which can cause great harm",
+  "Product": "TOPSEC-Firewall",
+  "Homepage": "http://www.topsec.com.cn",
+  "DisclosureDate": "2021-06-02",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "(app=\"TOPSEC-Firewall\" || app=\"TOPSEC-Product\")",
+  "Level": "3",
+  "Impact": "<p>Hackers can directly command execution to obtain system permissions and take over the equipment, which can cause great harm<br></p>",
+  "Recommandation": "<p>1. It is forbidden to access the device on the public network</p><p>2. Upgrade equipment</p>",
+  "References": [
+    "http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2013-035732"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "id"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

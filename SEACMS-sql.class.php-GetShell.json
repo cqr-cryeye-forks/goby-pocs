@@ -1,0 +1,35 @@
+{
+  "Name": "SEACMS sql.class.php GetShell",
+  "Description": "The incomplete filtering in the latest version of seacms can bypass the new version of variable coverage and getshell",
+  "Product": "seacms 9.92",
+  "Homepage": "https://www.seacms.net/",
+  "DisclosureDate": "2021-06-09",
+  "Author": "834714370@qq.com",
+  "GobyQuery": "body=\"/templets/default/images/js/\" || app=\"海洋cms\"",
+  "Level": "3",
+  "Impact": "<p>The incomplete filtering in the latest version of seacms can bypass the new version of variable coverage and getshell<br></p>",
+  "Recommendation": "",
+  "References": [
+    "https://xz.aliyun.com/t/6191"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

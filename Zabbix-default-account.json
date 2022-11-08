@@ -1,0 +1,72 @@
+{
+  "Name": "Zabbix default account",
+  "Description": "Zabbix default account.",
+  "Product": "Zabbix",
+  "Homepage": "https://www.zabbix.com/",
+  "DisclosureDate": "2004-03-23",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"Zabbix\"",
+  "GobyQuery": "app=\"Zabbix\"",
+  "Level": "3",
+  "Impact": "This may allow a malicious user to escalate his or her privileges on the system and gain access to sensitive information.",
+  "Recommendation": "Change default password.",
+  "References": [
+    "https://www.zabbix.com/documentation/current/manual/quickstart/login"
+  ],
+  "HasExp": false,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "Tips",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "name=Admin&password=zabbix&enter=Sign+in",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "method": "POST",
+        "uri": "/index.php"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Location:",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "defaultaccount"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Zabbix"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

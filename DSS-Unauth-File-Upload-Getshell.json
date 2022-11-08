@@ -1,0 +1,37 @@
+{
+  "Name": "DSS Unauth File Upload Getshell",
+  "Description": "DSS Unauth File Upload Getshell",
+  "Product": "DSS",
+  "Homepage": "https://www.dahuatech.com/",
+  "DisclosureDate": "2021-05-26",
+  "Author": "goby牛逼",
+  "GobyQuery": "title=\"DSS\"",
+  "Level": "3",
+  "Impact": "<p>getshell</p>",
+  "Recommendation": "<p>updata</p>",
+  "References": null,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "Shell",
+      "type": "select",
+      "value": "get_shell"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

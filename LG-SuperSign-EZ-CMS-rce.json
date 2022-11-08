@@ -1,0 +1,40 @@
+{
+  "Name": "LG SuperSign EZ CMS rce",
+  "Description": "LG SuperSign EZ CMS Remote command execution defense, can execute commands remotely",
+  "Product": "SuperSign-EZ",
+  "Homepage": "www.lg.com",
+  "DisclosureDate": "2018-09-24",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"SuperSign-EZ\"",
+  "Level": "3",
+  "Impact": "黑客可在服务器上执行任意命令，写入后门，从而入侵服务器，获取服务器的管理员权限，危害巨大。",
+  "Recommandation": "<p>1.升级到最新版本<a href=\"http://www.lg.com\" rel=\"nofollow\">http://www.lg.com</a>&nbsp;</p><p>2.严格过滤用户输入的数据，禁止执行系统命令。</p>",
+  "References": [
+    "https://www.exploit-db.com/exploits/45448/"
+  ],
+  "HasExp": true,
+	"ExpParams": [
+	{
+		"Name": "AttackType",
+		"Type": "select",
+		"Value": "goby_shell_linux"
+	}
+],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [],
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": [],
+  "CVSSScore": "9.8",
+  "AttackSurfaces": {
+    "Application": ["SuperSign-EZ"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

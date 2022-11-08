@@ -1,0 +1,39 @@
+{
+  "Name": "D-Link 850L and 645 Information Disclosure",
+  "Description": "This module leverages an unauthenticated credential disclosure vulnerability  on DIR-850L routers .",
+  "Product": "D-Link",
+  "Homepage": "http://www.dlink.co.in/",
+  "DisclosureDate": "2021-05-31",
+  "Author": "李大壮",
+  "FofaQuery": "body=\"DIR-850L\" || body=\"DIR645\"",
+  "Level": "3",
+  "Impact": "<p>Its More Dangerous when your Router has a public IP with remote login enabled.</p>",
+  "Recommendation": "",
+  "References": [
+    "https://xz.aliyun.com/t/2941"
+  ],
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "Information Disclosure"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": [
+      "D-Link-DIR_850"
+    ]
+  },
+  "Recommendation": "<p>Update Patches</p>",
+  "GobyQuery": "body=\"DIR-850L\" || body=\"DIR645\""
+}

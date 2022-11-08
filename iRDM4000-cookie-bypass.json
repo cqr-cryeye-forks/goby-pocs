@@ -1,0 +1,58 @@
+{
+  "Name": "iRDM4000 cookie bypass",
+  "Description": "<p>Hebei Huahou Tiancheng Environmental Technology Co., Ltd. is a professional manufacturer of environmental online monitoring equipment and a leading environmental monitoring system integrator.</p><p>The iRDM4000 smart station room online supervision, diagnosis and configuration sub-station has cookie forgery, which leads to malicious login to the operation background.</p>",
+  "Product": "iRDM4000",
+  "Homepage": "http://www.houtian-hb.com",
+  "DisclosureDate": "2021-09-22",
+  "Author": "1291904552@qq.com",
+  "FofaQuery": "body=\"iRDM4000\"",
+  "GobyQuery": "body=\"iRDM4000\"",
+  "Level": "2",
+  "Impact": "<p>iRDM4000 smart station room online supervision, diagnosis and configuration sub-stations have cookie forgery, attackers can log in to the operation background maliciously.</p>",
+  "Recommandation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"https://www.discuz.net/\">https://www.discuz.net/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>",
+  "Translation": {
+    "CN": {
+	  "Name": "iRDM4000 智慧站房 cookie 伪造漏洞",
+	  "VulType": ["登录绕过"],
+      "Description": "<p>河北华厚天成环保技术有限公司是专业的环境在线监测仪器制造商、领先的环境监控系统集成商。</p><p>iRDM4000智慧站房在线监管、诊断与配置子站存在cookie伪造，攻击者可恶意登陆操作后台。</p>",
+      "Impact": "<p>iRDM4000智慧站房在线监管、诊断与配置子站存在cookie伪造，攻击者可恶意登陆操作后台。</p>",
+      "Product": "iRDM4000",
+      "Recommendation": "<p>厂商暂未提供修复方案，请关注厂商网站及时更新: <a href=\"http://www.houtian-hb.com/\">http://www.houtian-hb.com/</a></p><p>1、通过防⽕墙等安全设备设置访问策略，设置⽩名单访问。</p><p>2、如⾮必要，禁⽌公⽹访问该系统。</p>"
+    },
+	"EN": {
+	  "Name": "iRDM4000 cookie bypass",
+	  "VulType": ["login-bypass"],
+      "Description": "<p>Hebei Huahou Tiancheng Environmental Technology Co., Ltd. is a professional manufacturer of environmental online monitoring equipment and a leading environmental monitoring system integrator.</p><p>The iRDM4000 smart station room online supervision, diagnosis and configuration sub-station has cookie forgery, which leads to malicious login to the operation background.</p>",
+      "Impact": "<p>iRDM4000 smart station room online supervision, diagnosis and configuration sub-stations have cookie forgery, attackers can log in to the operation background maliciously.</p>",
+      "Product": "iRDM4000",
+      "Recommendation": "<p>There is currently no detailed solution provided, please pay attention to the manufacturer's homepage update: <a href=\"http://www.houtian-hb.com/\">http://www.houtian-hb.com/</a></p><p>1. Set access policies and whitelist access through security devices such as firewalls.</p><p>2.If not necessary, prohibit public network access to the system.</p>"
+    }
+  },
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "filepath",
+      "type": "createSelect",
+      "value": "dhInfoSet.cgi,httpUrlList.cgi,readWanInfo.cgi"
+    }
+  ],
+  "ExpTips": null,
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "login-bypass"
+  ],
+  "VulType": ["login-bypass"],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["iRDM4000"]
+  }
+}

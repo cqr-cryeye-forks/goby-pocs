@@ -1,0 +1,40 @@
+{
+  "Name": "POCID5885 zzzphp 1.5.9 front Sqli",
+  "Description": "zzzphp's 1.5.9 version of front SQL injection can cause data leakage and even server intrusion.",
+  "Product": "zzzcms",
+  "Homepage": "http://www.zzzcms.com",
+  "DisclosureDate": "2020-09-03",
+  "Author": "gobysec@gmail.com",
+  "FofaQuery": "app=\"zzzcms\"",
+  "Level": "2",
+  "Impact": "<p>黑客可以直接执行SQL语句，从而控制整个服务器：获取数据、修改数据、删除数据等。</p>",
+  "Recommandation": "<p>1.在网页代码中需要对用户输入的数据进行严格过滤。</p><p>2.部署Web应用防火墙，对数据库操作进行监控。</p><p>3.升级至最新版本：<a href=\"http://www.zzzcms.com/index.html\" target=\"_blank\">http://www.zzzcms.com/index.html</a></p>",
+  "References": [
+    "http://fofa.so"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "sqlParams",
+			"type": "input",
+			"value": "select user()"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["zzzcms"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+"Disable": true
+}

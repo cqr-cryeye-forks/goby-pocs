@@ -1,0 +1,39 @@
+{
+  "Name": "PySpider Unauthorized Access RCE",
+  "Description": "PySpider Unauthorized Access lead to arbitrary python code execution",
+  "Product": "PySpider",
+  "Homepage": "https://github.com/binux/pyspider",
+  "DisclosureDate": "2021-05-18",
+  "Author": "ovi3",
+  "FofaQuery": "app=\"pyspider\" || product=\"TornadoServer\"",
+  "Level": "3",
+  "Impact": "Allows remote attackers to execute arbitrary python code",
+  "Recommendation": "Add pyspider webui authorization. see https://github.com/binux/pyspider/issues/62",
+  "References": [
+    "https://github.com/ianxtianxt/Pyspider-webui-poc"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "pythonCode",
+      "type": "input",
+      "value": "print(\"python\")"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": ["pyspider"],
+    "Support": null,
+    "Service": ["TornadoServer"],
+    "System": null,
+    "Hardware": null
+  }
+}

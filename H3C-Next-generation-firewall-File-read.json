@@ -1,0 +1,46 @@
+{
+  "Name": "H3C Next generation firewall File read",
+  "Description": "Attackers can download arbitrary files on the server through the vulnerability",
+  "Product": "H3C Next generation firewall",
+  "Homepage": "http://www.h3c.com.cn",
+  "DisclosureDate": "2021-05-28",
+  "Author": "PeiQi",
+  "GobyQuery": "app=\"H3C-Firewall\" || body=\"webui/js/jquerylib/jquery-1.7.2.min.js\"",
+  "Level": "2",
+  "Impact": "<p>File read</p>",
+  "Recommendation": "",
+  "References": [
+    "http://wiki.peiqi.tech"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "File",
+      "type": "input",
+      "value": "/etc/passwd"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND"
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "File read"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "H3C Next generation firewall"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Recommendation": "<p>undefined</p>"
+}

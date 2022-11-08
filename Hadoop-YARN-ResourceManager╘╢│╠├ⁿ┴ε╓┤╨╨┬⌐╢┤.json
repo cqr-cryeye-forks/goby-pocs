@@ -1,0 +1,40 @@
+{
+  "Name": "Hadoop YARN ResourceManager远程命令执行漏洞",
+  "Description": "Hadoop YARN （Yet Another Resource Negotiator，另一种资源协调者）是一种新的 Hadoop 资源管理器，它是一个通用资源管理系统，可为上层应用提供统一的资源管理和调度，它的引入为集群在利用率、资源统一管理和数据共享等方面带来了巨大好处。\nHadoop YARN ResourceManager存在安全漏洞，黑客在未授权的情况下可执行任意命令",
+  "Product": "APACHE-hadoop-YARN",
+  "Homepage": "https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html",
+  "DisclosureDate": "2018-07-13",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"APACHE-hadoop-YARN\"",
+  "Level": "3",
+  "Impact": "<p>黑客可在服务器上执行任意命令，写入后门，从而入侵服务器，获取服务器的管理员权限，危害巨大。</p>",
+  "Recommendation": "<p>一、严格过滤用户输入的数据，禁止执行系统命令。</p><p>升级至最新版本</p><p>官网：<a href=\"https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html\" rel=\"nofollow\">https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html</a></p>",
+  "References": [
+    "https://www.exploit-db.com/exploits/45025/"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+	{
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["APACHE-hadoop-YARN"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

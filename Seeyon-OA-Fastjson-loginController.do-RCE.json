@@ -1,0 +1,39 @@
+{
+  "Name": "Seeyon OA Fastjson loginController.do RCE",
+  "Description": "The old version of Seeyon OA software (below V8.0, V8.0 was released on June 11, 2020) integrated Fastjson component has a deserialization vulnerability",
+  "Product": "Yonyou-Seeyon-OA",
+  "Homepage": "https://www.netentsec.com/",
+  "DisclosureDate": "2021-06-08",
+  "Author": "go0p",
+  "FofaQuery": "product=\"Yonyou-Seeyon-OA\"",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "Yonyou-Seeyon-OA has released a vulnerability announcement on its official website in September 2020 (http://service.seeyon.com/patchtools/tp.html#/patchList?type=%E5%AE%89%E5%85%A8%E8% A1%A5%E4%B8%81&id=12), update the patch to complete the Fastjson vulnerability repair, and contact each customer to proactively inform.",
+  "References": [
+    "https://www.secrss.com/articles/30425"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "Name": "AttackType",
+      "Type": "select",
+      "Value": "goby_shell_linux"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["Yonyou-Seeyon-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

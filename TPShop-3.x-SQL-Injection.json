@@ -1,0 +1,39 @@
+{
+  "Name": "TPShop 3.x SQL Injection",
+  "Description": "TPShop 3.x exists a pre-auth SQL Injection vulnerability, allow attacker to read sensitive data form database.",
+  "Product": "TPShop",
+  "Homepage": "https://www.tp-shop.cn/",
+  "DisclosureDate": "2019-05-13",
+  "Author": "ovi3",
+  "FofaQuery": "product=\"ThinkPHP\"",
+  "Level": "2",
+  "Impact": "A successful SQL injection exploit can read sensitive data from the database, even get shell.",
+  "Recommendation": "Update TPShop",
+  "References": [
+    "https://xz.aliyun.com/t/5095"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+    {
+      "name": "selectQuery",
+      "type": "input",
+      "value": "select concat(user_name,char(0x3a),password) from tp_admin limit 1"
+    }
+  ],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": null,
+  "CVEIDs": null,
+  "CVSSScore": "9.3",
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": ["ThinkPHP"],
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

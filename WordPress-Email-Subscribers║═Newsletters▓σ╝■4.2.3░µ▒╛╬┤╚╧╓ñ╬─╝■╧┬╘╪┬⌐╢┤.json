@@ -1,0 +1,42 @@
+{
+  "Name": "WordPress Email Subscribers和Newsletters插件4.2.3版本未认证文件下载漏洞",
+  "Description": "The WordPress plugin, Email Subscribers \u0026 Newsletters, before 4.2.3 had a flaw that allowed unauthenticated file download with user information disclosure.",
+  "Product": "WordPress",
+  "Homepage": "http://www.wordpress.com/",
+  "DisclosureDate": "2019-12-25",
+  "Author": "mahui@gobies.org",
+  "FofaQuery": "body=\"email-Subscribers\" && body=\"plugins\" && body=\"wp-admin\"",
+  "Level": "1",
+  "Impact": "<p>WordPress是WordPress基金会的一套使用PHP语言开发的博客平台。该平台支持在PHP和MySQL的服务器上架设个人博客网站。Email Subscribers ＆ Newsletters是使用在其中的一个电子邮件订阅和新闻通讯插件。</p><p>Email Subscribers &amp; Newsletters 4.2.3之前版本存在未认证文件下载漏洞。攻击者可利用该漏洞下载文件，从而可获取用户信息。<br></p>",
+  "Recommendation": "<p>厂商已发布了漏洞修复程序，请及时关注更新：</p><p><a href=\"https://wpvulndb.com/vulnerabilities/9946\" rel=\"nofollow\">https://wpvulndb.com/vulnerabilities/9946</a></p>",
+  "References": [
+    "http://packetstormsecurity.com/files/158563/WordPress-Email-Subscribers-And-Newsletters-4.2.2-File-Disclosure.html",
+    "https://wpvulndb.com/vulnerabilities/9946",
+    "https://www.wordfence.com/blog/2019/11/multiple-vulnerabilities-patched-in-email-subscribers-newsletters-plugin/",
+    "https://nvd.nist.gov/vuln/detail/CVE-2019-19985",
+    "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-19985"
+  ],
+  "HasExp": true,
+  "ExpParams": [
+		{
+			"name": "AttackType",
+			"type": "select",
+			"value": "showcontent"
+		}
+	],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "Tags": ["filedownload"],
+  "CVSSScore": "5.3",
+  "AttackSurfaces": {
+    "Application": ["WordPress"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  },
+  "Disable": false
+}

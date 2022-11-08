@@ -1,0 +1,35 @@
+{
+  "Name": "tongda OA file include getshell",
+  "Description": "通达OA是中国协同办公自动化软件(OA软件)普及型的旗舰产品。该系统存在文件包含漏洞，可能造成服务器被入侵。",
+  "Product": "通达OA",
+  "Homepage": "http://www.tongda2000.com/",
+  "DisclosureDate": "2020-08-18",
+  "Author": "itardc@163.com",
+  "FofaQuery": "app=\"通达OA\" || app=\"TongDa-OA\" || app=\"TongTa-OA\" || app=\"TDXK-通达OA\"",
+  "GobyQuery": "",
+  "Level": "3",
+  "Impact": "",
+  "Recommendation": "",
+  "References": [
+    "http://www.tongda2000.com/"
+  ],
+  "GifAddress": " https://raw.githubusercontent.com/gobysec/GobyVuls/master/TongdaOA/TongdaOA_file_include_getshell/TongdaOA_getshell.gif",
+  "HasExp": true,
+  "ExpParams": null,
+  "ExpTips": {
+    "Type": "",
+    "Content": ""
+  },
+  "ScanSteps": null,
+  "ExploitSteps": null,
+  "Tags": ["getshell", "rce"],
+  "CVEIDs": null,
+  "CVSSScore": null,
+  "AttackSurfaces": {
+    "Application": ["TongDa-OA"],
+    "Support": null,
+    "Service": null,
+    "System": null,
+    "Hardware": null
+  }
+}
